@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/WaterTracker_Frontend/static/css/main.cd2e038f.css",
-    "main.js": "/WaterTracker_Frontend/static/js/main.5c70b958.js",
+    "main.js": "/WaterTracker_Frontend/static/js/main.cc88ea69.js",
     "index.html": "/WaterTracker_Frontend/index.html",
     "main.cd2e038f.css.map": "/WaterTracker_Frontend/static/css/main.cd2e038f.css.map",
-    "main.5c70b958.js.map": "/WaterTracker_Frontend/static/js/main.5c70b958.js.map"
+    "main.cc88ea69.js.map": "/WaterTracker_Frontend/static/js/main.cc88ea69.js.map"
   },
   "entrypoints": [
     "static/css/main.cd2e038f.css",
-    "static/js/main.5c70b958.js"
+    "static/js/main.cc88ea69.js"
   ]
 }
