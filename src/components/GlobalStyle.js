@@ -2,7 +2,22 @@ import { createGlobalStyle } from 'styled-components';
 import { baseTheme } from './theme.ts';
 import 'modern-normalize';
 
+export function fontFace(name, src, fontWeight, fontStyle = 'normal') {
+  return `
+    @font-face{
+        font-family: "${name}";
+        src: url('../src/fonts/'${src}'.ttf' format('truetype'));
+        font-weight: ${fontWeight};
+				font-style: ${fontStyle};
+    }
+`;
+}
+
 export const GlobalStyle = createGlobalStyle`
+	${fontFace('RobotoRegular', 'Roboto-Regular', 400)}
+	${fontFace('RobotoMedium', 'Roboto-Medium', 500)}
+	${fontFace('RobotoBold', 'Roboto-Bold', 700)}
+
 	*,
 	*::before,
 	*::after {
@@ -13,12 +28,11 @@ export const GlobalStyle = createGlobalStyle`
   margin: 0;
   background-color: ${baseTheme.colors.white};
   color: ${baseTheme.colors.black};
-  font-family: 'Roboto Regular', sans-serif;
+  font-family: 'RobotoRegular', sans-serif;
 	}
 
 	code {
-		font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-			monospace;
+		font-family: 'RobotoRegular', sans-serif;
 	}
 
 	h1,
