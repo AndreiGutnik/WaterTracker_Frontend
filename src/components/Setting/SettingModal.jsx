@@ -1,6 +1,7 @@
 import { Component } from 'react';
 import Setting from './Setting';
-import Header from './HeaderSetting';
+import HeaderSetting from './HeaderSetting';
+import FormSetting from './FormSetting';
 
 class SettingModal extends Component {
   state = {
@@ -11,14 +12,14 @@ class SettingModal extends Component {
         this.setState({isShowModal:true})
     }
 
-    closeModal = ()=>{
+    closeModal = () =>{
         this.setState({isShowModal:false})
     }
   render() {
     return(
         <div className='container'>
-    <Header showModal={this.showModal}/>
-       {this.state.isShowModal && <Setting closeModal={this.closeModal}></Setting>}
+    <HeaderSetting showModal={this.showModal}/>
+        {this.state.isShowModal && (<Setting closeModal={this.closeModal}><FormSetting/></Setting>)}
     </div>
   )
 }

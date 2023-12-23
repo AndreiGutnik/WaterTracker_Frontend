@@ -7,13 +7,16 @@ const Setting = ({ children, closeModal }) => {
             <div className="modal-dialog">
                 <div className="modal-content">
                     <div className="modal-header">
-                        <h5 className="modal-title">Setting</h5>
+                        <h3 className="modal-title">Setting</h3>
                         <button
                             type="button"
                             className="bth-close"
                             aria-label='Close'
                             onChange={closeModal}
-                        ></button>
+    
+                        >
+                        
+                        </button>
                     </div>
                     <div className="modal-body">{children}</div>
                 </div>
