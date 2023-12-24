@@ -1,5 +1,6 @@
 import { Container } from "components/Container";
-import { useNavigate } from "react-router-dom";
+//import { useNavigate } from "react-router-dom";
+import { WelcomeStile, WaterTracker } from "./WelcomPage.styled";
 
 const WelcomePage = () => {
   return (
@@ -54,3 +55,6 @@ const WelcomePage = () => {
     </WelcomeStile>
   );
 };
+
+
+export default WelcomePage;
