@@ -17,16 +17,29 @@ export const ListItem = styled.li`
   border-bottom: 1px solid #d7e3ff;
 `;
 
-export const Wrap = styled.div`
+export const InfoWrap = styled.div`
   display: flex;
   flex-direction: row;
   gap: 12px;
+
+  & svg {
+    width: 26px;
+    height: 26px;
+    & use {
+      fill: #9ebbff;
+    }
+  }
 `;
 
 export const WrapBtn = styled.div`
   display: flex;
   flex-direction: row;
   gap: 18px;
+
+  & svg {
+    width: 16px;
+    height: 16px;
+  }
 `;
 
 export const TextVolume = styled.p`
@@ -41,29 +54,50 @@ export const TextTime = styled.p`
   line-height: 2; /* 200% */
 `;
 
-export const AddBtnStyle = styled.button`
-  color: var(--Primery-Color-Blue, #407bff);
-  line-height: 1.25; /* 125% */
+export const EditBtn = styled.button`
   border: none;
   background-color: transparent;
 
+  & use {
+    fill: #9ebbff;
+  }
+
   &:hover {
-    color: var(--Secondary-color-5, #ff9d43);
+    border-bottom: 1px solid #9ebbff;
   }
 `;
 
 export const DeleteBtn = styled.button`
   border: none;
   background-color: transparent;
+
+  & use {
+    fill: #ef5050;
+  }
+
   &:hover {
     border-bottom: 1px solid #ef5050;
   }
 `;
 
-export const EditBtn = styled.button`
+export const AddBtnStyle = styled.button`
+  color: var(--Primery-Color-Blue, #407bff);
+  line-height: 1.25; /* 125% */
   border: none;
   background-color: transparent;
+
+  & svg {
+    width: 16px;
+    height: 16px;
+    & use {
+      fill: #407bff;
+    }
+  }
+
   &:hover {
-    border-bottom: 1px solid #9ebbff;
+    color: var(--Secondary-color-5, #ff9d43);
+    & use {
+      fill: #ff9d43;
+    }
   }
 `;

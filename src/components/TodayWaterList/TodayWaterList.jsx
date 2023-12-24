@@ -1,6 +1,4 @@
-import { FaGlassWaterDroplet } from 'react-icons/fa6';
-import { HiOutlinePencilSquare } from 'react-icons/hi2';
-import { HiOutlineTrash } from 'react-icons/hi2';
+import sprite from '../../images/sprite.svg';
 import {
   AddBtnStyle,
   DeleteBtn,
@@ -9,7 +7,7 @@ import {
   TextTime,
   TextVolume,
   TodayStyle,
-  Wrap,
+  InfoWrap,
   WrapBtn,
 } from './TodayList.styled';
 // import { useDispatch } from 'react-redux';
@@ -29,24 +27,35 @@ export const TodayWaterList = () => {
       <TodayStyle>Today</TodayStyle>
       <ul>
         <ListItem>
-          <Wrap>
-            <FaGlassWaterDroplet />
+          <InfoWrap>
+            <svg>
+              <use href={sprite + '#cup'}></use>
+            </svg>
             <TextVolume>250 ml</TextVolume>
             <TextTime>09:00</TextTime>
-          </Wrap>
+          </InfoWrap>
 
           <WrapBtn>
             <EditBtn onClick={() => onEdit()}>
-              <HiOutlinePencilSquare color="#9EBBFF" />
+              <svg>
+                <use href={sprite + '#edit'}></use>
+              </svg>
             </EditBtn>
 
             <DeleteBtn onClick={() => onDelete()}>
-              <HiOutlineTrash color="#EF5050" />
+              <svg>
+                <use href={sprite + '#trash'}></use>
+              </svg>
             </DeleteBtn>
           </WrapBtn>
         </ListItem>
       </ul>
-      <AddBtnStyle>+ Add water</AddBtnStyle>
+      <AddBtnStyle>
+        <svg>
+          <use href={sprite + '#plus'}></use>
+        </svg>
+        Add water
+      </AddBtnStyle>
     </div>
   );
 };

@@ -8,9 +8,12 @@ import {
   PURGE,
   REGISTER,
 } from 'redux-persist';
+import { waterReducer } from './water/waterSlice';
 
 export const store = configureStore({
-  reducer: {},
+  reducer: {
+    water: waterReducer,
+  },
   middleware(getDefaultMiddleware) {
     return getDefaultMiddleware({
       serializableCheck: {
