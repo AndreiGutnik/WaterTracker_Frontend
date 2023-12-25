@@ -13,10 +13,7 @@ const Setting = ({ children, closeModal }) => {
                             className="bth-close"
                             aria-label='Close'
                             onChange={closeModal}
-    
-                        >
-                        
-                        </button>
+                        ></button>
                     </div>
                     <div className="modal-body">{children}</div>
                 </div>

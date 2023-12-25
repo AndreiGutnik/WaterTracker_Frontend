@@ -2,6 +2,7 @@ import { Component } from 'react';
 import Setting from './Setting';
 import HeaderSetting from './HeaderSetting';
 import FormSetting from './FormSetting';
+import { nanoid } from '@reduxjs/toolkit';
 
 class SettingModal extends Component {
   state = {
@@ -14,12 +15,19 @@ class SettingModal extends Component {
 
     closeModal = () =>{
         this.setState({isShowModal:false})
+  }
+  createUser=(data) => {
+    const newUser = {
+      ...data,
+      id: nanoid(),
     }
+    console.log('newUser :>>', newUser)
+  }
   render() {
     return(
         <div className='container'>
     <HeaderSetting showModal={this.showModal}/>
-        {this.state.isShowModal && (<Setting closeModal={this.closeModal}><FormSetting/></Setting>)}
+        {this.state.isShowModal && (<Setting closeModal={this.closeModal}><FormSetting createUser={ this.createUser} /></Setting>)}
     </div>
   )
 }
