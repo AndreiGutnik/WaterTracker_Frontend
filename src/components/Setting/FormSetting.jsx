@@ -2,11 +2,12 @@ import { Component } from "react";
 
 class FormSetting extends Component{
     state = {
-        photo:'',
+        photo: '',
         gender:'girl',
         name: '',
         email: '',
-        password:''    
+        password: '', 
+        isChecked: 'true',
     }
 
     handleChange = ({target}) => {
@@ -17,16 +18,15 @@ class FormSetting extends Component{
     handleSubmit = (e) => {
         e.preventDefault()
         this.props.createUser({
-            photo:this.state.photo,
-            // gender: this.state.gender,
+            photo: this.state.photo,
+            gender:this.state.gender,
             name:this.state.name,
             email: this.state.email,
             password: this.state.password,
-            isChecked:false,
         })
 
         this.setState({
-            photo: '',
+        photo: '',
         name: '',
         email: '',
         password:'',
@@ -35,14 +35,14 @@ class FormSetting extends Component{
         this.props.closeModal()
     }
     
- handleCheck = ({target:{checked}}) => {
+ handleCheck = ({target: { checked } }) => {
      this.setState({
-           isChecked:checked,
+           isChecked: checked,
        })
     }
 
-    handleGender = ({target:{value}}) => {
-        this.setState({gender:value})
+    handleGender = ({target}) => {
+        this.setState({gender:target.value})
     }
 
     render() {
@@ -52,6 +52,7 @@ class FormSetting extends Component{
                 <label htmlFor="exampleInputPhoto" className="form-label">Your photo
                 {/* <input name="photo" type="photo" className="form-check-input" id="exampleCheck1"
                         onChange={this.handleChange}
+                        // checked={this.state.isChecked}
                             value={this.state.photo} /> */}
                     </label>
                     <label htmlFor="exampleInputPhoto" className="form-label">Upload a photo
@@ -61,29 +62,25 @@ class FormSetting extends Component{
                     </label>
   </div>
             <div className="form-check">
-                <label className="form-check-label" htmlFor="exampleCheck1">Your gender identity
-                        <input name="gender" type="checkbox" className="form-check-input" id="exampleCheck1"
-                            checked={this.state.gender}
-
-                        //     checked={this.state.isChecked}
+                <h3 className="form-check-label" htmlFor="exampleCheck1">Your gender identity</h3>
+                        <input name="gender" type="radio" className="form-check-input" id="exampleRadio1"
+                        checked={this.state.gender==='girl'}
                         onChange={this.handleGender}
                         value='girl'
-                    />
-                    <option value="Girl">Girl</option>
-                        <input name="gender" type="checkbox" className="form-check-input" id="exampleCheck1"
-                            checked={this.state.gender}
+                        />
+                        <label className="form-check-label" htmlFor="exampleCheck1">Girl</label>
+                        <input name="gender" type="radio" className="form-check-input" id="exampleRadio1"
+                            checked={this.state.gender==='man'}
                             onChange={this.handleGender}
-                    //         checked={this.state.isChecked}
-                    //     onChange={this.handleCheck}
                         value='man'
                         />
-                    <option value="Man">Man</option>
-                </label>
-            </div>
+                    <label className="form-check-label" htmlFor="exampleCheck1">Man</label>
+                </div>
+                
             <div className="mb-3">
     <label htmlFor="exampleInputEmail1" className="form-label">Your name</label>
                 <input name="name" type="name" className="form-control" id="exampleInputName" aria-describedby="nameHelp"
-                    onChange={this.handleChange}
+                        onChange={this.handleChange}
                     value={this.state.name}
                 />
   </div>
@@ -91,7 +88,7 @@ class FormSetting extends Component{
     <label htmlFor="exampleInputEmail1" className="form-label">Email address</label>
                 <input name="email"
                     type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                    onChange={this.handleChange}
+                        onChange={this.handleChange}
                     value={this.state.email}
                 />
   </div>
@@ -99,24 +96,25 @@ class FormSetting extends Component{
                 <label htmlFor="exampleInputPassword1" className="form-label">Password</label>
                 <div id="emailHelp" className="form-text">Outdated password:</div>          
                 <input name="password" type="password" className="form-control" id="exampleInputPassword1"
-                    onChange={this.handleChange}
+                        onChange={this.handleChange}
                     value={this.state.password}
                 />
-    </div>
+    
           <div className="mb-3">
                 <div id="emailHelp" className="form-text">New Password:</div>          
                 <input name="password" type="password" className="form-control" id="exampleInputPassword1"
-                    onChange={this.handleChange}
+                        onChange={this.handleChange}
                     value={this.state.password}
                 />
             </div>
             <div className="mb-3">
                 <div id="emailHelp" className="form-text">Repeat new password:</div>          
                 <input name="password" type="password" className="form-control" id="exampleInputPassword1"
-                    onChange={this.handleChange}
+                        onChange={this.handleChange}
                     value={this.state.password}
                 />
-    </div>      
+                    </div>  
+                </div>    
   <button disabled={!this.state.isChecked} type="submit" className="btn btn-primary">Save</button>
 </form>
     )}

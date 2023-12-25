@@ -7,7 +7,7 @@ const Setting = ({ children, closeModal }) => {
             <div className="modal-dialog">
                 <div className="modal-content">
                     <div className="modal-header">
-                        <h3 className="modal-title">Setting</h3>
+                        <h2 className="modal-title">Setting</h2>
                         <button
                             type="button"
                             className="bth-close"
