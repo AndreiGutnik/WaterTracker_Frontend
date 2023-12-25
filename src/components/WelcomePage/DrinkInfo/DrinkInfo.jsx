@@ -1,3 +1,9 @@
+import {
+  ContainerDrinkInfo, DrinkInfoTitle, DrinkInfoList,
+  DrinkInfoItems,
+} from "./DrinkInfo.styled";
+
+
 export const DrinkInfo = () => {
   return (
     <>
