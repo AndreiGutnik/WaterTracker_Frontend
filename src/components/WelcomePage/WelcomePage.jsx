@@ -1,60 +1,20 @@
-import { Container } from "components/Container";
-//import { useNavigate } from "react-router-dom";
-import { WelcomeStile, WaterTracker } from "./WelcomPage.styled";
+import { Container } from 'components/Container';
+import { WaterTracker } from './WelcomPage.styled';
+import { WelcomeTracker } from './WelcomeTracker/WelcomeTracker';
+import { WaterTrackerBenefits } from './WaterTrackerBenefits/WaterTrackerBenefits';
+import { DrinkInfo } from './DrinkInfo/DrinkInfo';
 
 const WelcomePage = () => {
   return (
-    <WelcomeStile>
+    <WelcomeTracker>
       <Container className="container">
         <WaterTracker>
-
-          <WaterTrackerBenefits>
-            <ContainerBenefits>
-              <WelcomeTitle>Water consumption tracker</WelcomeTitle>
-              <WelcomeInfoTitle>Record daily water intake and track</WelcomeInfoTitle>
-              <WelcomeListTitle>Tracker Benefits</WelcomeListTitle>
-              <WelcomeListContent>
-                <WelcomeListItems>
-                  <HabitDriveImg />
-                  Habit drive
-                </WelcomeListItems>
-                <WelcomeListItems>
-                  <ViewStatisticsImg />
-                  View statistics
-                </WelcomeListItems>
-                <WelcomeListItems>
-                  <PersonalRateSettingImg />
-                  Personal rate setting
-                </WelcomeListItems>
-              </WelcomeListContent>
-              <WelcomeButton type="button" onClick={WelcomeButtonClick}>
-                Try tracker
-              </WelcomeButton>
-            </ContainerBenefits>
-          </WaterTrackerBenefits>
-
-          <DrinkInfo>
-            <ContainerDrinkInfo>
-              <DrinkInfoTitle>
-                Why drink water
-              </DrinkInfoTitle>
-              <DrinkInfoList>
-                <DrinkInfoItems>Supply of nutrients to all organs</DrinkInfoItems>
-                <DrinkInfoItems>Providing oxygen to the lungs</DrinkInfoItems>
-                <DrinkInfoItems>Maintaining the work of the heart</DrinkInfoItems>
-                <DrinkInfoItems>Release of processed substances</DrinkInfoItems>
-                <DrinkInfoItems>Ensuring the stability of the internal environment</DrinkInfoItems>
-                <DrinkInfoItems>Maintaining within the normal temperature</DrinkInfoItems>
-                <DrinkInfoItems>Maintaining an immune system capable of resisting disease</DrinkInfoItems>
-              </DrinkInfoList>
-            </ContainerDrinkInfo>
-          </DrinkInfo>
-          
+          <WaterTrackerBenefits />
+          <DrinkInfo />
         </WaterTracker>
       </Container>
-    </WelcomeStile>
+    </WelcomeTracker>
   );
 };
-
 
 export default WelcomePage;
