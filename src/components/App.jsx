@@ -3,6 +3,7 @@ import { Layout } from './Layout';
 import { routes } from 'routes';
 // import Loader from './Loader/Loader';
 import { Route, Routes } from 'react-router-dom';
+import { HomePage } from '../pages/HomePage/HomePage';
 
 export const App = () => {
   return (
@@ -12,7 +13,7 @@ export const App = () => {
           <Route index element={<p>WelcomePage</p>} />
           <Route path={routes.REGISTER} element={<p>SignUp</p>} />
           <Route path={routes.LOGIN} element={<p>SignIn</p>} />
-          <Route path={routes.MAINPAGE} element={<p>MainPage</p>} />
+          <Route path={routes.HOMEPAGE} element={<HomePage />} />
         </Route>
       </Routes>
       <GlobalStyle />
