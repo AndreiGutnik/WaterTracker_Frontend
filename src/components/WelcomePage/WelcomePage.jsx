@@ -7,12 +7,14 @@ import { DrinkInfo } from './DrinkInfo/DrinkInfo';
 const WelcomePage = () => {
   return (
     <WelcomeTracker>
+
       <Container className="container">
         <WaterTracker>
           <WaterTrackerBenefits />
           <DrinkInfo />
         </WaterTracker>
       </Container>
+        
     </WelcomeTracker>
   );
 };
