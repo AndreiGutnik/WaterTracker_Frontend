@@ -47,7 +47,15 @@ class FormSetting extends Component{
 
     render() {
         return(
-        <form onSubmit={this.handleSubmit}>
+            <form onSubmit={this.handleSubmit}>
+                <div className="form"
+                    style={{
+                        display: 'flex',
+                        flexDirection: 'column',
+                        alignItems: 'flex-start',
+                        gap: '24px',
+                        marginBottom: '24px'
+                          }}>
             <div className="mb-3 form-photo">
                 <label htmlFor="exampleInputPhoto" className="form-label">Your photo
                 {/* <input name="photo" type="photo" className="form-check-input" id="exampleCheck1"
@@ -61,8 +69,23 @@ class FormSetting extends Component{
                             value={this.state.photo} /> */}
                     </label>
   </div>
-            <div className="form-check">
-                <h3 className="form-check-label" htmlFor="exampleCheck1">Your gender identity</h3>
+                    <div className="form-check"
+                        style={{
+                        width: '256px',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        alignItems: 'flex-start',
+                        gap: '12px'
+                          }}>
+                        <h3 className="form-check-label" htmlFor="exampleCheck1"
+                            style={{
+                                fontFamily: 'RobotoMedium',
+                            fontSize: '18px',
+                            fontStyle: 'normal',
+                            fontWeight: 500,
+                            lineHeight: '20px' 
+                          }}
+                        >Your gender identity</h3>
                         <input name="gender" type="radio" className="form-check-input" id="exampleRadio1"
                         checked={this.state.gender==='girl'}
                         onChange={this.handleGender}
@@ -114,9 +137,11 @@ class FormSetting extends Component{
                     value={this.state.password}
                 />
                     </div>  
-                </div>    
-  <button disabled={!this.state.isChecked} type="submit" className="btn btn-primary">Save</button>
-</form>
+                    </div>
+                    </div>
+                    <button disabled={!this.state.isChecked} type="submit" className="btn btn-primary">Save</button>       
+
+            </form>
     )}
 }
 
