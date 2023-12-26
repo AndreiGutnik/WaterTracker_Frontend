@@ -4,6 +4,7 @@ import { routes } from 'routes';
 // import Loader from './Loader/Loader';
 import { Route, Routes } from 'react-router-dom';
 import { HomePage } from '../pages/HomePage/HomePage';
+// import { TrackerOfWater } from './TrackerOfWater/TrackerOfWater';
 
 export const App = () => {
   return (

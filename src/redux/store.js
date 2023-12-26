@@ -9,10 +9,12 @@ import {
   REGISTER,
 } from 'redux-persist';
 import { waterReducer } from './water/waterSlice';
+import modalsReducer from './modals/modalsSlice';
 
 export const store = configureStore({
   reducer: {
     water: waterReducer,
+    modals: modalsReducer,
   },
   middleware(getDefaultMiddleware) {
     return getDefaultMiddleware({

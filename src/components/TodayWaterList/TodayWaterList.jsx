@@ -1,3 +1,4 @@
+import { AddWater } from 'components/AddWater/AddWater';
 import sprite from '../../images/sprite.svg';
 import {
   AddBtnStyle,
@@ -10,10 +11,15 @@ import {
   InfoWrap,
   WrapBtn,
 } from './TodayList.styled';
-// import { useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
+
+import { useDispatch } from 'react-redux';
+import { openAddWater } from 'redux/modals/modalsSlice';
+import modalConstants from 'redux/modals/modalСonstants';
 
 export const TodayWaterList = () => {
-  //   const dispatch = useDispatch();
+  const modal = useSelector(state => state.modals.modal);
+  const dispatch = useDispatch();
 
   const onEdit = () => {
     // dispatch(editeRecord());
@@ -50,12 +56,13 @@ export const TodayWaterList = () => {
           </WrapBtn>
         </ListItem>
       </ul>
-      <AddBtnStyle>
+      <AddBtnStyle onClick={() => dispatch(openAddWater())}>
         <svg>
           <use href={sprite + '#plus'}></use>
         </svg>
         Add water
       </AddBtnStyle>
+      {modal === modalConstants.ADD_WATER && <AddWater />}
     </div>
   );
 };
