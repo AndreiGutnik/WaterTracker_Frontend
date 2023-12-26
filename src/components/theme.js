@@ -9,4 +9,5 @@ export const baseTheme = {
     violet: '#9EBBFF',
     violet_light: '#D7E3FF',
   },
+  cubicBezier: 'cubicbezier(0.4, 0, 0.2, 1)',
 };
