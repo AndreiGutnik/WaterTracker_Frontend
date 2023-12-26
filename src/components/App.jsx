@@ -4,8 +4,7 @@ import { routes } from 'routes';
 // import Loader from './Loader/Loader';
 import { Route, Routes } from 'react-router-dom';
 import { HomePage } from '../pages/HomePage/HomePage';
-import { WelcomePage } from '../components/WelcomePage/WelcomePage';
-
+import WelcomePage from './WelcomePage/WelcomePage';
 
 export const App = () => {
   return (

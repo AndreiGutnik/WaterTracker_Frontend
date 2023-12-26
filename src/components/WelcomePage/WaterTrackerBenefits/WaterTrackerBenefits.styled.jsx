@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { ReactComponent as CalendarIconSvg } from '../../../images/welcome/icons/calendar.svg';
 import { ReactComponent as SettingsIconSvg } from '../../../images/welcome/icons/settings.svg';
 import { ReactComponent as StatisticsIconSvg } from '../../../images/welcome/icons/statistics.svg';
-import { theme } from '../../themeColor';
+import { baseTheme } from '../../theme';
 
 export const ContainerBenefits = styled.div`
   margin-bottom: 40px;
@@ -22,7 +22,7 @@ export const WelcomeTitle = styled.h1`
   line-height: calc(42 / 36);
   font-size: 36px;
   font-weight: 700;
-  color: ${theme.colors.mainDarkColor};
+  color: ${baseTheme.colors.black};
   @media only screen and (max-width: 767px) {
     line-height: calc(32 / 28);
     font-size: 28px;
@@ -33,7 +33,7 @@ export const WelcomeInfoTitle = styled.p`
   margin-bottom: 24px;
   line-height: calc(30 / 24);
   font-size: 24px;
-  color: ${theme.colors.mainDarkColor};
+  color: ${baseTheme.colors.black};
   @media only screen and (min-width: 768px) {
     line-height: calc(32 / 26);
     font-size: 26px;
@@ -97,16 +97,16 @@ export const PersonalRateSettingImg = styled(SettingsIconSvg)`
 export const WelcomeButton = styled.button`
   display: flex;
   justify-content: center;
-  aling-items: center;
+  align-items: center;
   gap: 15px;
   width: 280px;
   height: 36px;
   border: none;
   border-radius: 10px;
   outline: none;
-  background-color: ${theme.colors.mainAaccentColor};
+  background-color: ${baseTheme.colors.blue};
   box-shadow: 0px 4px 8px 0px rgba(64, 123, 255, 0.34);
-  transition: all ${theme.animation.cubicBezier};
+  transition: all ${baseTheme.cubicBezier};
   cursor: pointer;
   &:hover {
     box-shadow: 0px 4px 14px 0px rgba(64, 123, 255, 0.54);
@@ -115,7 +115,7 @@ export const WelcomeButton = styled.button`
     box-shadow: none;
   }
   &:disabled {
-    background-color: secondaryBlueColor;
+    background-color: ${baseTheme.colors.violet};
     cursor: not-allowed;
   }
   @media screen and (min-width: 768px) {

@@ -1,5 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
-import { baseTheme } from './theme.ts';
+import { baseTheme } from './theme';
 import 'modern-normalize';
 
 export function fontFace(name, src, fontWeight, fontStyle = 'normal') {
