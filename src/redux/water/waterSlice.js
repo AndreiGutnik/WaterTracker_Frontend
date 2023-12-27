@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { addWater, deleteWter, fetchWater } from './operations';
+import { addWater, deleteWter, fetchTodayWater } from './operations';
 
 const handlePending = state => {
   state.isLoading = true;
@@ -20,19 +20,19 @@ const waterSlice = createSlice({
   name: 'water',
   initialState,
   extraReducers: {
-    [fetchWater.pending]: handlePending,
-    [fetchWater.fulfilled](state, action) {
+    [fetchTodayWater.pending]: handlePending,
+    [fetchTodayWater.fulfilled](state, action) {
       state.isLoading = false;
       state.error = null;
-      state.items = action.payload; //TO CHECK
+      state.items = action.payload;
     },
-    [fetchWater.rejected]: handleRejected,
+    [fetchTodayWater.rejected]: handleRejected,
 
     [addWater.pending]: handlePending,
     [addWater.fulfilled](state, action) {
       state.isLoading = false;
       state.error = null;
-      state.items.push(action.payload); //TO CHECK
+      state.items.waterNotes.push(action.payload); //TO CHECK
     },
     [addWater.rejected]: handleRejected,
 
@@ -40,10 +40,10 @@ const waterSlice = createSlice({
     [deleteWter.fulfilled](state, action) {
       state.isLoading = false;
       state.error = null;
-      const index = state.items.findIndex(
-        water => water.id === action.payload.id
+      const index = state.items.waterNotes.findIndex(
+        water => water._id === action.payload
       ); //TO CHECK
-      state.items.splice(index, 1); //TO CHECK
+      state.items.waterNotes.splice(index, 1); //TO CHECK
     },
     [deleteWter.rejected]: handleRejected,
   },

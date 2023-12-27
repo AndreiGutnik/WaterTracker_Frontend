@@ -9,16 +9,11 @@ import {
   SaveBtn,
 } from './WaterEditorForm.styled';
 import sprite from '../../images/sprite.svg';
+import { addWater } from 'redux/water/operations';
+import { closeModal } from 'redux/modals/modalsSlice';
 
 export const WaterEditorForm = () => {
   const dispatch = useDispatch();
-
-  const handleSubmit = value => {
-    console.log('value', value);
-    dispatch();
-    //todo
-  };
-
   const [volume, setVolume] = useState(50);
 
   const increment = () => {
@@ -45,6 +40,15 @@ export const WaterEditorForm = () => {
   const currentdate = new Date();
   const datetime = currentdate.getHours() + ':' + currentdate.getMinutes();
 
+  const handleSubmit = ({ time }) => {
+    const inputTime = time.split(':');
+    currentdate.setHours(inputTime[0], inputTime[1]);
+    const date = currentdate.toISOString();
+    // console.log('currentdate', currentdate);
+    // console.log('Send date - ', date);   // TO FIX
+    dispatch(addWater({ amountWater: volume, date }));
+  };
+
   return (
     <>
       <p>Amount of water:</p>
@@ -65,10 +69,11 @@ export const WaterEditorForm = () => {
         </PlusMinusBtn>
       </AmountContainer>
       <Formik
-        initialValues={{ time: datetime, volume: volume }}
+        initialValues={{ time: datetime, amountWater: volume }}
         onSubmit={(values, actions) => {
           handleSubmit(values);
           actions.resetForm();
+          dispatch(closeModal());
         }}
         autoComplete="off"
       >
@@ -80,7 +85,7 @@ export const WaterEditorForm = () => {
           <label>
             Enter the value of the water used:
             <Field
-              name="volume"
+              name="amountWater"
               type="number"
               value={volume}
               onChange={changeValue}

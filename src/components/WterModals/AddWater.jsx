@@ -5,7 +5,7 @@ import {
   ModalHead,
   ModalHeader,
   SmaleHeader,
-} from './AddWater.styled';
+} from './WaterModals.styled';
 import sprite from '../../images/sprite.svg';
 import { WaterEditorForm } from 'components/WaterEditorForm/WaterEditorForm';
 import { useDispatch } from 'react-redux';
