@@ -12,6 +12,11 @@ import { useDispatch } from 'react-redux';
 import { closeModal } from 'redux/modals/modalsSlice';
 import { useRef } from 'react';
 import { useModalClose } from 'hooks/useModal';
+import {
+  InfoWrap,
+  TextTime,
+  TextVolume,
+} from 'components/TodayWaterList/TodayList.styled';
 
 export const AddWater = () => {
   const dispatch = useDispatch();
