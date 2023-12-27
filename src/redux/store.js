@@ -10,7 +10,8 @@ import {
   PURGE,
   REGISTER,
 } from 'redux-persist';
-import { authReducer } from './auth/auth.slice';
+import { waterReducer } from './water/waterSlice';
+import modalsReducer from './modals/modalsSlice';
 
 const authPersistConfig = {
   key: 'auth',
@@ -18,7 +19,10 @@ const authPersistConfig = {
   whiteList: ['token'],
 };
 export const store = configureStore({
-  reducer: { auth: persistReducer(authPersistConfig, authReducer) },
+  reducer: {
+    water: waterReducer,
+    modals: modalsReducer,
+  },
   middleware(getDefaultMiddleware) {
     return getDefaultMiddleware({
       serializableCheck: {
