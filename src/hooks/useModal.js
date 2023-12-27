@@ -8,9 +8,10 @@ export const useModalClose = modRef => {
   const dispatch = useDispatch();
   useEffect(() => {
     const close = e => {
+      const isButton = e.type === 'keydown';
       if (
         e.key === 'Escape' ||
-        !modRef.current.contains(e.target) ||
+        (!modRef.current.contains(e.target) && !isButton) ||
         modal === modalConstants.CLOSE
       ) {
         dispatch(closeModal());

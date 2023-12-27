@@ -14,7 +14,11 @@ import {
 import { useSelector } from 'react-redux';
 
 import { useDispatch } from 'react-redux';
-import { openAddWater, openDeleteWater } from 'redux/modals/modalsSlice';
+import {
+  openAddWater,
+  openDeleteWater,
+  openEditWater,
+} from 'redux/modals/modalsSlice';
 import modalConstants from 'redux/modals/modalСonstants';
 import { fetchTodayWater } from 'redux/water/operations';
 import { selectTodayWater } from 'redux/water/selectors';
@@ -32,7 +36,7 @@ export const TodayWaterList = () => {
   const { waterNotes } = useSelector(selectTodayWater);
 
   const onEdit = () => {
-    // dispatch(editeRecord());
+    dispatch(openEditWater());
   };
   const onDelete = id => {
     dispatch(openDeleteWater(id));
