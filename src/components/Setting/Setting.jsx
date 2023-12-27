@@ -33,15 +33,14 @@ const Setting = ({ children, closeModal }) => {
                                 textAlign: 'left'
                           }}
                         >Setting</h2>
-                        {/* <button type="button" className = "bth-close" aria-label='Close' onChange={closeModal}> */}
+                        <button type="button" className = "bth-close" aria-label='Close' onChange={closeModal}>
                         <svg width="24" height="24"
                         style={{
                                 color: 'blue',
                           }}>
                                 <use href={Icons + '#settings'}></use>
-                                onChange={closeModal}
                             </svg>
-                        {/* </button> */}
+                        </button>
                     </div>
                     <div className="modal-body">{children}</div>
                 </div>

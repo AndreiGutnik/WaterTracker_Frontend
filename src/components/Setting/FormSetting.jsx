@@ -56,19 +56,19 @@ class FormSetting extends Component{
                         gap: '24px',
                         marginBottom: '24px'
                           }}>
-            <div className="mb-3 form-photo">
+            {/* <div className="mb-3 form-photo">
                 <label htmlFor="exampleInputPhoto" className="form-label">Your photo
-                {/* <input name="photo" type="photo" className="form-check-input" id="exampleCheck1"
+                <input name="photo" type="photo" className="form-check-input" id="exampleCheck1"
                         onChange={this.handleChange}
                         // checked={this.state.isChecked}
-                            value={this.state.photo} /> */}
-                    </label>
+                            value={this.state.photo} 
+                    ></input></label>
                     <label htmlFor="exampleInputPhoto" className="form-label">Upload a photo
-                {/* <input name="photo" type="uploadPhoto" className="form-check-input" id="exampleCheck1"
+                /* <input name="photo" type="uploadPhoto" className="form-check-input" id="exampleCheck1"
                         onChange={this.handleChange}
-                            value={this.state.photo} /> */}
+                            value={this.state.photo} /> 
                     </label>
-  </div>
+  </div> */}
                     <div className="form-check"
                         style={{
                         width: '256px',
