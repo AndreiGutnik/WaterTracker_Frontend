@@ -15,9 +15,9 @@ const UploadImage = () => {
         <div className="selec-image-div">
           {/* <span id="file-chosen">No file chosen</span> */}
           <img className="selec-image"
-                      alt="not found"
-            src={URL.createObjectURL(selectedImage)}></img>
-        <br />
+              alt="not found"
+              src={URL.createObjectURL(selectedImage)}></img>
+            
         </div>
       )}
       
@@ -27,7 +27,7 @@ const UploadImage = () => {
           setSelectedImage(event.target.files[0]);
           }} 
           style={{display: 'none'}}/>
-          <label className="upload" for="upload">
+          <label className="upload" htmlFor="upload">
           <svg width="16" height="16"
                         style={{color: 'blue'}}>
                                 <use href={Icons + '#arrow-up'}></use></svg>Upload a photo</label>

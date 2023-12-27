@@ -25,12 +25,19 @@
 .gender-radio{
     display: flex;
         align-items: flex-start;
-        gap: 24px;
+}
+
+.gender-radio-gen{
+    display: flex;
+        align-items: flex-start;
+    margin-right: 24px;
 }
 
 .form-check-input{
     width: 14px;
         height: 14px;
-        gap: 8px;
+        margin-right: 8px;
 }
+
+
 

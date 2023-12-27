@@ -53,18 +53,19 @@ class FormSetting extends Component{
         
                     <div className="form-check">
                         <h3 className="form-check-label-gender" htmlFor="exampleCheck1">Your gender identity</h3>
-                        <div className="gender-radio"><input name="gender" type="radio" className="form-check-input" id="exampleRadio1"
+                        <div className="gender-radio">
+                            <div className="gender-radio-gen"><input name="gender" type="radio" className="form-check-input" id="exampleRadio1"
                         checked={this.state.gender==='girl'}
                         onChange={this.handleGender}
                         value='girl'
                         />
-                        <label className="form-check-gender" htmlFor="exampleCheck1">Girl</label>
-                        <input name="gender" type="radio" className="form-check-input" id="exampleRadio1"
+                        <label className="form-check-gender" htmlFor="exampleCheck1">Girl</label></div>
+                        <div className="gender-radio-gen"><input name="gender" type="radio" className="form-check-input" id="exampleRadio1"
                             checked={this.state.gender==='man'}
                             onChange={this.handleGender}
                         value='man'
                         />
-                    <label className="form-check-gender" htmlFor="exampleCheck1">Man</label></div>
+                    <label className="form-check-gender" htmlFor="exampleCheck1">Man</label></div></div>
                 </div>
                 
             <div className="mb-3">
