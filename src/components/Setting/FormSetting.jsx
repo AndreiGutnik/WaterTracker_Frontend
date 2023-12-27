@@ -1,4 +1,5 @@
 import { Component } from "react";
+import './FormSetting.css';
 
 class FormSetting extends Component{
     state = {
@@ -48,56 +49,22 @@ class FormSetting extends Component{
     render() {
         return(
             <form onSubmit={this.handleSubmit}>
-                <div className="form"
-                    style={{
-                        display: 'flex',
-                        flexDirection: 'column',
-                        alignItems: 'flex-start',
-                        gap: '24px',
-                        marginBottom: '24px'
-                          }}>
-            {/* <div className="mb-3 form-photo">
-                <label htmlFor="exampleInputPhoto" className="form-label">Your photo
-                <input name="photo" type="photo" className="form-check-input" id="exampleCheck1"
-                        onChange={this.handleChange}
-                        // checked={this.state.isChecked}
-                            value={this.state.photo} 
-                    ></input></label>
-                    <label htmlFor="exampleInputPhoto" className="form-label">Upload a photo
-                /* <input name="photo" type="uploadPhoto" className="form-check-input" id="exampleCheck1"
-                        onChange={this.handleChange}
-                            value={this.state.photo} /> 
-                    </label>
-  </div> */}
-                    <div className="form-check"
-                        style={{
-                        width: '256px',
-                        display: 'flex',
-                        flexDirection: 'column',
-                        alignItems: 'flex-start',
-                        gap: '12px'
-                          }}>
-                        <h3 className="form-check-label" htmlFor="exampleCheck1"
-                            style={{
-                                fontFamily: 'RobotoMedium',
-                            fontSize: '18px',
-                            fontStyle: 'normal',
-                            fontWeight: 500,
-                            lineHeight: '20px' 
-                          }}
-                        >Your gender identity</h3>
-                        <input name="gender" type="radio" className="form-check-input" id="exampleRadio1"
+                <div className="form">
+        
+                    <div className="form-check">
+                        <h3 className="form-check-label-gender" htmlFor="exampleCheck1">Your gender identity</h3>
+                        <div className="gender-radio"><input name="gender" type="radio" className="form-check-input" id="exampleRadio1"
                         checked={this.state.gender==='girl'}
                         onChange={this.handleGender}
                         value='girl'
                         />
-                        <label className="form-check-label" htmlFor="exampleCheck1">Girl</label>
+                        <label className="form-check-gender" htmlFor="exampleCheck1">Girl</label>
                         <input name="gender" type="radio" className="form-check-input" id="exampleRadio1"
                             checked={this.state.gender==='man'}
                             onChange={this.handleGender}
                         value='man'
                         />
-                    <label className="form-check-label" htmlFor="exampleCheck1">Man</label>
+                    <label className="form-check-gender" htmlFor="exampleCheck1">Man</label></div>
                 </div>
                 
             <div className="mb-3">
@@ -120,7 +87,8 @@ class FormSetting extends Component{
                 <div id="emailHelp" className="form-text">Outdated password:</div>          
                 <input name="password" type="password" className="form-control" id="exampleInputPassword1"
                         onChange={this.handleChange}
-                    value={this.state.password}
+                            value={this.state.password}
+                            
                 />
     
           <div className="mb-3">

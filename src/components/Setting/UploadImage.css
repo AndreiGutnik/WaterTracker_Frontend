@@ -1,0 +1,33 @@
+.form-check-label{
+            font-size: 18px;
+            font-weight: 500;
+            line-height: 20px;
+            margin-bottom: 8px;
+}
+
+.photo{
+    height: 80px;
+    display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 24px;
+}
+
+.selec-image-div{
+    padding-top: 8px;
+}
+
+.selec-image{
+        border-radius: 80px;
+        width: 80px;
+        height: 80px;
+        background: lightgray 50% / cover no-repeat;
+}
+
+.upload{
+    font-size: 14px;
+    display: flex;
+        align-items: center;
+        gap: 8px;
+        color: blue;
+}

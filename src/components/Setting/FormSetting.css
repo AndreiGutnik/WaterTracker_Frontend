@@ -1,0 +1,36 @@
+.form {
+    display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 24px;
+            margin-bottom: 24px;
+}
+
+.form-check{
+    width: 256px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 12px;
+}
+
+.form-check-label-gender{
+            font-size: 18px;
+            font-style: normal;
+            font-weight: 500;
+            line-height: 20px;
+            margin-bottom: 12px;
+}
+
+.gender-radio{
+    display: flex;
+        align-items: flex-start;
+        gap: 24px;
+}
+
+.form-check-input{
+    width: 14px;
+        height: 14px;
+        gap: 8px;
+}
+

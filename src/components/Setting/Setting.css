@@ -1,0 +1,31 @@
+.modal-fade-show{
+    display: inline-flex;
+            padding: 32px 12px;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            gap: 24px;
+            border-radius: 10px;
+}
+
+.modal-header{
+    display: flex;
+            align-items: center;
+            gap: 52px;
+}
+
+.modal-title {
+    width: 180px;
+            font-size: 26px;
+            font-weight: 500;
+            line-height: 32px;
+            text-align: left;
+}
+
+.modal-header .btn-close {
+    padding: calc(var(--bs-modal-header-padding-y) * .5) calc(var(--bs-modal-header-padding-x) * .5);
+
+}
+.bth-close {
+    color: blue;
+}
