@@ -46,6 +46,8 @@ class FormSetting extends Component{
         this.setState({gender:target.value})
     }
 
+    
+
     render() {
         return(
             <form onSubmit={this.handleSubmit}>
