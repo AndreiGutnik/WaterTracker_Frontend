@@ -1,7 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit';
-import storage from 'redux-persist/lib/storage';
 import {
-  persistReducer,
   persistStore,
   FLUSH,
   REHYDRATE,
@@ -12,14 +10,11 @@ import {
 } from 'redux-persist';
 import { waterReducer } from './water/waterSlice';
 import modalsReducer from './modals/modalsSlice';
+import { authReducer } from './auth/auth.slice';
 
-const authPersistConfig = {
-  key: 'auth',
-  storage,
-  whiteList: ['token'],
-};
 export const store = configureStore({
   reducer: {
+    auth: authReducer,
     water: waterReducer,
     modals: modalsReducer,
   },
