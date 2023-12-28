@@ -1,7 +1,6 @@
 import {
   CloseBtn,
   Modal,
-  ModalContainer,
   ModalHead,
   ModalHeader,
   SmaleHeader,
@@ -19,19 +18,17 @@ export const AddWater = () => {
   useModalClose(modalRef);
 
   return (
-    <ModalContainer>
-      <Modal ref={modalRef}>
-        <ModalHead>
-          <ModalHeader>Add water</ModalHeader>
-          <CloseBtn onClick={() => dispatch(closeModal())}>
-            <svg>
-              <use href={sprite + '#close'}></use>
-            </svg>
-          </CloseBtn>
-        </ModalHead>
-        <SmaleHeader>Choose a value:</SmaleHeader>
-        <WaterEditorForm />
-      </Modal>
-    </ModalContainer>
+    <Modal ref={modalRef}>
+      <ModalHead>
+        <ModalHeader>Add water</ModalHeader>
+        <CloseBtn onClick={() => dispatch(closeModal())}>
+          <svg>
+            <use href={sprite + '#close'}></use>
+          </svg>
+        </CloseBtn>
+      </ModalHead>
+      <SmaleHeader>Choose a value:</SmaleHeader>
+      <WaterEditorForm />
+    </Modal>
   );
 };

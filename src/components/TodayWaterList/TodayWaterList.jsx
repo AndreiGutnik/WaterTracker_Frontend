@@ -1,4 +1,4 @@
-import { AddWater } from 'components/WterModals/AddWater';
+import { AddWater } from 'components/WaterModals/AddWater';
 import sprite from '../../images/sprite.svg';
 import {
   AddBtnStyle,
@@ -12,7 +12,6 @@ import {
   WrapBtn,
 } from './TodayList.styled';
 import { useSelector } from 'react-redux';
-
 import { useDispatch } from 'react-redux';
 import {
   openAddWater,
@@ -23,10 +22,13 @@ import modalConstants from 'redux/modals/modalСonstants';
 import { fetchTodayWater } from 'redux/water/operations';
 import { selectTodayWater } from 'redux/water/selectors';
 import { useEffect } from 'react';
-import { DeleteWaterModal } from 'components/WterModals/DeleteWaterModal';
+import { DeleteWaterModal } from 'components/WaterModals/DeleteWaterModal';
+import { WaterModal } from 'components/WaterModals/WaterModal';
+import { EditWater } from 'components/WaterModals/EditWater';
+import { selectModalType } from 'redux/modals/selectors';
 
 export const TodayWaterList = () => {
-  const modal = useSelector(state => state.modals.modal);
+  const isOpen = useSelector(selectModalType);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -35,11 +37,11 @@ export const TodayWaterList = () => {
 
   const { waterNotes } = useSelector(selectTodayWater);
 
-  const onEdit = () => {
-    dispatch(openEditWater());
+  const onEdit = water => {
+    dispatch(openEditWater(water));
   };
   const onDelete = id => {
-    dispatch(openDeleteWater(id));
+    dispatch(openDeleteWater({ _id: id }));
   };
 
   return (
@@ -58,7 +60,7 @@ export const TodayWaterList = () => {
               </InfoWrap>
 
               <WrapBtn>
-                <EditBtn onClick={() => onEdit()}>
+                <EditBtn onClick={() => onEdit({ amountWater, date, _id })}>
                   <svg>
                     <use href={sprite + '#edit'}></use>
                   </svg>
@@ -83,9 +85,11 @@ export const TodayWaterList = () => {
         </svg>
         Add water
       </AddBtnStyle>
-      {modal === modalConstants.ADD_WATER && <AddWater />}
-      {modal === modalConstants.DELETE_WATER && <DeleteWaterModal />}
-      {/* <DeleteWaterModal /> */}
+      <WaterModal open={isOpen}>
+        {isOpen === modalConstants.ADD_WATER && <AddWater />}
+        {isOpen === modalConstants.DELETE_WATER && <DeleteWaterModal />}
+        {isOpen === modalConstants.EDIT_WATER && <EditWater />}
+      </WaterModal>
     </div>
   );
 };

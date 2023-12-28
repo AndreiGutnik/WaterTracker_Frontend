@@ -1,5 +1,5 @@
 import { Formik, Field, Form } from 'formik';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
 import {
   AmountContainer,
@@ -9,12 +9,24 @@ import {
   SaveBtn,
 } from './WaterEditorForm.styled';
 import sprite from '../../images/sprite.svg';
-import { addWater } from 'redux/water/operations';
+import { addWater, editWater } from 'redux/water/operations';
 import { closeModal } from 'redux/modals/modalsSlice';
+import modalConstants from 'redux/modals/modalСonstants';
+import { selectModalType, selectModalWater } from 'redux/modals/selectors';
+import { TimeInput } from 'components/WaterModals/WaterModals.styled';
 
 export const WaterEditorForm = () => {
   const dispatch = useDispatch();
-  const [volume, setVolume] = useState(50);
+
+  const { _id, date, amountWater } = useSelector(selectModalWater);
+  const modal = useSelector(selectModalType);
+
+  const [volume, setVolume] = useState(amountWater);
+
+  const currentdate = date ? new Date(date) : new Date();
+  console.log('New time: ', currentdate);
+  const datetime = currentdate.getHours() + ':' + currentdate.getMinutes(); //TODO no zero at the front
+  console.log('datetime', datetime);
 
   const increment = () => {
     if (volume >= 2000) {
@@ -37,16 +49,19 @@ export const WaterEditorForm = () => {
     }
   };
 
-  const currentdate = new Date();
-  const datetime = currentdate.getHours() + ':' + currentdate.getMinutes();
-
   const handleSubmit = ({ time }) => {
     const inputTime = time.split(':');
     currentdate.setHours(inputTime[0], inputTime[1]);
     const date = currentdate.toISOString();
     // console.log('currentdate', currentdate);
-    // console.log('Send date - ', date);   // TO FIX
-    dispatch(addWater({ amountWater: volume, date }));
+    // console.log('Send date - ', date);   // TO FIX  '2023-12-28T21:32:06.164Z'
+
+    if (modal === modalConstants.ADD_WATER) {
+      dispatch(addWater({ amountWater: volume, date }));
+    }
+    if (modal === modalConstants.EDIT_WATER) {
+      dispatch(editWater({ _id, amountWater: volume, date }));
+    }
   };
 
   return (
@@ -69,7 +84,7 @@ export const WaterEditorForm = () => {
         </PlusMinusBtn>
       </AmountContainer>
       <Formik
-        initialValues={{ time: datetime, amountWater: volume }}
+        initialValues={{ time: currentdate, amountWater: volume }}
         onSubmit={(values, actions) => {
           handleSubmit(values);
           actions.resetForm();
@@ -80,7 +95,7 @@ export const WaterEditorForm = () => {
         <Form>
           <label>
             Recording time:
-            <Field name="time" type="time" />
+            <TimeInput name="time" type="time" />
           </label>
           <label>
             Enter the value of the water used:

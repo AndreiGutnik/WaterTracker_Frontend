@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Field } from 'formik';
 
 export const ModalContainer = styled.aside`
   position: fixed;
@@ -62,4 +63,22 @@ export const SmaleHeader = styled.h4`
   font-size: 18px;
   font-weight: 500;
   line-height: 1.11; /* 111.111% */
+`;
+
+export const TimeInput = styled(Field)`
+  font: inherit;
+  color: currentColor;
+  width: 100%;
+  border: 0;
+  height: 1.1876em;
+  margin: 0;
+  display: block;
+  padding: 6px 0 7px;
+  min-width: 0;
+  background: none;
+  box-sizing: content-box;
+  animation-name: mui-auto-fill-cancel;
+  letter-spacing: inherit;
+  animation-duration: 10ms;
+  -webkit-tap-highlight-color: transparent;
 `;

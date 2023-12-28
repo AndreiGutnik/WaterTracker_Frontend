@@ -1,20 +1,20 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-axios.defaults.baseURL = 'https://watertracker-ldwc.onrender.com/'; //===TODO===
+axios.defaults.baseURL = 'https://watertracker-ldwc.onrender.com/';
 
-//================
+//================  TESTING  ==>
 const token =
-  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1OGJlZTkzODY1NmYxYTEzY2JlNjBiYSIsImlhdCI6MTcwMzY2OTQ3NCwiZXhwIjoxNzAzNzUyMjc0fQ.COjUTMUkCXNtuKNRC0OPpVCQDg5Bmyp2yNbBQKl8yYE';
+  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1OGQ3NDQ4MWQzZDQ2NDA5MDg5OWNlNSIsImlhdCI6MTcwMzc2OTE5MywiZXhwIjoxNzAzODUxOTkzfQ.RMBKwhrC3OiIQXjfgA1IOwWVvuHSS9kXWMKBTMsEL40';
 axios.defaults.headers.common.Authorization = `Bearer ${token}`;
-//================
+//================  TESTING  <==
 
 export const fetchTodayWater = createAsyncThunk(
-  'water/fetchWather', //TO CHECK
+  'water/fetchWather',
   async (_, thunkAPI) => {
     try {
-      const response = await axios.get('api/waternotes/today'); //TO CHECK
-      return response.data; //TO CHECK
+      const response = await axios.get('api/waternotes/today');
+      return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
@@ -29,7 +29,23 @@ export const addWater = createAsyncThunk(
         date,
         amountWater,
       });
-      return response.data; //TO CHECK
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const editWater = createAsyncThunk(
+  'water/editWater',
+  async ({ _id, amountWater, date }, thunkAPI) => {
+    console.log(_id, amountWater, date);
+    try {
+      const response = await axios.put(`api/waternotes/${_id}`, {
+        date,
+        amountWater,
+      });
+      return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
@@ -41,7 +57,7 @@ export const deleteWter = createAsyncThunk(
   async (waterId, thunkAPI) => {
     try {
       const response = await axios.delete(`api/waternotes/${waterId}`);
-      return response.data; //TO CHECK
+      return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.massage);
     }

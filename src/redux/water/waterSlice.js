@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { addWater, deleteWter, fetchTodayWater } from './operations';
+import { addWater, editWater, deleteWter, fetchTodayWater } from './operations';
 
 const handlePending = state => {
   state.isLoading = true;
@@ -36,14 +36,25 @@ const waterSlice = createSlice({
     },
     [addWater.rejected]: handleRejected,
 
+    [editWater.pending]: handlePending,
+    [editWater.fulfilled](state, action) {
+      state.isLoading = false;
+      state.error = null;
+      const index = state.items.waterNotes.findIndex(
+        water => water._id === action.payload._id
+      );
+      state.items.waterNotes.splice(index, 1, action.payload);
+    },
+    [editWater.rejected]: handleRejected,
+
     [deleteWter.pending]: handlePending,
     [deleteWter.fulfilled](state, action) {
       state.isLoading = false;
       state.error = null;
       const index = state.items.waterNotes.findIndex(
         water => water._id === action.payload
-      ); //TO CHECK
-      state.items.waterNotes.splice(index, 1); //TO CHECK
+      );
+      state.items.waterNotes.splice(index, 1);
     },
     [deleteWter.rejected]: handleRejected,
   },
