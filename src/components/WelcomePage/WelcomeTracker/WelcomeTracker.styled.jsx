@@ -10,7 +10,7 @@ export const WelcomeTrackerStile = styled.section`
   min-height: calc(100vh - 119px);
   background-size: cover;
   background-size: 100%;
-  background-position: center bottom;2
+  background-position: center bottom;
   background-repeat: no-repeat;
   background-image: url(${bg_mb1x});
 
