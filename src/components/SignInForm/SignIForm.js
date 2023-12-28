@@ -2,12 +2,14 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
+import { toast } from 'react-toastify';
 import { logIn } from 'redux/auth/operations';
-import { Link } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { SignInButton } from 'pages/SignInPage/SignInPage.styled';
 
 const SignInForm = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const initialValues = {
     email: '',
@@ -19,8 +21,16 @@ const SignInForm = () => {
     password: Yup.string().required('Required'),
   });
 
-  const handleSubmit = (values, { setSubmitting }) => {
-    dispatch(logIn(values));
+  const handleSubmit = async (values, { setSubmitting }) => {
+    const { email, password } = values;
+
+    const registrationSuccess = await dispatch(logIn({ email, password }));
+
+    if (registrationSuccess) {
+      toast.success('Registration successful!');
+      navigate('/homepage');
+    }
+
     setSubmitting(false);
   };
 
