@@ -1,10 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { Formik, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { logIn } from 'redux/auth/operations';
-import { Link } from 'react-router-dom';
-import { SignInButton } from 'pages/SignInPage/SignInPage.styled';
+import { useNavigate } from 'react-router-dom';
+import {
+  BackgroundImg,
+  SightUp,
+  ErMsg,
+  FormBtnStyled,
+  SightInContainer,
+  StyledBtn,
+  StyledField,
+  StyledForm,
+  Styledlabel,
+} from '../RegistrationForm/RegistrationForm.styled.js';
+import sprite from '../../images/sprite.svg';
 
 const initialValues = {
   email: '',
@@ -18,6 +29,8 @@ const validationSchema = Yup.object({
 
 const SignInForm = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleSubmit = async ({ email, password }, { resetForm }) => {
     dispatch(
@@ -30,28 +43,53 @@ const SignInForm = () => {
   };
 
   return (
-    <Formik
-      initialValues={initialValues}
-      validationSchema={validationSchema}
-      onSubmit={handleSubmit}
-    >
-      <Form>
-        <div>
-          <label>Enter your email</label>
-          <Field type="email" name="email" placeholder="E-mail" />
-          <ErrorMessage name="email" component="div" />
-        </div>
+    <BackgroundImg>
+      <SightInContainer>
+        <Formik
+          initialValues={initialValues}
+          validationSchema={validationSchema}
+          onSubmit={handleSubmit}
+        >
+          {({ isSubmitting, touched, errors }) => (
+            <StyledForm>
+              <h2>Sign in</h2>
 
-        <div>
-          <label>Enter your password</label>
-          <Field type="password" name="password" placeholder="Password" />
-          <ErrorMessage name="password" component="div" />
-        </div>
+              <Styledlabel>Enter your email</Styledlabel>
+              <StyledField
+                type="email"
+                name="email"
+                placeholder="E-mail"
+                error={!!(touched.email && errors.email)}
+              />
+              <ErMsg name="email" component="div" />
 
-        <SignInButton type="submit">Sign in</SignInButton>
-        <Link to="/signup">Sign Up</Link>
-      </Form>
-    </Formik>
+              <Styledlabel>
+                Enter your password
+                <StyledBtn onClick={() => setShowPassword(!showPassword)}>
+                  <svg>
+                    <use
+                      href={sprite + (showPassword ? '#eye-show' : '#eye-hide')}
+                    ></use>
+                  </svg>
+                </StyledBtn>
+              </Styledlabel>
+              <StyledField
+                type={showPassword ? 'text' : 'password'}
+                name="password"
+                placeholder="Password"
+                error={!!(touched.password && errors.password)}
+              />
+              <ErrorMessage name="password" component="div" />
+
+              <FormBtnStyled type="submit" disabled={isSubmitting}>
+                Sign in
+              </FormBtnStyled>
+              <SightUp onClick={() => navigate('/signup')}>Sign up</SightUp>
+            </StyledForm>
+          )}
+        </Formik>
+      </SightInContainer>
+    </BackgroundImg>
   );
 };
 
