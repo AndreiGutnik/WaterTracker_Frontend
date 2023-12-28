@@ -22,16 +22,26 @@ const SignInForm = () => {
   });
 
   const handleSubmit = async (values, { setSubmitting }) => {
-    const { email, password } = values;
+    try {
+      const { email, password } = values;
 
-    const registrationSuccess = await dispatch(logIn({ email, password }));
+      const registrationSuccess = await dispatch(logIn({ email, password }));
 
-    if (registrationSuccess) {
-      toast.success('Registration successful!');
-      navigate('/homepage');
+      if (registrationSuccess) {
+        toast.success('Registration successful!');
+        navigate('/homepage');
+      } else {
+        toast.error(
+          'Registration failed. Please check your details and try again.'
+        );
+      }
+    } catch (error) {
+      toast.error(
+        'An error occurred during registration. Please try again later.'
+      );
+    } finally {
+      setSubmitting(false);
     }
-
-    setSubmitting(false);
   };
 
   return (

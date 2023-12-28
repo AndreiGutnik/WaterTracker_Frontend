@@ -27,18 +27,27 @@ const RegistrationForm = () => {
       .oneOf([Yup.ref('password'), null], 'Passwords must match')
       .required('Required'),
   });
-
   const handleSubmit = async (values, { setSubmitting }) => {
-    const { email, password, repeatPassword } = values;
+    try {
+      const { email, password, repeatPassword } = values;
 
-    const registrationSuccess = await dispatch(register({ email, password }));
+      const registrationSuccess = await dispatch(register({ email, password }));
 
-    if (registrationSuccess) {
-      toast.success('Registration successful!');
-      navigate('/signin');
+      if (registrationSuccess) {
+        toast.success('Registration successful!');
+        navigate('/signin');
+      } else {
+        toast.error(
+          'Registration failed. Please check your details and try again.'
+        );
+      }
+    } catch (error) {
+      toast.error(
+        'An error occurred during registration. Please try again later.'
+      );
+    } finally {
+      setSubmitting(false);
     }
-
-    setSubmitting(false);
   };
 
   return (
@@ -68,7 +77,6 @@ const RegistrationForm = () => {
         </SignUpForm>
 
         <SignUpButton type="submit">Sign Up</SignUpButton>
-        <Link to="/signin"></Link>
 
         <Link to="/signin">Sign In</Link>
       </Form>
