@@ -16,13 +16,11 @@ export const register = createAsyncThunk(
   'auth/register',
   async (credentials, thunkAPI) => {
     try {
-      const response = await axios.post(`/api/auth/register`, credentials);
-
-      setAuthHeader(response.data.token);
+      const { data } = await axios.post(`/api/auth/register`, credentials);
 
       toast.success('Registration successful');
 
-      return response.data;
+      return data;
     } catch (error) {
       toast.error(error.message || 'Registration failed', error);
 
@@ -35,12 +33,13 @@ export const logIn = createAsyncThunk(
   'auth/login',
   async (credentials, thunkAPI) => {
     try {
-      const response = await axios.post(`/api/auth/login`, credentials);
-      setAuthHeader(response.data.token);
+      const { data } = await axios.post(`/api/auth/login`, credentials);
+
+      setAuthHeader(data.token);
 
       toast.success('Login successful');
 
-      return response.data;
+      return data;
     } catch (error) {
       toast.error(error.message || 'Authorization failed');
 
@@ -49,15 +48,35 @@ export const logIn = createAsyncThunk(
   }
 );
 
-export const logOut = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
-  try {
-    await axios.post(`/api/auth/logout`);
-    clearAuthHeader();
+export const logOut = createAsyncThunk(
+  '/api/auth/logout',
+  async (_, thunkAPI) => {
+    try {
+      await axios.post(`/api/auth/logout`);
+      clearAuthHeader();
 
-    toast.success('You are logged out');
-  } catch (error) {
-    toast.error(error.message || 'Something went wrong');
+      toast.success('You are logged out');
+    } catch (error) {
+      toast.error(error.message || 'Something went wrong');
 
-    return thunkAPI.rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue(error.message);
+    }
   }
-});
+);
+
+export const refreshUser = createAsyncThunk(
+  'auth/refresh',
+  async (_, thunkAPI) => {
+    const persistedToken = thunkAPI.getState().auth.token;
+    if (persistedToken === null) {
+      return thunkAPI.rejectWithValue();
+    }
+    setAuthHeader(persistedToken);
+    try {
+      const { data } = await axios.get('/api/auth/current');
+      return data;
+    } catch (e) {
+      return thunkAPI.rejectWithValue(e.message);
+    }
+  }
+);

@@ -2,46 +2,31 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
-import { toast } from 'react-toastify';
 import { logIn } from 'redux/auth/operations';
-import { useNavigate, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { SignInButton } from 'pages/SignInPage/SignInPage.styled';
+
+const initialValues = {
+  email: '',
+  password: '',
+};
+
+const validationSchema = Yup.object({
+  email: Yup.string().email('Invalid email address').required('Required'),
+  password: Yup.string().required('Required'),
+});
 
 const SignInForm = () => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
 
-  const initialValues = {
-    email: '',
-    password: '',
-  };
-
-  const validationSchema = Yup.object({
-    email: Yup.string().email('Invalid email address').required('Required'),
-    password: Yup.string().required('Required'),
-  });
-
-  const handleSubmit = async (values, { setSubmitting }) => {
-    try {
-      const { email, password } = values;
-
-      const registrationSuccess = await dispatch(logIn({ email, password }));
-
-      if (registrationSuccess) {
-        toast.success('Registration successful!');
-        navigate('/homepage');
-      } else {
-        toast.error(
-          'Registration failed. Please check your details and try again.'
-        );
-      }
-    } catch (error) {
-      toast.error(
-        'An error occurred during registration. Please try again later.'
-      );
-    } finally {
-      setSubmitting(false);
-    }
+  const handleSubmit = async ({ email, password }, { resetForm }) => {
+    dispatch(
+      logIn({
+        email,
+        password,
+      })
+    );
+    resetForm();
   };
 
   return (

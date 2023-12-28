@@ -10,11 +10,12 @@ import {
 } from 'redux-persist';
 import { waterReducer } from './water/waterSlice';
 import modalsReducer from './modals/modalsSlice';
-import { authReducer } from './auth/auth.slice';
+// import { authReducer } from './auth/auth.slice';
+import { persistedContactsReducer } from './auth/auth.slice';
 
 export const store = configureStore({
   reducer: {
-    auth: authReducer,
+    auth: persistedContactsReducer,
     water: waterReducer,
     modals: modalsReducer,
   },
