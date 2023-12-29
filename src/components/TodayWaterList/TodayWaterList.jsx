@@ -10,6 +10,9 @@ import {
   TodayStyle,
   InfoWrap,
   WrapBtn,
+  TodayStyledDiv,
+  ListAddDiv,
+  UlStyle,
 } from './TodayList.styled';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
@@ -44,52 +47,59 @@ export const TodayWaterList = () => {
     dispatch(openDeleteWater({ _id: id }));
   };
 
+  const timeFromDate = date => {
+    return new Date(date).toLocaleTimeString([], {
+      hour: '2-digit',
+      minute: '2-digit',
+    });
+  };
+
   return (
-    <div>
+    <TodayStyledDiv>
       <TodayStyle>Today</TodayStyle>
-      {waterNotes?.length > 0 ? (
-        <ul>
-          {waterNotes.map(({ amountWater, date, _id }) => (
-            <ListItem key={_id}>
-              <InfoWrap>
-                <svg>
-                  <use href={sprite + '#cup'}></use>
-                </svg>
-                <TextVolume>{amountWater} ml</TextVolume>
-                <TextTime>{date}</TextTime>
-              </InfoWrap>
-
-              <WrapBtn>
-                <EditBtn onClick={() => onEdit({ amountWater, date, _id })}>
+      <ListAddDiv>
+        {waterNotes?.length > 0 ? (
+          <UlStyle>
+            {waterNotes.map(({ amountWater, date, _id }) => (
+              <ListItem key={_id}>
+                <InfoWrap>
                   <svg>
-                    <use href={sprite + '#edit'}></use>
+                    <use href={sprite + '#cup'}></use>
                   </svg>
-                </EditBtn>
+                  <TextVolume>{amountWater} ml</TextVolume>
+                  <TextTime>{timeFromDate(date)}</TextTime>
+                </InfoWrap>
+                <WrapBtn>
+                  <EditBtn onClick={() => onEdit({ amountWater, date, _id })}>
+                    <svg>
+                      <use href={sprite + '#edit'}></use>
+                    </svg>
+                  </EditBtn>
+                  <DeleteBtn onClick={() => onDelete(_id)}>
+                    <svg>
+                      <use href={sprite + '#trash'}></use>
+                    </svg>
+                  </DeleteBtn>
+                </WrapBtn>
+              </ListItem>
+            ))}
+          </UlStyle>
+        ) : (
+          <p>No records</p>
+        )}
+        <AddBtnStyle onClick={() => dispatch(openAddWater())}>
+          <svg>
+            <use href={sprite + '#plus'}></use>
+          </svg>
+          Add water
+        </AddBtnStyle>
+      </ListAddDiv>
 
-                <DeleteBtn onClick={() => onDelete(_id)}>
-                  <svg>
-                    <use href={sprite + '#trash'}></use>
-                  </svg>
-                </DeleteBtn>
-              </WrapBtn>
-            </ListItem>
-          ))}
-        </ul>
-      ) : (
-        <p>No records</p>
-      )}
-
-      <AddBtnStyle onClick={() => dispatch(openAddWater())}>
-        <svg>
-          <use href={sprite + '#plus'}></use>
-        </svg>
-        Add water
-      </AddBtnStyle>
       <WaterModal open={isOpen}>
         {isOpen === modalConstants.ADD_WATER && <AddWater />}
         {isOpen === modalConstants.DELETE_WATER && <DeleteWaterModal />}
         {isOpen === modalConstants.EDIT_WATER && <EditWater />}
       </WaterModal>
-    </div>
+    </TodayStyledDiv>
   );
 };

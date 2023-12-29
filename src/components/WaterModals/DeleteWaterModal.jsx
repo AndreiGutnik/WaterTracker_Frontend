@@ -13,7 +13,6 @@ export const DeleteWaterModal = () => {
   useModalClose(modaldeleteRef);
 
   const _id = useSelector(selectModalIdWater);
-  console.log('Delete ID', _id);
 
   const onDelete = () => {
     dispatch(deleteWter(_id));

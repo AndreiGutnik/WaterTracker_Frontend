@@ -23,10 +23,13 @@ export const WaterEditorForm = () => {
 
   const [volume, setVolume] = useState(amountWater);
 
-  const currentdate = date ? new Date(date) : new Date();
-  console.log('New time: ', currentdate);
-  const datetime = currentdate.getHours() + ':' + currentdate.getMinutes(); //TODO no zero at the front
-  console.log('datetime', datetime);
+  const timeFromDate = date => {
+    const currentdate = date ? new Date(date) : new Date();
+    return new Date(currentdate).toLocaleTimeString([], {
+      hour: '2-digit',
+      minute: '2-digit',
+    });
+  };
 
   const increment = () => {
     if (volume >= 2000) {
@@ -51,16 +54,15 @@ export const WaterEditorForm = () => {
 
   const handleSubmit = ({ time }) => {
     const inputTime = time.split(':');
+    const currentdate = new Date();
     currentdate.setHours(inputTime[0], inputTime[1]);
-    const date = currentdate.toISOString();
-    // console.log('currentdate', currentdate);
-    // console.log('Send date - ', date);   // TO FIX  '2023-12-28T21:32:06.164Z'
+    const setDate = currentdate.toISOString();
 
     if (modal === modalConstants.ADD_WATER) {
-      dispatch(addWater({ amountWater: volume, date }));
+      dispatch(addWater({ amountWater: volume, date: setDate }));
     }
     if (modal === modalConstants.EDIT_WATER) {
-      dispatch(editWater({ _id, amountWater: volume, date }));
+      dispatch(editWater({ _id, amountWater: volume, date: setDate }));
     }
   };
 
@@ -76,15 +78,15 @@ export const WaterEditorForm = () => {
         <AmountDiv>
           <AmountSpan>{volume}ml</AmountSpan>
         </AmountDiv>
-
         <PlusMinusBtn onClick={increment}>
           <svg>
             <use href={sprite + '#plus'}></use>
           </svg>
         </PlusMinusBtn>
       </AmountContainer>
+
       <Formik
-        initialValues={{ time: currentdate, amountWater: volume }}
+        initialValues={{ time: timeFromDate(date), amountWater: volume }}
         onSubmit={(values, actions) => {
           handleSubmit(values);
           actions.resetForm();

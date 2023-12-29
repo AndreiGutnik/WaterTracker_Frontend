@@ -6,7 +6,7 @@ export const TrackerOfWater = () => {
   return (
     <TrackerContainer>
       <TodayWaterList />
-      <div>
+      <div style={{ width: 264, height: 506 }}>
         <h2>Month</h2>
       </div>
     </TrackerContainer>
