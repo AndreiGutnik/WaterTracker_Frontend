@@ -15,6 +15,7 @@
 }
 
 .form-check-label-gender{
+    font-family: 'RobotoBold';
             font-size: 18px;
             font-style: normal;
             font-weight: 500;
@@ -36,27 +37,68 @@
 .form-check-input{
     width: 14px;
         height: 14px;
-        margin-right: 8px;
 }
 
-/* input[type='radio'] ::before {
-    background-color: white;
+.form-check-gender{
+        font-family: 'RobotoBold';
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 20px;
+}
+
+.form-control::placeholder {
+color: #D7E3FF;
+}
+
+.form-check-input{
+    display: none; 
+}
+
+.rad{
+    display: inline-block;
+    margin-right: 8px;
+        width: 14px;
+        height: 14px;
+        border-radius: 50%;
         border: 2px solid blue;
+        position: relative;
 }
 
-input[type='radio']:checked::after {
+.rad::before{
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+    display: block;
+    width: 7px;
+    height: 7px;
     background-color: blue;
-} */
-
-.form-check-input:checked {
-    background-color: blue;
-    border-color: blue;
+    opacity: 0;
+    border-radius: 50%;
 }
+
+.form-check-input:checked + .rad::before{
+    opacity: 1;
+}
+
+
 
 .form-label {
+    font-family: 'RobotoBold';
         font-size: 18px;
         font-weight: 500;
         line-height: 20px;
+        margin-bottom: 8px;
+}
+
+.form-text{
+        font-family: 'RobotoBold';
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 20px;
+        margin-top: 12px;
         margin-bottom: 8px;
 }
 
@@ -75,4 +117,6 @@ input[type='radio']:checked::after {
                 font-weight: 400;
                 line-height: 20px;
 }
+
+
 

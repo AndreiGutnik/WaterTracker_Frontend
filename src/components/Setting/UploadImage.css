@@ -2,11 +2,13 @@
     margin-bottom: 24px;
 }
 .form-check-label{
+    font-family: 'RobotoBold';
             font-size: 18px;
             font-weight: 500;
             line-height: 20px;
             margin-bottom: 8px;
 }
+
 
 .upload{
     font-size: 14px;

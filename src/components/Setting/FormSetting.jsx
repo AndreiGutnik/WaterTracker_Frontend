@@ -1,5 +1,6 @@
 import { Component } from "react";
 import './FormSetting.css';
+import Icons from "../../images/sprite.svg";
 
 class FormSetting extends Component{
     state = {
@@ -7,8 +8,11 @@ class FormSetting extends Component{
         gender:'girl',
         name: '',
         email: '',
-        password: '', 
+        outdatePassword: '', 
+        newPassword: '',
+        repeatPassword: '',
         isChecked: 'true',
+        onClick: 'false',
     }
 
     handleChange = ({target}) => {
@@ -23,14 +27,18 @@ class FormSetting extends Component{
             gender:this.state.gender,
             name:this.state.name,
             email: this.state.email,
-            password: this.state.password,
+            outdatePassword: this.state.outdatePassword,
+            newPassword: this.state.outdatePassword,
+            repeatPassword: this.state.repeatPassword,
         })
 
         this.setState({
         photo: '',
         name: '',
         email: '',
-        password:'',
+        outdatePassword: '',
+        newPassword: '',
+        repeatPassword: '',
         })
 
         this.props.closeModal()
@@ -46,6 +54,12 @@ class FormSetting extends Component{
         this.setState({gender:target.value})
     }
 
+    // handleShow = ({target: { show } }) => {
+    //  this.setState({
+    //        onClick: show,
+    //    })
+    // }
+
     
 
     render() {
@@ -59,60 +73,67 @@ class FormSetting extends Component{
                     <div className="gender-radio">
                         <label  className="gender-radio-gen" htmlFor="gender-1">
                             <input type="radio" id="gender-1" className="form-check-input gender-radio-gen" name="gender" onChange={this.handleGender} value="girl" checked={this.state.gender==='girl'}/>
-                            <span className="form-check-gender">Girl</span>
+                            <span className="rad"></span>
+                                    <span className="form-check-gender">Girl</span>
                         </label>
                     </div>
                     
                     <div className="gender-radio">
                         <label className="gender-radio-gen" htmlFor="gender-2">
                             <input type="radio" id="gender-2" className="form-check-input gender-radio-gen" name="gender" onChange={this.handleGender} value="man" checked={this.state.gender==='man'}/>
-                            <span className="form-check-gender">Man</span>
+                             <span className="rad"></span>
+                                    <span className="form-check-gender">Man</span>
                         </label>
                             </div>
                             </div>
                         </div>
 
-            <div className="mb-3">
+            <div className="name-you">
     <label htmlFor="exampleInputName" className="form-label">Your name</label>
                 <input name="name" type="name" className="form-control" id="exampleInputName" aria-describedby="nameHelp"
                         onChange={this.handleChange}
-                    value={this.state.name}
+                            value={this.state.name}
+                            placeholder="Name"
                 />
                     </div>
                     
-  <div className="mb-3">
+  <div className="email-you">
     <label htmlFor="exampleInputEmail1" className="form-label">Email address</label>
                 <input name="email"
                     type="email" className="form-control" id="InputEmail1" aria-describedby="emailHelp"
                         onChange={this.handleChange}
-                    value={this.state.email}
+                            value={this.state.email}
+                            placeholder="Email"
                 />
                     </div>
-                    
-  <div className="mb-3">
+            
+  <div className="password-you">
                 <label htmlFor="exampleInputPassword1" className="form-label">Password</label>
                 <div id="emailHelp" className="form-text">Outdated password:</div>          
-                <input name="password" type="password" className="form-control" id="exampleInputPassword1"
+                <input name="outdatedPassword" type="password" className="form-control" id="exampleInputPassword1"
                         onChange={this.handleChange}
-                            value={this.state.password}
-                            
-                />
-    
-          <div className="mb-3">
+                            value={this.state.outdatePassword}
+                            placeholder="Password" />
+                        {/* <label onClick={this.handleShow}>
+                            {show? <svg width="16" height="16" fill="blue" aria-label="upload picture" component="span">
+                                <use href={Icons + '#eye-show'}></use></svg> :
+                                <svg width="16" height="16" fill="blue" aria-label="upload picture" component="span">
+            <use href={Icons + '#eye-hide'}></use></svg>}</label> */}
+                    
+
                 <div id="emailHelp" className="form-text">New Password:</div>          
-                <input name="password" type="password" className="form-control" id="exampleInputPassword1"
+                <input name="newPassword" type="password" className="form-control" id="exampleInputPassword2"
                         onChange={this.handleChange}
-                    value={this.state.password}
+                                value={this.state.newPassword}
+                                placeholder="Password"
                 />
-            </div>
-            <div className="mb-3">
                 <div id="emailHelp" className="form-text">Repeat new password:</div>          
-                <input name="password" type="password" className="form-control" id="exampleInputPassword1"
+                <input name="repeatPassword" type="password" className="form-control" id="exampleInputPassword3"
                         onChange={this.handleChange}
-                    value={this.state.password}
-                />
+                                value={this.state.repeatPassword}
+                            placeholder="Password" />
+            
                     </div>  
-                    </div>
                     </div>
                     <button disabled={!this.state.isChecked} type="submit" className="btn btn-primary">Save</button>       
 
