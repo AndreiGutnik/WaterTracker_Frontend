@@ -176,7 +176,7 @@ export const SightUp = styled.p`
     cursor: pointer;
     transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
     &:hover{
-      color: ${baseTheme.colors.violet}};;
+      color: ${baseTheme.colors.orange}};;
     }
 `;
 
