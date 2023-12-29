@@ -1,5 +1,6 @@
 import styled from 'styled-components';
-import { baseTheme } from '../../components/theme.js';
+import { baseTheme } from '../../components/theme.js'
+import {Link} from 'react-router-dom';
 
 export const Wrapper = styled.div`
   display: flex;
@@ -13,13 +14,14 @@ export const Wrapper = styled.div`
   }
 `;
 
-export const WrapperLogo = styled.div`
+export const WrapperLogo = styled(Link)`
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 4px;
   width: 108px;
   height: 48px;
+  text-decoration: none;
 
   & p {
     font-family: 'RobotoBold';
@@ -32,10 +34,11 @@ export const WrapperLogo = styled.div`
   }
 `;
 
-export const WrapperSignin = styled.div`
+export const WrapperSignin = styled(Link)`
   display: flex;
   align-items: center;
   gap: 8px;
+  text-decoration: none;
 
   & p {
     font-family: 'RobotoRegular';
