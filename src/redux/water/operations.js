@@ -5,7 +5,8 @@ axios.defaults.baseURL = 'https://watertracker-ldwc.onrender.com/';
 
 //================  TESTING  ==>
 const token =
-  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1OGQ3NDQ4MWQzZDQ2NDA5MDg5OWNlNSIsImlhdCI6MTcwMzc2OTE5MywiZXhwIjoxNzAzODUxOTkzfQ.RMBKwhrC3OiIQXjfgA1IOwWVvuHSS9kXWMKBTMsEL40';
+  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1OGQ3NDQ4MWQzZDQ2NDA5MDg5OWNlNSIsImlhdCI6MTcwMzg1NDgzOCwiZXhwIjoxNzAzOTM3NjM4fQ.q1GXOJU7TYWkMOUCMIUEnsje--33LeKqgH_zIazTzfM';
+
 axios.defaults.headers.common.Authorization = `Bearer ${token}`;
 //================  TESTING  <==
 

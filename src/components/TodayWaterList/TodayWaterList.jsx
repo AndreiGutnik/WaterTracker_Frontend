@@ -58,9 +58,9 @@ export const TodayWaterList = () => {
     <TodayStyledDiv>
       <TodayStyle>Today</TodayStyle>
       <ListAddDiv>
-        {waterNotes?.length > 0 ? (
-          <UlStyle>
-            {waterNotes.map(({ amountWater, date, _id }) => (
+        <UlStyle>
+          {waterNotes?.length > 0 ? (
+            waterNotes.map(({ amountWater, date, _id }) => (
               <ListItem key={_id}>
                 <InfoWrap>
                   <svg>
@@ -82,17 +82,21 @@ export const TodayWaterList = () => {
                   </DeleteBtn>
                 </WrapBtn>
               </ListItem>
-            ))}
-          </UlStyle>
-        ) : (
-          <p>No records</p>
-        )}
-        <AddBtnStyle onClick={() => dispatch(openAddWater())}>
-          <svg>
-            <use href={sprite + '#plus'}></use>
-          </svg>
-          Add water
-        </AddBtnStyle>
+            ))
+          ) : (
+            <li>
+              <p>No records</p>
+            </li>
+          )}
+          <li>
+            <AddBtnStyle onClick={() => dispatch(openAddWater())}>
+              <svg>
+                <use href={sprite + '#plus'}></use>
+              </svg>
+              Add water
+            </AddBtnStyle>
+          </li>
+        </UlStyle>
       </ListAddDiv>
 
       <WaterModal open={isOpen}>

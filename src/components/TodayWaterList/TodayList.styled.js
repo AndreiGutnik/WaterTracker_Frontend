@@ -23,27 +23,24 @@ export const ListAddDiv = styled.div`
 `;
 
 export const UlStyle = styled.ul`
-  height: 180px;
+  height: 212px;
   overflow-y: scroll;
 
   &::-webkit-scrollbar {
     width: 4px;
   }
 
-  /* Track */
   &::-webkit-scrollbar-track {
     background: #d7e3ff;
     border-radius: 50px;
+    border: 1px solid #ecf2ff;
   }
 
-  /* Handle */
   &::-webkit-scrollbar-thumb {
-    margin-block: 2px;
     background: #9ebbff;
     border-radius: 50px;
   }
 
-  /* Handle on hover */
   &::-webkit-scrollbar-thumb:hover {
     background: #407bff;
   }
@@ -54,19 +51,27 @@ export const ListItem = styled.li`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
+  gap: 38px;
+
+  padding: 12px 0;
   border-bottom: 1px solid ${baseTheme.colors.violet_light};
 `;
 
 export const InfoWrap = styled.div`
+  width: 166px;
   display: flex;
   flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
   gap: 12px;
 
   & svg {
     width: 26px;
     height: 26px;
+    padding: 1px;
     & use {
-      fill: ${baseTheme.colors.violet};
+      fill: ${baseTheme.colors.blue};
     }
   }
 `;
@@ -121,6 +126,7 @@ export const DeleteBtn = styled.button`
 `;
 
 export const AddBtnStyle = styled.button`
+  padding-top: 12px;
   color: ${baseTheme.colors.blue};
   line-height: 1.25;
   border: none;
