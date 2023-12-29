@@ -1,4 +1,4 @@
-import { Icons } from "react-toastify";
+import  Icons  from "../../images/sprite.svg";
 import './Setting.css';
 
 const Setting = ({ children, closeModal }) => {
@@ -8,11 +8,9 @@ const Setting = ({ children, closeModal }) => {
             
                     <div className="modal-header">
                         <h2 className="modal-title">Setting</h2>
-                        <button type="button" className = "bth-close" aria-label='Close' onChange={closeModal}>
-                        <svg width="24" height="24">
-                                <use href={Icons + '#settings'}></use>
+                        <svg  className = "bth-close" width="24" height="24" onChange={closeModal}>
+                                <use href={Icons + '#close'}></use>
                             </svg>
-                        </button>
                     </div>
                     <div className="modal-body">{children}</div>
                 </div>

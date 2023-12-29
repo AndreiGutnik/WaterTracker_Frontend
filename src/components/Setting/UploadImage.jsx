@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Avatar } from "./Upload.styled";
-import { Icons } from "react-toastify";
+import  Icons from "../../images/sprite.svg";
 import './UploadImage.css';
 
 
@@ -20,8 +20,8 @@ const UploadImage = () => {
             <input type="file" onChange={handleChange} id="upload" accept="image/*" style={{display: "none"}}/>
         <label className="upload" htmlFor="upload">
           <Avatar id="avatar" src={file}/>
-          <svg width="16" height="16" color="blue" aria-label="upload picture" component="span">
-            <use href={Icons + '#arrow-up'}></use></svg>Upload a photo
+          <svg width="16" height="16" fill="blue" aria-label="upload picture" component="span">
+            <use href={Icons + '#upload'}></use></svg>Upload a photo
             </label>
       </div>
       </div>

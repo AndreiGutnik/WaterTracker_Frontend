@@ -53,38 +53,42 @@ class FormSetting extends Component{
             <form onSubmit={this.handleSubmit}>
                 <div className="form">
         
-                    <div className="form-check">
-                        <h3 className="form-check-label-gender" htmlFor="exampleCheck1">Your gender identity</h3>
-                        <div className="gender-radio">
-                            <div className="gender-radio-gen"><input name="gender" type="radio" className="form-check-input" id="exampleRadio1"
-                        checked={this.state.gender==='girl'}
-                        onChange={this.handleGender}
-                        value='girl'
-                        />
-                        <label className="form-check-gender" htmlFor="exampleCheck1">Girl</label></div>
-                        <div className="gender-radio-gen"><input name="gender" type="radio" className="form-check-input" id="exampleRadio1"
-                            checked={this.state.gender==='man'}
-                            onChange={this.handleGender}
-                        value='man'
-                        />
-                    <label className="form-check-gender" htmlFor="exampleCheck1">Man</label></div></div>
-                </div>
-                
+                <div className="form-check">
+                        <label className="form-check-label-gender" htmlFor="exampleCheck1">Your gender identity</label>
+                         <div className="gender-radio">
+                    <div className="gender-radio">
+                        <label  className="gender-radio-gen" htmlFor="gender-1">
+                            <input type="radio" id="gender-1" className="form-check-input gender-radio-gen" name="gender" onChange={this.handleGender} value="girl" checked={this.state.gender==='girl'}/>
+                            <span className="form-check-gender">Girl</span>
+                        </label>
+                    </div>
+                    
+                    <div className="gender-radio">
+                        <label className="gender-radio-gen" htmlFor="gender-2">
+                            <input type="radio" id="gender-2" className="form-check-input gender-radio-gen" name="gender" onChange={this.handleGender} value="man" checked={this.state.gender==='man'}/>
+                            <span className="form-check-gender">Man</span>
+                        </label>
+                            </div>
+                            </div>
+                        </div>
+
             <div className="mb-3">
-    <label htmlFor="exampleInputEmail1" className="form-label">Your name</label>
+    <label htmlFor="exampleInputName" className="form-label">Your name</label>
                 <input name="name" type="name" className="form-control" id="exampleInputName" aria-describedby="nameHelp"
                         onChange={this.handleChange}
                     value={this.state.name}
                 />
-  </div>
+                    </div>
+                    
   <div className="mb-3">
     <label htmlFor="exampleInputEmail1" className="form-label">Email address</label>
                 <input name="email"
-                    type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                    type="email" className="form-control" id="InputEmail1" aria-describedby="emailHelp"
                         onChange={this.handleChange}
                     value={this.state.email}
                 />
-  </div>
+                    </div>
+                    
   <div className="mb-3">
                 <label htmlFor="exampleInputPassword1" className="form-label">Password</label>
                 <div id="emailHelp" className="form-text">Outdated password:</div>          
