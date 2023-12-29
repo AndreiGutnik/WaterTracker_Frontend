@@ -9,36 +9,37 @@ import bottleTab1x from '../../images/home/bottle-tab-1x.png';
 import bottleTab2x from '../../images/home/bottle-tab-2x.png';
 
 export const BottleImg = styled.div`
-
-background-image: url(${bottleMob1x});
-background-size: contain;
+  background-image: url(${bottleMob1x});
+  background-size: contain;
   background-repeat: no-repeat;
   width: 280px;
   height: 210px;
   background-position: center;
 
-
-@media screen and (max-width: 767px) and (-webkit-min-device-pixel-ratio: 2),
+  @media screen and (max-width: 767px) and (-webkit-min-device-pixel-ratio: 2),
     (max-width: 767px) and (min-resolution: 192dpi) {
-
     background-image: url(${bottleMob2x});
   }
-@media screen and (min-width: 768px)  and (max-width: 1439px) {
-  position: relative;
- 
-  width: 736px;
-  height: 548px;
-  background-position: 120px;
-  background-image: url(${bottleTab1x});
-}
-@media screen and (min-width: 768px) and (-webkit-min-device-pixel-ratio: 2),
+
+  @media screen and (min-width: 768px) and (max-width: 1439px) {
+    position: relative;
+    width: 736px;
+    height: 548px;
+    background-position: 120px;
+    background-image: url(${bottleTab1x});
+  }
+
+  @media screen and (min-width: 768px) and (-webkit-min-device-pixel-ratio: 2),
     (min-width: 768px) and (min-resolution: 192dpi) {
-    background-image: url(${bottleTab2x});}
-@media screen and (min-width: 1440px) {
-  background-position: -120px center;
+    background-image: url(${bottleTab2x});
+  }
+
+  @media screen and (min-width: 1440px) {
+    background-position: -120px center;
     width: 916px;
     min-height: 680px;
-  background-image: url(${bottleDesk1x});
+    background-image: url(${bottleDesk1x});
+  }
 
   @media screen and (min-width: 1440px) and (-webkit-min-device-pixel-ratio: 2),
     (min-width: 1440px) and (min-resolution: 192dpi) {
@@ -63,6 +64,7 @@ export const SignUpContainer = styled.div`
     flex-direction: row;
   }
 `;
+
 export const ForFormContainer = styled.div`
   @media screen and (min-width: 1440px) {
     display: flex;
@@ -83,6 +85,7 @@ export const StyledForm = styled(Form)`
   flex-direction: column;
   border-radius: 5px;
   width: 280px;
+
   @media screen and (min-width: 768px) {
     width: 336px;
   }
@@ -168,16 +171,17 @@ export const FormBtnStyled = styled.button`
 `;
 
 export const SightUp = styled.p`
-    margin-top: 16px;
-    color: ${baseTheme.colors.blue};
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 0.8; 
-    cursor: pointer;
-    transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
-    &:hover{
-      color: ${baseTheme.colors.orange}};;
-    }
+  margin-top: 16px;
+  color: ${baseTheme.colors.blue};
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 0.8;
+  cursor: pointer;
+  transition: color 250ms ${baseTheme.cubicBezier};
+
+  &:hover {
+    color: ${baseTheme.colors.orange};
+  }
 `;
 
 export const StyledBtn = styled.div`
