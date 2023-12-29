@@ -1,27 +1,66 @@
 import styled from 'styled-components';
 import { baseTheme } from 'components/theme';
 import { Form, ErrorMessage, Field } from 'formik';
+import bottleDesk1x from '../../images/home/bottle-desk-1x.png';
+import bottleDesk2x from '../../images/home/bottle-desk-2x.png';
+import bottleMob1x from '../../images/home/bottle-mob-1x.png';
+import bottleMob2x from '../../images/home/bottle-mob-2x.png';
+import bottleTab1x from '../../images/home/bottle-tab-1x.png';
+import bottleTab2x from '../../images/home/bottle-tab-2x.png';
 
-import background from '../../images/welcome/background.svg';
-import BottleMob from '../../images/home/bottle-mob-1x.png';
-export const BackgroundImg = styled.div`
-  position: absolute;
-  z-index: -1;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: url(${background});
-  background-size: cover;
-  background-position: center;
+export const BottleImg = styled.div`
+
+background-image: url(${bottleMob1x});
+background-size: contain;
   background-repeat: no-repeat;
+  width: 280px;
+  height: 210px;
+  background-position: center;
+
+
+@media screen and (max-width: 767px) and (-webkit-min-device-pixel-ratio: 2),
+    (max-width: 767px) and (min-resolution: 192dpi) {
+
+    background-image: url(${bottleMob2x});
+  }
+@media screen and (min-width: 768px)  and (max-width: 1439px) {
+  position: relative;
+ 
+  width: 736px;
+  height: 548px;
+  background-position: 120px;
+  background-image: url(${bottleTab1x});
+}
+@media screen and (min-width: 768px) and (-webkit-min-device-pixel-ratio: 2),
+    (min-width: 768px) and (min-resolution: 192dpi) {
+    background-image: url(${bottleTab2x});}
+@media screen and (min-width: 1440px) {
+  background-position: -120px center;
+    width: 916px;
+    min-height: 680px;
+  background-image: url(${bottleDesk1x});
+
+  @media screen and (min-width: 1440px) and (-webkit-min-device-pixel-ratio: 2),
+    (min-width: 1440px) and (min-resolution: 192dpi) {
+    background-image: url(${bottleDesk2x});
+  }
 `;
-export const SightInContainer = styled.div`
-  overflow: hidden;
-  height: 100vh;
+
+export const SignUpContainer = styled.div`
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 66px;
+
+  @media screen and (min-width: 768px) {
+    flex-direction: row-reverse;
+    align-items: flex-start;
+    gap: 0;
+  }
+
   @media screen and (min-width: 1440px) {
-    display: grid;
-    grid-template-columns: repeat(10, 121px);
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: row;
   }
 `;
 export const ForFormContainer = styled.div`
@@ -31,27 +70,7 @@ export const ForFormContainer = styled.div`
     justify-self: center;
   }
 `;
-export const BottleStyled = styled(BottleMob)`
-  z-index: -1;
-  background-image: url(${BottleMob});
-  background-size: cover;
 
-  @media screen and (min-width: 768px) {
-    position: absolute;
-    top: 52px;
-    left: calc(50% - 170px);
-    width: 736px;
-    height: 548px;
-  }
-  @media screen and (min-width: 1440px) {
-    margin-top: 107px;
-    position: static;
-    width: 916px;
-    height: 680px;
-    grid-column: 1/3;
-    grid-row: 1;
-  }
-`;
 export const FormHead = styled.h2`
   color: ${baseTheme.colors.black};
   font-size: 26px;

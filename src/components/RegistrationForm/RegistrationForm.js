@@ -3,14 +3,13 @@ import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
-import { ToastContainer } from 'react-toastify';
 import { register } from 'redux/auth/operations';
 import {
-  BackgroundImg,
+  SignUpContainer,
   SightUp,
   ErMsg,
   FormBtnStyled,
-  SightInContainer,
+  BottleImg,
   StyledBtn,
   StyledField,
   StyledForm,
@@ -51,88 +50,74 @@ const RegistrationForm = () => {
   };
 
   return (
-    <BackgroundImg>
-      <SightInContainer>
-        <Formik
-          initialValues={initialValues}
-          validationSchema={validationSchema}
-          onSubmit={handleSubmit}
-        >
-          {({ isSubmitting, touched, errors }) => (
-            <StyledForm>
-              <h2>Sign Up</h2>
-              <Styledlabel>Enter your email</Styledlabel>
-              <StyledField
-                type="email"
-                name="email"
-                placeholder="E-mail"
-                error={!!(touched.email && errors.email)}
-              />
-              <ErMsg name="email" component="div" />
+    <SignUpContainer>
+      <BottleImg />
+      <Formik
+        initialValues={initialValues}
+        validationSchema={validationSchema}
+        onSubmit={handleSubmit}
+      >
+        {({ isSubmitting, touched, errors }) => (
+          <StyledForm>
+            <h2>Sign Up</h2>
+            <Styledlabel>Enter your email</Styledlabel>
+            <StyledField
+              type="email"
+              name="email"
+              placeholder="E-mail"
+              error={!!(touched.email && errors.email)}
+            />
+            <ErMsg name="email" component="div" />
 
-              <Styledlabel>
-                Enter your password
-                <StyledBtn onClick={() => setShowPassword(!showPassword)}>
-                  <svg>
-                    <use
-                      href={sprite + (showPassword ? '#eye-show' : '#eye-hide')}
-                    ></use>
-                  </svg>
-                </StyledBtn>
-              </Styledlabel>
-              <StyledField
-                type={showPassword ? 'text' : 'password'}
-                name="password"
-                placeholder="Password"
-                error={!!(touched.password && errors.password)}
-              />
+            <Styledlabel>
+              Enter your password
+              <StyledBtn onClick={() => setShowPassword(!showPassword)}>
+                <svg>
+                  <use
+                    href={sprite + (showPassword ? '#eye-show' : '#eye-hide')}
+                  ></use>
+                </svg>
+              </StyledBtn>
+            </Styledlabel>
+            <StyledField
+              type={showPassword ? 'text' : 'password'}
+              name="password"
+              placeholder="Password"
+              error={!!(touched.password && errors.password)}
+            />
 
-              <ErMsg name="password" component="div" />
+            <ErMsg name="password" component="div" />
 
-              <Styledlabel>
-                Repeat Password
-                <StyledBtn
-                  onClick={() => setShowRepeatPassword(!showRepeatPassword)}
-                >
-                  <svg>
-                    <use
-                      href={
-                        sprite +
-                        (showRepeatPassword ? '#eye-show' : '#eye-hide')
-                      }
-                    ></use>
-                  </svg>
-                </StyledBtn>
-              </Styledlabel>
-              <StyledField
-                type={showRepeatPassword ? 'text' : 'password'}
-                name="repeatPassword"
-                placeholder="Repeat your password"
-                error={!!(touched.repeatPassword && errors.repeatPassword)}
-              />
-              <ErMsg name="repeatPassword" component="div" />
+            <Styledlabel>
+              Repeat Password
+              <StyledBtn
+                onClick={() => setShowRepeatPassword(!showRepeatPassword)}
+              >
+                <svg>
+                  <use
+                    href={
+                      sprite + (showRepeatPassword ? '#eye-show' : '#eye-hide')
+                    }
+                  ></use>
+                </svg>
+              </StyledBtn>
+            </Styledlabel>
+            <StyledField
+              type={showRepeatPassword ? 'text' : 'password'}
+              name="repeatPassword"
+              placeholder="Repeat your password"
+              error={!!(touched.repeatPassword && errors.repeatPassword)}
+            />
+            <ErMsg name="repeatPassword" component="div" />
 
-              <FormBtnStyled type="submit" disabled={isSubmitting}>
-                Sign Up
-              </FormBtnStyled>
-              <SightUp onClick={() => navigate('/signin')}>Sign in</SightUp>
-            </StyledForm>
-          )}
-        </Formik>
-        <ToastContainer
-          position="top-right"
-          autoClose={5000}
-          hideProgressBar={false}
-          newestOnTop={false}
-          closeOnClick
-          rtl={false}
-          pauseOnFocusLoss
-          draggable
-          pauseOnHover
-          theme="colored"
-        />
-      </SightInContainer>
-    </BackgroundImg>
+            <FormBtnStyled type="submit" disabled={isSubmitting}>
+              Sign Up
+            </FormBtnStyled>
+            <SightUp onClick={() => navigate('/signin')}>Sign in</SightUp>
+          </StyledForm>
+        )}
+      </Formik>
+    </SignUpContainer>
   );
 };
 
