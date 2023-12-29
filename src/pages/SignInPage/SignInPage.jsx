@@ -1,12 +1,12 @@
 import React from 'react';
 import SignInForm from 'components/SignInForm/SignIForm';
+import { SignInSection } from './SignInPage.styled';
 
 const SignInPage = () => {
   return (
-    <div>
-      <h2>Sign in</h2>
+    <SignInSection>
       <SignInForm />
-    </div>
+    </SignInSection>
   );
 };
 
