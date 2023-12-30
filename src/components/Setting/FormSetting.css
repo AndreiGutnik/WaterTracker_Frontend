@@ -83,8 +83,6 @@ color: #D7E3FF;
     opacity: 1;
 }
 
-
-
 .form-label {
     font-family: 'RobotoBold';
         font-size: 18px;
@@ -103,6 +101,7 @@ color: #D7E3FF;
 }
 
 .form-control {
+    position: relative;
     width: 264px;
     height: 44px;
     display: flex;
@@ -117,6 +116,15 @@ color: #D7E3FF;
                 font-weight: 400;
                 line-height: 20px;
 }
+
+
+
+
+.show-button {
+    border: 0;
+}
+
+
 
 
 
