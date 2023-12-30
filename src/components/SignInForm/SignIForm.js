@@ -54,16 +54,18 @@ const SignInForm = () => {
           <StyledForm>
             <h2>Sign in</h2>
 
-            <Styledlabel>Enter your email</Styledlabel>
+            <Styledlabel htmlFor="email">Enter your email</Styledlabel>
             <StyledField
               type="email"
               name="email"
+              id="email"
               placeholder="E-mail"
               error={!!(touched.email && errors.email)}
+              autoComplete="email"
             />
             <ErMsg name="email" component="div" />
 
-            <Styledlabel>
+            <Styledlabel htmlFor="password">
               Enter your password
               <StyledBtn onClick={() => setShowPassword(!showPassword)}>
                 <svg>
@@ -76,8 +78,10 @@ const SignInForm = () => {
             <StyledField
               type={showPassword ? 'text' : 'password'}
               name="password"
+              id="password"
               placeholder="Password"
               error={!!(touched.password && errors.password)}
+              autoComplete="current-password"
             />
             <ErrorMessage name="password" component="div" />
 
