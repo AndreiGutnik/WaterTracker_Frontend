@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { Formik, ErrorMessage } from 'formik';
+import { Formik } from 'formik';
 import * as Yup from 'yup';
 import { logIn } from 'redux/auth/operations';
 import { useNavigate } from 'react-router-dom';
@@ -54,16 +54,18 @@ const SignInForm = () => {
           <StyledForm>
             <h2>Sign in</h2>
 
-            <Styledlabel>Enter your email</Styledlabel>
+            <Styledlabel htmlFor="email">Enter your email</Styledlabel>
             <StyledField
               type="email"
               name="email"
+              id="email"
               placeholder="E-mail"
-              error={!!(touched.email && errors.email)}
+              error={touched.email && errors.email ? 'true' : 'false'}
+              autoComplete="email"
             />
             <ErMsg name="email" component="div" />
 
-            <Styledlabel>
+            <Styledlabel htmlFor="password">
               Enter your password
               <StyledBtn onClick={() => setShowPassword(!showPassword)}>
                 <svg>
@@ -76,10 +78,12 @@ const SignInForm = () => {
             <StyledField
               type={showPassword ? 'text' : 'password'}
               name="password"
+              id="password"
               placeholder="Password"
-              error={!!(touched.password && errors.password)}
+              error={touched.password && errors.password ? 'true' : 'false'}
+              autoComplete="current-password"
             />
-            <ErrorMessage name="password" component="div" />
+            <ErMsg name="password" component="div" />
 
             <FormBtnStyled type="submit" disabled={isSubmitting}>
               Sign in
