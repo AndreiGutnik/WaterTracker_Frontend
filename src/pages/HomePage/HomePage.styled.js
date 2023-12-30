@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { baseTheme } from '../theme';
+import { baseTheme } from '../../components/theme';
 
 export const TrackerContainer = styled.div`
   padding: 24px 8px;
