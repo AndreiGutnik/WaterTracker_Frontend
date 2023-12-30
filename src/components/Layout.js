@@ -3,11 +3,12 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Suspense } from 'react';
 import { Container } from './Container';
+import { Header } from './Header/Header';
 
 export const Layout = () => {
   return (
     <Container>
-      {/* <Header /> */}
+    <Header/>
       <Suspense fallback={null}>
         <Outlet />
       </Suspense>
