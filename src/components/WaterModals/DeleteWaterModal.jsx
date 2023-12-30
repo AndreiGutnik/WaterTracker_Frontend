@@ -11,7 +11,7 @@ import { useRef } from 'react';
 import { useModalClose } from 'hooks/useModal';
 import { closeModal } from 'redux/modals/modalsSlice';
 import sprite from '../../images/sprite.svg';
-import { deleteWter } from 'redux/water/operations';
+import { deleteWater } from 'redux/water/operations';
 import { selectModalIdWater } from 'redux/modals/selectors';
 
 export const DeleteWaterModal = () => {
@@ -22,7 +22,7 @@ export const DeleteWaterModal = () => {
   const _id = useSelector(selectModalIdWater);
 
   const onDelete = () => {
-    dispatch(deleteWter(_id));
+    dispatch(deleteWater(_id));
     dispatch(closeModal());
   };
 
