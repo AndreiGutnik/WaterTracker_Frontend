@@ -5,7 +5,7 @@ import {Link} from 'react-router-dom';
 export const Wrapper = styled.div`
   display: flex;
   justify-content: space-between;
-  margin-bottom: 80px;
+ 
   @media screen and (min-width: 768px) and (max-width: 1439px) {
     margin-bottom: 40px;
   }
