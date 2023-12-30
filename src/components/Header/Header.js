@@ -6,15 +6,12 @@ import { Wrapper, WrapperLogo, WrapperSignin, LogoTag } from './Header.styled';
 import { UserAuth } from './UserAuth/UserAuth';
 import { UserLogo } from './UserLogo/UserLogo';
 
-
 export const Header = props => {
-  const {isLoggedIn} = useAuth();
-console.log('useAuth :>> ', useAuth());
-console.log('isLoggedIn :>> ', isLoggedIn);
+  const { isLoggedIn } = useAuth();
 
   return (
     <Wrapper>
-      <WrapperLogo to={ isLoggedIn ? '/homepage' : '/'}>
+      <WrapperLogo to={isLoggedIn ? '/homepage' : '/'}>
         <LogoTag src={Logo} alt="logo of App" />
         <p>Tracker of water</p>
       </WrapperLogo>
