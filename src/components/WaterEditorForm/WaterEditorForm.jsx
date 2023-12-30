@@ -1,4 +1,4 @@
-import { Formik, Field, Form } from 'formik';
+import { Formik } from 'formik';
 import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
 import {
@@ -7,14 +7,19 @@ import {
   AmountSpan,
   PlusMinusBtn,
   SaveBtn,
+  InputText,
+  InputTimeLable,
+  InputVolumeLable,
+  TimeVolumeInput,
+  AmountLable,
+  SaveVolumeDiv,
+  FormContainer,
 } from './WaterEditorForm.styled';
 import sprite from '../../images/sprite.svg';
 import { addWater, editWater } from 'redux/water/operations';
 import { closeModal } from 'redux/modals/modalsSlice';
 import modalConstants from 'redux/modals/modalСonstants';
 import { selectModalType, selectModalWater } from 'redux/modals/selectors';
-import { TimeInput } from 'components/WaterModals/WaterModals.styled';
-
 export const WaterEditorForm = () => {
   const dispatch = useDispatch();
 
@@ -68,7 +73,7 @@ export const WaterEditorForm = () => {
 
   return (
     <>
-      <p>Amount of water:</p>
+      <InputText>Amount of water:</InputText>
       <AmountContainer>
         <PlusMinusBtn onClick={decrement}>
           <svg>
@@ -94,25 +99,27 @@ export const WaterEditorForm = () => {
         }}
         autoComplete="off"
       >
-        <Form>
-          <label>
+        <FormContainer>
+          <InputTimeLable>
             Recording time:
-            <TimeInput name="time" type="time" />
-          </label>
-          <label>
+            <TimeVolumeInput name="time" type="time" />
+          </InputTimeLable>
+          <InputVolumeLable>
             Enter the value of the water used:
-            <Field
+            <TimeVolumeInput
               name="amountWater"
               type="number"
               value={volume}
               onChange={changeValue}
             />
-          </label>
-          <label>{volume}ml</label>
-          <SaveBtn type="submit">
-            <span>Save</span>
-          </SaveBtn>
-        </Form>
+          </InputVolumeLable>
+          <SaveVolumeDiv>
+            <AmountLable>{volume}ml</AmountLable>
+            <SaveBtn type="submit">
+              <span>Save</span>
+            </SaveBtn>
+          </SaveVolumeDiv>
+        </FormContainer>
       </Formik>
     </>
   );

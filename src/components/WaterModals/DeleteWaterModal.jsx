@@ -1,5 +1,12 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { CloseBtn, Modal } from './WaterModals.styled';
+import {
+  CloseBtn,
+  DivDeleteBtn,
+  ModalDelete,
+  ModalHead,
+  ModalHeader,
+  SmaleDeleteHeader,
+} from './WaterModals.styled';
 import { useRef } from 'react';
 import { useModalClose } from 'hooks/useModal';
 import { closeModal } from 'redux/modals/modalsSlice';
@@ -20,16 +27,23 @@ export const DeleteWaterModal = () => {
   };
 
   return (
-    <Modal ref={modaldeleteRef}>
-      <h3>Delete entry</h3>
-      <CloseBtn onClick={() => dispatch(closeModal())}>
-        <svg>
-          <use href={sprite + '#close'}></use>
-        </svg>
-      </CloseBtn>
-      <p>Are you sure you want to delete the entry?</p>
-      <button onClick={() => onDelete()}>Delete</button>
-      <button onClick={() => dispatch(closeModal())}>Cancel</button>
-    </Modal>
+    <ModalDelete ref={modaldeleteRef}>
+      <ModalHead>
+        <ModalHeader>Delete entry</ModalHeader>
+        <CloseBtn onClick={() => dispatch(closeModal())}>
+          <svg>
+            <use href={sprite + '#close'}></use>
+          </svg>
+        </CloseBtn>
+      </ModalHead>
+
+      <SmaleDeleteHeader>
+        Are you sure you want to delete the entry?
+      </SmaleDeleteHeader>
+      <DivDeleteBtn>
+        <button onClick={() => onDelete()}>Delete</button>
+        <button onClick={() => dispatch(closeModal())}>Cancel</button>
+      </DivDeleteBtn>
+    </ModalDelete>
   );
 };

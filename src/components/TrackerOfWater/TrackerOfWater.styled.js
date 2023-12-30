@@ -2,9 +2,6 @@ import { baseTheme } from 'components/theme';
 import styled from 'styled-components';
 
 export const TrackerContainer = styled.div`
-  max-width: 280px;
-  max-height: 836px;
-
   padding: 24px 8px;
   display: flex;
   flex-direction: column;
@@ -16,5 +13,9 @@ export const TrackerContainer = styled.div`
 
   @media screen and (min-width: 768px) {
     padding: 32px 24px;
+  }
+  @media only screen and (min-width: 1440px) {
+    width: 592px;
+    height: 690px;
   }
 `;

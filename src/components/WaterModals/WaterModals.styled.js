@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Field } from 'formik';
+import { baseTheme } from 'components/theme';
 
 export const ModalContainer = styled.aside`
   position: fixed;
@@ -7,7 +7,7 @@ export const ModalContainer = styled.aside`
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.7);
+  background: rgba(0, 0, 0, 0.8);
   z-index: 10;
   display: flex;
   align-items: center;
@@ -16,20 +16,29 @@ export const ModalContainer = styled.aside`
 
 export const Modal = styled.div`
   width: 280px;
-  max-width: 540px;
+  height: 540px;
   padding: 24px 12px;
 
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 24px;
 
   border-radius: 10px;
-  background: #fff;
+  background: ${baseTheme.colors.white};
   text-align: center;
+
+  @media screen and (min-width: 768px) {
+    width: 704px;
+    height: 504px;
+    padding: 32px 24px;
+  }
+  @media only screen and (min-width: 1440px) {
+    width: 592px;
+  }
 `;
 
 export const ModalHead = styled.div`
+  margin-bottom: 24px;
   display: flex;
   width: 100%;
   justify-content: space-between;
@@ -45,40 +54,158 @@ export const CloseBtn = styled.button`
   }
 
   & use {
-    fill: #407bff;
+    fill: ${baseTheme.colors.blue};
   }
 
   &:hover use {
-    fill: #ff9d43;
+    fill: ${baseTheme.colors.orange};
   }
 `;
 
 export const ModalHeader = styled.h3`
   font-size: 26px;
   font-weight: 500;
-  line-height: 1.23; /* 123.077% */
+  line-height: 1.23;
 `;
 
 export const SmaleHeader = styled.h4`
+  margin-bottom: 16px;
   font-size: 18px;
   font-weight: 500;
-  line-height: 1.11; /* 111.111% */
+  line-height: 1.11;
 `;
 
-export const TimeInput = styled(Field)`
-  font: inherit;
-  color: currentColor;
+export const ModalEdit = styled.div`
+  width: 280px;
+  height: 648px;
+  padding: 24px 12px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  border-radius: 10px;
+  background: ${baseTheme.colors.white};
+  text-align: center;
+
+  @media screen and (min-width: 768px) {
+    width: 704px;
+    height: 580px;
+    padding: 32px 24px;
+  }
+  @media only screen and (min-width: 1440px) {
+    width: 592px;
+  }
+`;
+
+export const InfoEditWrap = styled.div`
+  width: 256px;
+  height: 52px;
+  padding: 8px 24px;
+  margin-bottom: 24px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 10px;
+  background: var(--Secondary-color-2, #ecf2ff);
+
+  & svg {
+    width: 36px;
+    height: 36px;
+
+    @media screen and (min-width: 768px) {
+      width: 36px;
+      height: 36px;
+    }
+    @media only screen and (min-width: 1440px) {
+    }
+    & use {
+      x: 5px;
+      y: 3px;
+      fill: ${baseTheme.colors.blue};
+    }
+  }
+`;
+
+export const TextEditVolume = styled.p`
+  color: ${baseTheme.colors.blue};
+  font-size: 18px;
+  line-height: 1.33;
+  height: 60%;
+`;
+
+export const TextEditTime = styled.p`
+  color: ${baseTheme.colors.black};
+  font-size: 12px;
+  line-height: 2;
+`;
+
+export const ModalDelete = styled.div`
+  width: 280px;
+  height: 280px;
+  padding: 32px 24px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  border-radius: 10px;
+  background: ${baseTheme.colors.white};
+  text-align: center;
+
+  @media screen and (min-width: 768px) {
+    width: 592px;
+    height: 208px;
+  }
+  @media only screen and (min-width: 1440px) {
+    width: 592px;
+  }
+`;
+
+export const SmaleDeleteHeader = styled.h4`
+  margin-bottom: 24px;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.11;
+  text-align: left;
+`;
+
+export const DivDeleteBtn = styled.div`
   width: 100%;
-  border: 0;
-  height: 1.1876em;
-  margin: 0;
-  display: block;
-  padding: 6px 0 7px;
-  min-width: 0;
-  background: none;
-  box-sizing: content-box;
-  animation-name: mui-auto-fill-cancel;
-  letter-spacing: inherit;
-  animation-duration: 10ms;
-  -webkit-tap-highlight-color: transparent;
+  display: flex;
+  gap: 24px;
+  flex-direction: column;
+
+  & button {
+    display: flex;
+    padding: 8px 30px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+
+    color: var(--Primery-Color-Blue, #407bff);
+
+    line-height: 1.25;
+
+    border: none;
+    border-radius: 10px;
+    background: ${baseTheme.colors.violet_light};
+
+    &:first-child {
+      color: ${baseTheme.colors.white};
+      background: var(--Secondary-color-3, #ef5050);
+      box-shadow: 0px 4px 8px 0px rgba(64, 123, 255, 0.34);
+    }
+  }
+
+  @media screen and (min-width: 768px) {
+    height: 44px;
+    gap: 24px;
+    flex-direction: row-reverse;
+
+    & button {
+      width: 160px;
+    }
+  }
 `;
