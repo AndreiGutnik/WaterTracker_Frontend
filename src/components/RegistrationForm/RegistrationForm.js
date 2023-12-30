@@ -60,16 +60,18 @@ const RegistrationForm = () => {
         {({ isSubmitting, touched, errors }) => (
           <StyledForm>
             <h2>Sign Up</h2>
-            <Styledlabel>Enter your email</Styledlabel>
+            <Styledlabel htmlFor="email">Enter your email</Styledlabel>
             <StyledField
               type="email"
               name="email"
+              id="email"
               placeholder="E-mail"
-              error={!!(touched.email && errors.email)}
+              autoComplete="email"
+              error={touched.email && errors.email ? 'true' : 'false'}
             />
             <ErMsg name="email" component="div" />
 
-            <Styledlabel>
+            <Styledlabel htmlFor="password">
               Enter your password
               <StyledBtn onClick={() => setShowPassword(!showPassword)}>
                 <svg>
@@ -82,13 +84,15 @@ const RegistrationForm = () => {
             <StyledField
               type={showPassword ? 'text' : 'password'}
               name="password"
+              id="password"
               placeholder="Password"
-              error={!!(touched.password && errors.password)}
+              error={touched.password && errors.password ? 'true' : 'false'}
+              autoComplete="new-password"
             />
 
             <ErMsg name="password" component="div" />
 
-            <Styledlabel>
+            <Styledlabel htmlFor="repeatPassword">
               Repeat Password
               <StyledBtn
                 onClick={() => setShowRepeatPassword(!showRepeatPassword)}
@@ -105,8 +109,14 @@ const RegistrationForm = () => {
             <StyledField
               type={showRepeatPassword ? 'text' : 'password'}
               name="repeatPassword"
+              id="repeatPassword"
               placeholder="Repeat your password"
-              error={!!(touched.repeatPassword && errors.repeatPassword)}
+              error={
+                touched.repeatPassword && errors.repeatPassword
+                  ? 'true'
+                  : 'false'
+              }
+              autoComplete="new-password"
             />
             <ErMsg name="repeatPassword" component="div" />
 

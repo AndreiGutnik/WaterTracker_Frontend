@@ -116,7 +116,7 @@ export const StyledField = styled(Field)`
   border-radius: 6px;
   border: 1px solid
     ${({ error }) =>
-      error ? baseTheme.colors.red : baseTheme.colors.violet_light};
+      error === 'true' ? baseTheme.colors.red : baseTheme.colors.violet_light};
   background: ${baseTheme.colors.white};
   &::placeholder {
     color: ${baseTheme.colors.violet_light};
@@ -124,15 +124,6 @@ export const StyledField = styled(Field)`
     font-weight: 400;
     line-height: 1.23;
   }
-`;
-
-export const Styledlabel = styled.label`
-  margin-top: 16px;
-  color: ${baseTheme.colors.black};
-  position: relative;
-  font-size: 18px;
-  font-weight: 400;
-  line-height: 1.33;
 `;
 
 export const FormBtnStyled = styled.button`
@@ -168,6 +159,14 @@ export const FormBtnStyled = styled.button`
     font-size: 18px;
     line-height: 1.33;
   }
+`;
+export const Styledlabel = styled.label`
+  margin-top: 16px;
+  color: ${baseTheme.colors.black};
+  position: relative;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.33;
 `;
 
 export const SightUp = styled.p`
