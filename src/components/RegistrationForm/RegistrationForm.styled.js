@@ -126,15 +126,6 @@ export const StyledField = styled(Field)`
   }
 `;
 
-export const Styledlabel = styled.label`
-  margin-top: 16px;
-  color: ${baseTheme.colors.black};
-  position: relative;
-  font-size: 18px;
-  font-weight: 400;
-  line-height: 1.33;
-`;
-
 export const FormBtnStyled = styled.button`
   margin-top: 16px;
   width: 100%;
@@ -168,6 +159,14 @@ export const FormBtnStyled = styled.button`
     font-size: 18px;
     line-height: 1.33;
   }
+`;
+export const Styledlabel = styled.label`
+  margin-top: 16px;
+  color: ${baseTheme.colors.black};
+  position: relative;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.33;
 `;
 
 export const SightUp = styled.p`
