@@ -88,7 +88,7 @@ color: #D7E3FF;
         font-size: 18px;
         font-weight: 500;
         line-height: 20px;
-        margin-bottom: 8px;
+        /* margin-bottom: 8px; */
 }
 
 .form-text{
@@ -101,7 +101,6 @@ color: #D7E3FF;
 }
 
 .form-control {
-    position: relative;
     width: 264px;
     height: 44px;
     display: flex;
@@ -115,14 +114,21 @@ color: #D7E3FF;
                 font-size: 16px;
                 font-weight: 400;
                 line-height: 20px;
+                margin-top: 8px;
 }
 
+/* .input-password{
+    position: absolute;
+    display: block;
+} */
 
-
-
-.show-button {
+.show-button{
     border: 0;
 }
+
+
+
+
 
 
 

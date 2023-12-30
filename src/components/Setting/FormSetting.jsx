@@ -91,7 +91,7 @@ class FormSetting extends Component{
                             </div>
                         </div>
 
-            <div className="name-you">
+            <div className="inputy">
     <label htmlFor="exampleInputName" className="form-label">Your name</label>
                 <input name="name" type="name" className="form-control" id="exampleInputName" aria-describedby="nameHelp"
                         onChange={this.handleChange}
@@ -100,7 +100,7 @@ class FormSetting extends Component{
                 />
                     </div>
                     
-  <div className="email-you">
+  <div className="inputy">
     <label htmlFor="exampleInputEmail1" className="form-label">Email address</label>
                 <input name="email"
                     type="email" className="form-control" id="InputEmail1" aria-describedby="emailHelp"
@@ -110,7 +110,7 @@ class FormSetting extends Component{
                 />
                     </div>
             
-  <div className="password-you">
+  <div className="inputy">
                 <label htmlFor="exampleInputPassword1" className="form-label">Password</label>
                 <div id="emailHelp" className="form-text">Outdated password:</div>          
                         <input name="outdatedPassword" type={this.state.showPassword ? "text" : "password"}
