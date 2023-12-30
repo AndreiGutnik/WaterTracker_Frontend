@@ -116,7 +116,7 @@ export const StyledField = styled(Field)`
   border-radius: 6px;
   border: 1px solid
     ${({ error }) =>
-      error ? baseTheme.colors.red : baseTheme.colors.violet_light};
+      error === 'true' ? baseTheme.colors.red : baseTheme.colors.violet_light};
   background: ${baseTheme.colors.white};
   &::placeholder {
     color: ${baseTheme.colors.violet_light};

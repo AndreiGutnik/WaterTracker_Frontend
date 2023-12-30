@@ -66,8 +66,8 @@ const RegistrationForm = () => {
               name="email"
               id="email"
               placeholder="E-mail"
-              error={!!(touched.email && errors.email)}
               autoComplete="email"
+              error={touched.email && errors.email ? 'true' : 'false'}
             />
             <ErMsg name="email" component="div" />
 
@@ -86,7 +86,7 @@ const RegistrationForm = () => {
               name="password"
               id="password"
               placeholder="Password"
-              error={!!(touched.password && errors.password)}
+              error={touched.password && errors.password ? 'true' : 'false'}
               autoComplete="new-password"
             />
 
@@ -111,7 +111,11 @@ const RegistrationForm = () => {
               name="repeatPassword"
               id="repeatPassword"
               placeholder="Repeat your password"
-              error={!!(touched.repeatPassword && errors.repeatPassword)}
+              error={
+                touched.repeatPassword && errors.repeatPassword
+                  ? 'true'
+                  : 'false'
+              }
               autoComplete="new-password"
             />
             <ErMsg name="repeatPassword" component="div" />
