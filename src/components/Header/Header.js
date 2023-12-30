@@ -2,9 +2,9 @@ import Logo from '../../images/logo.svg';
 import Icons from '../../images/sprite.svg';
 import { Wrapper, WrapperLogo, WrapperSignin, LogoTag } from './Header.styled';
 import { UserAuth } from './UserAuth/UserAuth';
-import { UserLogo } from './UserLogo/UserLogo.styled';
+import { UserLogo } from './UserLogo/UserLogo';
 
-const isLoggedIn = false;
+const isLoggedIn = true;
 
 export const Header = props => {
   return (

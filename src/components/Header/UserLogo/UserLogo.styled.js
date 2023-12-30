@@ -1,3 +1,6 @@
-export const UserLogo=()=>{
-    return <p>UserLogo</p>
-}
+import styled from 'styled-components';
+
+export const WrapperBtn = styled.div`
+  display: flex;
+  gap: 4px;
+`;
