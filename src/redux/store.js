@@ -10,6 +10,7 @@ import {
 } from 'redux-persist';
 import { waterReducer } from './water/waterSlice';
 import modalsReducer from './modals/modalsSlice';
+import monthReducer from './month/monthSlice';
 // import { authReducer } from './auth/auth.slice';
 import { persistedContactsReducer } from './auth/auth.slice';
 
@@ -17,6 +18,7 @@ export const store = configureStore({
   reducer: {
     auth: persistedContactsReducer,
     water: waterReducer,
+    dataMonth: monthReducer,
     modals: modalsReducer,
   },
   middleware(getDefaultMiddleware) {
