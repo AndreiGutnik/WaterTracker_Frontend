@@ -1,8 +1,8 @@
 import { useAuth } from 'hooks/useAuth';
 
 import Logo from '../../images/logo.svg';
-import Icons from '../../images/sprite.svg';
-import { Wrapper, WrapperLogo, WrapperSignin, LogoTag } from './Header.styled';
+// import Icons from '../../images/sprite.svg';
+import { Wrapper, WrapperLogo, LogoTag } from './Header.styled';
 import { UserAuth } from './UserAuth/UserAuth';
 import { UserLogo } from './UserLogo/UserLogo';
 
