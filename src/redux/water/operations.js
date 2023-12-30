@@ -12,6 +12,7 @@ axios.defaults.headers.common.Authorization = `Bearer ${token}`;
 
 export const fetchTodayWater = createAsyncThunk(
   'water/fetchWather',
+  'water/fetchWather',
   async (_, thunkAPI) => {
     try {
       const response = await axios.get('api/waternotes/today');
@@ -26,7 +27,7 @@ export const addWater = createAsyncThunk(
   'water/addWater',
   async ({ amountWater, date }, thunkAPI) => {
     try {
-      const response = await axios.post('api/waternotes', {
+      const { data } = await axios.post('api/waternotes', {
         date,
         amountWater,
       });

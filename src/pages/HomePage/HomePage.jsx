@@ -1,9 +1,11 @@
 import { TrackerOfWater } from 'components/TrackerOfWater/TrackerOfWater';
 
-export const HomePage = () => {
+const HomePage = () => {
   return (
     <>
       <TrackerOfWater />
     </>
   );
 };
+
+export default HomePage;
