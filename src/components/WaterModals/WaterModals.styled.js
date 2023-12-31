@@ -108,7 +108,7 @@ export const InfoEditWrap = styled.div`
   align-items: center;
   justify-content: space-between;
   border-radius: 10px;
-  background: var(--Secondary-color-2, #ecf2ff);
+  background: ${baseTheme.colors.grey};
 
   & svg {
     width: 36px;
@@ -184,7 +184,7 @@ export const DivDeleteBtn = styled.div`
     align-items: center;
     gap: 10px;
 
-    color: var(--Primery-Color-Blue, #407bff);
+    color: ${baseTheme.colors.blue};
 
     line-height: 1.25;
 
@@ -194,7 +194,7 @@ export const DivDeleteBtn = styled.div`
 
     &:first-child {
       color: ${baseTheme.colors.white};
-      background: var(--Secondary-color-3, #ef5050);
+      background: ${baseTheme.colors.red};
       box-shadow: 0px 4px 8px 0px rgba(64, 123, 255, 0.34);
     }
   }
