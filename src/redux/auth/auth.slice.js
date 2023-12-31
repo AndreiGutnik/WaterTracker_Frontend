@@ -7,6 +7,7 @@ const initialState = {
   user: null,
   token: null,
   isLoggedIn: false,
+  isRegistered: false,
   isRefreshing: false,
 };
 const authSlice = createSlice({
@@ -18,7 +19,7 @@ const authSlice = createSlice({
       .addCase(register.fulfilled, (state, action) => {
         state.user = action.payload.user;
         state.token = action.payload.token;
-        state.isLoggedIn = true;
+        state.isRegistered = true;
       })
       // .addCase(register.rejected, (state, action) => state)
 

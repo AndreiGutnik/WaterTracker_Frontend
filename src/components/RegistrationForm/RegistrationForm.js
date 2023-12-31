@@ -1,13 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { useNavigate } from 'react-router-dom';
+import { Formik } from 'formik';
 import * as Yup from 'yup';
 import { register } from 'redux/auth/operations';
-import { SignUpButton } from 'pages/SignUpPage/SignUpPage.styled';
-import { SignUpForm } from 'pages/SignUpPage/SignUpPage.styled';
-import { SignUpItems } from 'pages/SignUpPage/SignUpPage.styled';
-import { Link } from 'react-router-dom';
-
+import {
+  SignUpContainer,
+  SightUp,
+  ErMsg,
+  FormBtnStyled,
+  BottleImg,
+  StyledBtn,
+  StyledField,
+  StyledForm,
+  Styledlabel,
+} from './RegistrationForm.styled.js';
+import sprite from '../../images/sprite.svg';
 const initialValues = {
   email: '',
   password: '',
@@ -25,7 +33,11 @@ const validationSchema = Yup.object({
 });
 
 const RegistrationForm = () => {
+  const [showPassword, setShowPassword] = useState(false);
+  const [showRepeatPassword, setShowRepeatPassword] = useState(false);
+
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleSubmit = async ({ email, password }, { resetForm }) => {
     dispatch(
@@ -38,39 +50,84 @@ const RegistrationForm = () => {
   };
 
   return (
-    <Formik
-      initialValues={initialValues}
-      validationSchema={validationSchema}
-      onSubmit={handleSubmit}
-    >
-      {({ isSubmitting }) => (
-        <Form>
-          <SignUpForm>
-            <SignUpItems>Enter your email</SignUpItems>
-            <Field type="email" name="email" placeholder="E-mail" />
-            <ErrorMessage name="email" component="div" />
-
-            <SignUpItems>Enter your password</SignUpItems>
-            <Field type="password" name="password" placeholder="Password" />
-
-            <ErrorMessage name="password" component="div" />
-
-            <SignUpItems>Repeat Password</SignUpItems>
-            <Field
-              type="password"
-              name="repeatPassword"
-              placeholder="Repeat your password"
+    <SignUpContainer>
+      <BottleImg />
+      <Formik
+        initialValues={initialValues}
+        validationSchema={validationSchema}
+        onSubmit={handleSubmit}
+      >
+        {({ isSubmitting, touched, errors }) => (
+          <StyledForm>
+            <h2>Sign Up</h2>
+            <Styledlabel htmlFor="email">Enter your email</Styledlabel>
+            <StyledField
+              type="email"
+              name="email"
+              id="email"
+              placeholder="E-mail"
+              autoComplete="email"
+              error={touched.email && errors.email ? 'true' : 'false'}
             />
-            <ErrorMessage name="repeatPassword" component="div" />
-          </SignUpForm>
+            <ErMsg name="email" component="div" />
 
-          <SignUpButton type="submit" disabled={isSubmitting}>
-            Sign Up
-          </SignUpButton>
-          <Link to="/signin">Sign In</Link>
-        </Form>
-      )}
-    </Formik>
+            <Styledlabel htmlFor="password">
+              Enter your password
+              <StyledBtn onClick={() => setShowPassword(!showPassword)}>
+                <svg>
+                  <use
+                    href={sprite + (showPassword ? '#eye-show' : '#eye-hide')}
+                  ></use>
+                </svg>
+              </StyledBtn>
+            </Styledlabel>
+            <StyledField
+              type={showPassword ? 'text' : 'password'}
+              name="password"
+              id="password"
+              placeholder="Password"
+              error={touched.password && errors.password ? 'true' : 'false'}
+              autoComplete="new-password"
+            />
+
+            <ErMsg name="password" component="div" />
+
+            <Styledlabel htmlFor="repeatPassword">
+              Repeat Password
+              <StyledBtn
+                onClick={() => setShowRepeatPassword(!showRepeatPassword)}
+              >
+                <svg>
+                  <use
+                    href={
+                      sprite + (showRepeatPassword ? '#eye-show' : '#eye-hide')
+                    }
+                  ></use>
+                </svg>
+              </StyledBtn>
+            </Styledlabel>
+            <StyledField
+              type={showRepeatPassword ? 'text' : 'password'}
+              name="repeatPassword"
+              id="repeatPassword"
+              placeholder="Repeat your password"
+              error={
+                touched.repeatPassword && errors.repeatPassword
+                  ? 'true'
+                  : 'false'
+              }
+              autoComplete="new-password"
+            />
+            <ErMsg name="repeatPassword" component="div" />
+
+            <FormBtnStyled type="submit" disabled={isSubmitting}>
+              Sign Up
+            </FormBtnStyled>
+            <SightUp onClick={() => navigate('/signin')}>Sign in</SightUp>
+          </StyledForm>
+        )}
+      </Formik>
+    </SignUpContainer>
   );
 };
 

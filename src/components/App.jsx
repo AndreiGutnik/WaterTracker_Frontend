@@ -7,6 +7,7 @@ import { routes } from 'routes';
 import { Route, Routes } from 'react-router-dom';
 import PrivateRoute from './PrivateRoute';
 import PublicRoute from './PublicRoute';
+import PublicRegisterRoute from './PublicRegisterRoute';
 import WelcomePage from './WelcomePage/WelcomePage';
 import { refreshUser } from 'redux/auth/operations';
 import { useAuth } from 'hooks/useAuth';
@@ -33,7 +34,10 @@ export const App = () => {
             <Route
               path={routes.REGISTER}
               element={
-                <PublicRoute redirectTo={routes.LOGIN} component={SignUpPage} />
+                <PublicRegisterRoute
+                  redirectTo={routes.LOGIN}
+                  component={SignUpPage}
+                />
               }
             />
             <Route
