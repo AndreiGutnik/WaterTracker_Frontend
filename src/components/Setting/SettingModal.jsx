@@ -28,7 +28,7 @@ class SettingModal extends Component {
     return(
         <div className='container'>
     <HeaderSetting showModal={this.showModal}/>
-        {this.state.isShowModal && (<Setting closeModal={this.closeModal}><UploadImage createUser={ this.createUser} /><FormSetting createUser={ this.createUser} /></Setting>)}
+        {this.state.isShowModal && (<Setting closeModal={this.closeModal} ><UploadImage createUser={ this.createUser} /><FormSetting createUser={ this.createUser} /></Setting>)}
     </div>
   )
 }

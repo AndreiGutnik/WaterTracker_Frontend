@@ -7,10 +7,12 @@ const Setting = ({ children, closeModal }) => {
             className='modal-fade-show'>
             
                     <div className="modal-header">
-                        <h2 className="modal-title">Setting</h2>
-                        <svg  className = "bth-close" width="24" height="24" onChange={closeModal}>
+                <h2 className="modal-title">Setting</h2>
+                <span className = "bth-close" onChange={closeModal}>
+                        <svg   width="24" height="24">
                                 <use href={Icons + '#close'}></use>
-                            </svg>
+                </svg>
+                </span>
                     </div>
                     <div className="modal-body">{children}</div>
                 </div>
