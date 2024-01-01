@@ -21,6 +21,7 @@ export const DrinkInfoTitle = styled.h2`
   line-height: calc(20 / 18);
   font-weight: 700;
   font-size: 18px;
+  text-align: left;
 `;
 
 export const DrinkInfoList = styled.ul``;

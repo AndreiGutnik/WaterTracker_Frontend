@@ -1,4 +1,4 @@
-import { WaterTracker } from './WelcomPage.styled';
+import { WaterTracker, WelcomeContainer } from './WelcomPage.styled';
 import { WelcomeTracker } from './WelcomeTracker/WelcomeTracker';
 import { WaterTrackerBenefits } from './WaterTrackerBenefits/WaterTrackerBenefits';
 import { DrinkInfo } from './DrinkInfo/DrinkInfo';
@@ -6,10 +6,12 @@ import { DrinkInfo } from './DrinkInfo/DrinkInfo';
 const WelcomePage = () => {
   return (
     <WelcomeTracker>
+      <WelcomeContainer>
       <WaterTracker>
         <WaterTrackerBenefits />
         <DrinkInfo />
-      </WaterTracker>
+        </WaterTracker>
+        </WelcomeContainer>
     </WelcomeTracker>
   );
 };

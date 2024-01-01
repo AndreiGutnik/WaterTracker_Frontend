@@ -9,8 +9,8 @@ export const DrinkInfo = () => {
     <>
       <ContainerDrinkInfo>
               <DrinkInfoTitle>Why drink water</DrinkInfoTitle>
-              <DrinkInfoList>
-                <DrinkInfoItems>
+        <DrinkInfoList>
+          <DrinkInfoItems>
                   Supply of nutrients to all organs
                 </DrinkInfoItems>
                 <DrinkInfoItems>Providing oxygen to the lungs</DrinkInfoItems>
@@ -26,9 +26,9 @@ export const DrinkInfo = () => {
                 </DrinkInfoItems>
                 <DrinkInfoItems>
                   Maintaining an immune system capable of resisting disease
-                </DrinkInfoItems>
-              </DrinkInfoList>
-            </ContainerDrinkInfo>
+          </DrinkInfoItems>
+        </DrinkInfoList>
+      </ContainerDrinkInfo>
     </>
   );
 };

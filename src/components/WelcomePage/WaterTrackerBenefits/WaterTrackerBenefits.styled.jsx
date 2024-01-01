@@ -15,7 +15,6 @@ export const ContainerBenefits = styled.div`
     margin-bottom: 60px;
   }
 `;
-
 export const WelcomeTitle = styled.h1`
   margin-top: 16px;
   margin-bottom: 16px;
@@ -23,12 +22,12 @@ export const WelcomeTitle = styled.h1`
   font-size: 36px;
   font-weight: 700;
   color: ${baseTheme.colors.black};
+  text-align: left;
   @media only screen and (max-width: 767px) {
     line-height: calc(32 / 28);
     font-size: 28px;
   }
 `;
-
 export const WelcomeInfoTitle = styled.p`
   margin-bottom: 24px;
   line-height: calc(30 / 24);
@@ -39,12 +38,12 @@ export const WelcomeInfoTitle = styled.p`
     font-size: 26px;
   }
 `;
-
 export const WelcomeListTitle = styled.h2`
   margin-bottom: 12px;
   line-height: calc(20 / 18);
   font-weight: 700;
   font-size: 18px;
+  text-align: left;
 `;
 
 export const WelcomeListContent = styled.ul`
@@ -52,7 +51,7 @@ export const WelcomeListContent = styled.ul`
   line-height: calc(20 / 16);
   font-size: 16px;
   @media screen and (min-width: 768px) and (max-width: 1439px) {
-    disply: flex;
+    display: flex;
     align-items: center;
     justify-content: space-between;
   }
@@ -104,6 +103,7 @@ export const WelcomeButton = styled.button`
   border: none;
   border-radius: 10px;
   outline: none;
+  color: ${baseTheme.colors.white};
   background-color: ${baseTheme.colors.blue};
   box-shadow: 0px 4px 8px 0px rgba(64, 123, 255, 0.34);
   transition: all ${baseTheme.cubicBezier};
