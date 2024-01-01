@@ -85,7 +85,7 @@ export const TodayWaterList = () => {
             ))
           ) : (
             <li>
-              <p>No records</p>
+              <p>No notes yet</p>
             </li>
           )}
           <li>

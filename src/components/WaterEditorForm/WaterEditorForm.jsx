@@ -20,13 +20,28 @@ import { addWater, editWater } from 'redux/water/operations';
 import { closeModal } from 'redux/modals/modalsSlice';
 import modalConstants from 'redux/modals/modalСonstants';
 import { selectModalType, selectModalWater } from 'redux/modals/selectors';
+import { selectTodayWater } from 'redux/water/selectors';
+
 export const WaterEditorForm = () => {
   const dispatch = useDispatch();
 
   const { _id, date, amountWater } = useSelector(selectModalWater);
+  let startAmount = amountWater;
+
+  const isAdd = useSelector(selectModalType);
+  const { waterNotes } = useSelector(selectTodayWater);
+  if (isAdd === modalConstants.ADD_WATER) {
+    const nRecords = waterNotes.length;
+    if (nRecords > 0) {
+      startAmount = waterNotes[nRecords - 1].amountWater;
+    }
+  }
+
   const modal = useSelector(selectModalType);
 
-  const [volume, setVolume] = useState(amountWater);
+  const [volume, setVolume] = useState(startAmount);
+
+  const [tempVolume, setTempVolume] = useState(volume);
 
   const timeFromDate = date => {
     const currentdate = date ? new Date(date) : new Date();
@@ -41,6 +56,7 @@ export const WaterEditorForm = () => {
       return;
     }
     setVolume(volume + 50);
+    setTempVolume(tempVolume + 50);
   };
 
   const decrement = () => {
@@ -48,13 +64,7 @@ export const WaterEditorForm = () => {
       return;
     }
     setVolume(volume - 50);
-  };
-
-  const changeValue = event => {
-    const val = parseInt(event.target.value);
-    if (val >= 0 && val <= 2000) {
-      setVolume(val);
-    }
+    setTempVolume(tempVolume - 50);
   };
 
   const handleSubmit = ({ time }) => {
@@ -68,6 +78,32 @@ export const WaterEditorForm = () => {
     }
     if (modal === modalConstants.EDIT_WATER) {
       dispatch(editWater({ _id, amountWater: volume, date: setDate }));
+    }
+  };
+
+  const handelFocus = e => {
+    e.target.value = '';
+  };
+
+  const handelChange = e => {
+    if (!e.target.value) {
+      e.target.value = '';
+      setTempVolume(null);
+      return;
+    }
+    const val = parseInt(e.target.value, 10);
+    setTempVolume(val);
+  };
+
+  const handelBlur = e => {
+    if (!e.target.value) {
+      e.target.value = volume;
+      return;
+    }
+
+    const val = parseInt(e.target.value, 10);
+    if (val >= 0 && val <= 2000) {
+      setVolume(val);
     }
   };
 
@@ -91,7 +127,7 @@ export const WaterEditorForm = () => {
       </AmountContainer>
 
       <Formik
-        initialValues={{ time: timeFromDate(date), amountWater: volume }}
+        initialValues={{ time: timeFromDate(date), amountWater: tempVolume }}
         onSubmit={(values, actions) => {
           handleSubmit(values);
           actions.resetForm();
@@ -102,15 +138,17 @@ export const WaterEditorForm = () => {
         <FormContainer>
           <InputTimeLable>
             Recording time:
-            <TimeVolumeInput name="time" type="time" />
+            <TimeVolumeInput name="time" type="time" step="300" />
           </InputTimeLable>
           <InputVolumeLable>
             Enter the value of the water used:
             <TimeVolumeInput
               name="amountWater"
               type="number"
-              value={volume}
-              onChange={changeValue}
+              value={tempVolume}
+              onFocus={handelFocus}
+              onBlur={handelBlur}
+              onChange={handelChange}
             />
           </InputVolumeLable>
           <SaveVolumeDiv>

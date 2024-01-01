@@ -1,20 +1,17 @@
 import { createSlice } from '@reduxjs/toolkit';
 import modalConstants from './modalСonstants';
 
-const initialState = {
-  modal: modalConstants.CLOSE,
-  waterInModal: {
-    amountWater: 50,
-    date: '',
-    _id: '',
-  },
-};
-
 const resetWter = {
-  amountWater: 50,
+  amountWater: 0,
   date: '',
   _id: '',
 };
+
+const initialState = {
+  modal: modalConstants.CLOSE,
+  waterInModal: resetWter,
+};
+
 const waterSlice = createSlice({
   name: 'modals',
   initialState,
