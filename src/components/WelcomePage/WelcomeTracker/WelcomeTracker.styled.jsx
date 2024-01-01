@@ -22,7 +22,6 @@ export const WelcomeTrackerStile = styled.section`
   min-height: 100%;
   inset: 0;
   background-size: 100%;
-  
   @media screen and (max-width: 767px) and (-webkit-min-device-pixel-ratio: 2),
     (max-width: 767px) and (min-resolution: 192dpi) {
     background-image: url(${bg_mb2x});
