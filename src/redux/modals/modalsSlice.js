@@ -1,9 +1,15 @@
 import { createSlice } from '@reduxjs/toolkit';
 import modalConstants from './modalСonstants';
 
+const resetWter = {
+  amountWater: 0,
+  date: '',
+  _id: '',
+};
+
 const initialState = {
   modal: modalConstants.CLOSE,
-  idWaterInModal: '',
+  waterInModal: resetWter,
 };
 
 const waterSlice = createSlice({
@@ -12,19 +18,19 @@ const waterSlice = createSlice({
   reducers: {
     openAddWater: (state, action) => {
       state.modal = modalConstants.ADD_WATER;
-      state.idWaterInModal = '';
+      state.waterInModal = resetWter;
     },
     openEditWater: (state, action) => {
       state.modal = modalConstants.EDIT_WATER;
-      state.idWaterInModal = action.payload;
+      state.waterInModal = action.payload;
     },
     openDeleteWater: (state, action) => {
       state.modal = modalConstants.DELETE_WATER;
-      state.idWaterInModal = action.payload;
+      state.waterInModal = action.payload;
     },
     closeModal: (state, action) => {
       state.modal = modalConstants.CLOSE;
-      state.idWaterInModal = '';
+      state.waterInModal = resetWter;
     },
   },
 });
