@@ -4,6 +4,8 @@ import Icons from "../../images/sprite.svg";
 
 
 class FormSetting extends Component {
+  
+    
     state = {
         photo: '',
         gender: 'girl',
@@ -16,7 +18,8 @@ class FormSetting extends Component {
         onClick: 'false',
         showPassword: 'false',
     }
-    
+
+
 
     handleChange = ({ target }) => {
         this.setState({
@@ -106,12 +109,7 @@ class FormSetting extends Component {
                         <label htmlFor="exampleInputPassword1" className="form-label">Password</label>
                         <div id="emailHelp" className="form-text">Outdated password:</div>
                         <div className="passwordClass">
-                        <input name="password" type={this.state.showPassword ? "text" : "password"}
-                            className="form-control" id="exampleInputPassword1"
-                            onChange={this.handleChange}
-                            value={this.state.password}
-                            placeholder="Password" />
-                        <i className="show-button"
+                            <i className="show-button"
                             onClick={() => this.setState({ showPassword: !this.state.showPassword })}>
                             {this.state.showPassword ?
                                 <svg width="16" height="16" fill="blue" aria-label="upload picture" component="span">
@@ -119,16 +117,17 @@ class FormSetting extends Component {
                                 <svg width="16" height="16" fill="blue" aria-label="upload picture" component="span">
                                     <use href={Icons + '#eye-hide'}></use></svg>}
                         </i>
+                        <input name="password" type={this.state.showPassword ? "text" : "password"}
+                            className="form-control pass" id="exampleInputPassword1"
+                            onChange={this.handleChange}
+                            value={this.state.password}
+                            placeholder="Password" />
+                        
                         </div>
                     
                         <div id="emailHelp" className="form-text">New Password:</div>
                         <div className="passwordClass">
-                        <input name="newPassword" type={this.state.showPassword ? "text" : "password"}
-                            className="form-control" id="exampleInputPassword2"
-                            onChange={this.handleChange}
-                            value={this.state.newPassword}
-                            placeholder="Password" />
-                        <i className="show-button"
+                            <i className="show-button"
                             onClick={() => this.setState({ showPassword: !this.state.showPassword })}>
                             {this.state.showPassword ?
                                 <svg width="16" height="16" fill="blue" aria-label="upload picture" component="span">
@@ -136,28 +135,35 @@ class FormSetting extends Component {
                                 <svg width="16" height="16" fill="blue" aria-label="upload picture" component="span">
                                     <use href={Icons + '#eye-hide'}></use></svg>}
                             </i>
+                        <input name="newPassword" type={this.state.showPassword ? "text" : "password"}
+                            className="form-control pass" id="exampleInputPassword2"
+                            onChange={this.handleChange}
+                            value={this.state.newPassword}
+                            placeholder="Password" />
+                        
                             </div>
 
                         <div id="emailHelp" className="form-text">Repeat new password:</div>
                         <div className="passwordClass">
+                            <i className="show-button"
+                            onClick={() => this.setState({ showPassword: !this.state.showPassword })}>
+                            {this.state.showPassword ?
+                                <svg width="16" height="16" fill="blue" aria-label="upload picture" component="span">
+                                    <use href={Icons + '#eye-show'}></use></svg> :
+                                <svg width="16" height="16" fill="blue" aria-label="upload picture" component="span">
+                                    <use href={Icons + '#eye-hide'}></use></svg>}
+                            </i>
                         <input name="repeatPassword" type={this.state.showPassword ? "text" : "password"}
                             className="form-control" id="exampleInputPassword3"
                             onChange={this.handleChange}
                             value={this.state.repeatPassword}
                             placeholder="Password" />
-                        <i className="show-button"
-                            onClick={() => this.setState({ showPassword: !this.state.showPassword })}>
-                            {this.state.showPassword ?
-                                <svg width="16" height="16" fill="blue" aria-label="upload picture" component="span">
-                                    <use href={Icons + '#eye-show'}></use></svg> :
-                                <svg width="16" height="16" fill="blue" aria-label="upload picture" component="span">
-                                    <use href={Icons + '#eye-hide'}></use></svg>}
-                            </i>
+                        
                             </div>
         
                     </div>
                 </div>
-                <button disabled={!this.state.isChecked} type="submit" className="btn btn-primary">Save</button>
+                <button  disabled={!this.state.isChecked} type="submit" className="btn btn-primary">Save</button>
             </form>
         )
     }

@@ -14,6 +14,7 @@ class SettingModal extends Component {
     showModal = () => {
         this.setState({isShowModal:true})
     }
+    
 
     closeModal = () =>{
         this.setState({isShowModal:false})
