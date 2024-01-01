@@ -2,26 +2,34 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { closeModal } from 'redux/modals/modalsSlice';
 import modalConstants from 'redux/modals/modalСonstants';
+import { selectModalType } from 'redux/modals/selectors';
 
 export const useModalClose = modRef => {
-  const modal = useSelector(state => state.modals.modal);
+  const modal = useSelector(selectModalType);
   const dispatch = useDispatch();
+
   useEffect(() => {
+    if (modal === modalConstants.CLOSE) {
+      return;
+    }
+
     const close = e => {
       const isButton = e.type === 'keydown';
+
       if (
         e.key === 'Escape' ||
-        (!modRef.current.contains(e.target) && !isButton) ||
-        modal === modalConstants.CLOSE
+        (!isButton && !modRef.current.contains(e.target))
       ) {
         dispatch(closeModal());
       }
     };
-    document.addEventListener('keydown', close);
-    document.addEventListener('mousedown', close);
+
+    window.addEventListener('keydown', close);
+    window.addEventListener('mousedown', close);
+
     return () => {
-      document.removeEventListener('keydown', close);
-      document.removeEventListener('mousedown', close);
+      window.removeEventListener('keydown', close);
+      window.removeEventListener('mousedown', close);
     };
   }, [modRef, dispatch, modal]);
 };

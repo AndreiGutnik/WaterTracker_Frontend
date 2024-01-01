@@ -1,5 +1,5 @@
+import { baseTheme } from 'components/theme';
 import styled from 'styled-components';
-import { baseTheme } from '../../components/theme';
 
 export const TrackerContainer = styled.div`
   padding: 24px 8px;
@@ -13,5 +13,9 @@ export const TrackerContainer = styled.div`
 
   @media screen and (min-width: 768px) {
     padding: 32px 24px;
+  }
+  @media only screen and (min-width: 1440px) {
+    width: 592px;
+    height: 690px;
   }
 `;
