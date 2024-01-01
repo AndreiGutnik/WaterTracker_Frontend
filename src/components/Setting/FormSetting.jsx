@@ -1,12 +1,9 @@
 import { Component } from "react";
 import './FormSetting.css';
-import  Icons  from "../../images/sprite.svg";
+import Icons from "../../images/sprite.svg";
 
 
 class FormSetting extends Component {
-
-    
-    
     state = {
         photo: '',
         gender: 'girl',
@@ -47,7 +44,7 @@ class FormSetting extends Component {
             repeatPassword: '',
         })
 
-        this.props.closeModal()
+        // this.props.closeModal()
     }
     
     handleCheck = ({ target: { checked } }) => {
@@ -65,7 +62,6 @@ class FormSetting extends Component {
         return (
             <form onSubmit={this.handleSubmit}>
                 <div className="form">
-        
                     <div className="form-check">
                         <label className="form-check-label-gender" htmlFor="exampleCheck1">Your gender identity</label>
                         <div className="gender-radio">
@@ -109,6 +105,7 @@ class FormSetting extends Component {
                     <div className="inputy">
                         <label htmlFor="exampleInputPassword1" className="form-label">Password</label>
                         <div id="emailHelp" className="form-text">Outdated password:</div>
+                        <div className="passwordClass">
                         <input name="password" type={this.state.showPassword ? "text" : "password"}
                             className="form-control" id="exampleInputPassword1"
                             onChange={this.handleChange}
@@ -122,8 +119,10 @@ class FormSetting extends Component {
                                 <svg width="16" height="16" fill="blue" aria-label="upload picture" component="span">
                                     <use href={Icons + '#eye-hide'}></use></svg>}
                         </i>
+                        </div>
                     
                         <div id="emailHelp" className="form-text">New Password:</div>
+                        <div className="passwordClass">
                         <input name="newPassword" type={this.state.showPassword ? "text" : "password"}
                             className="form-control" id="exampleInputPassword2"
                             onChange={this.handleChange}
@@ -136,9 +135,11 @@ class FormSetting extends Component {
                                     <use href={Icons + '#eye-show'}></use></svg> :
                                 <svg width="16" height="16" fill="blue" aria-label="upload picture" component="span">
                                     <use href={Icons + '#eye-hide'}></use></svg>}
-                        </i>
+                            </i>
+                            </div>
 
                         <div id="emailHelp" className="form-text">Repeat new password:</div>
+                        <div className="passwordClass">
                         <input name="repeatPassword" type={this.state.showPassword ? "text" : "password"}
                             className="form-control" id="exampleInputPassword3"
                             onChange={this.handleChange}
@@ -151,12 +152,12 @@ class FormSetting extends Component {
                                     <use href={Icons + '#eye-show'}></use></svg> :
                                 <svg width="16" height="16" fill="blue" aria-label="upload picture" component="span">
                                     <use href={Icons + '#eye-hide'}></use></svg>}
-                        </i>
+                            </i>
+                            </div>
         
                     </div>
                 </div>
                 <button disabled={!this.state.isChecked} type="submit" className="btn btn-primary">Save</button>
-
             </form>
         )
     }

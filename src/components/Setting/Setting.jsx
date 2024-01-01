@@ -1,4 +1,4 @@
-import  Icons  from "../../images/sprite.svg";
+import Icons from "../../images/sprite.svg";
 import './Setting.css';
 
 const Setting = ({ children, closeModal }) => {
@@ -8,7 +8,7 @@ const Setting = ({ children, closeModal }) => {
             
                     <div className="modal-header">
                 <h2 className="modal-title">Setting</h2>
-                <span className = "bth-close" onChange={closeModal}>
+                <span className = "bth-close" onClick={closeModal}>
                         <svg   width="24" height="24">
                                 <use href={Icons + '#close'}></use>
                 </svg>

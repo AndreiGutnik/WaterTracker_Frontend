@@ -6,6 +6,7 @@ import FormSetting from './FormSetting';
 import { nanoid } from '@reduxjs/toolkit';
 
 class SettingModal extends Component {
+  
   state = {
     isShowModal:false,
     }
@@ -17,6 +18,7 @@ class SettingModal extends Component {
     closeModal = () =>{
         this.setState({isShowModal:false})
   }
+  
   createUser=(data) => {
     const newUser = {
       ...data,

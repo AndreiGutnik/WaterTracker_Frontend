@@ -101,8 +101,18 @@ color: #D7E3FF;
         position: relative;
 }
 
+.passwordClass {
+    position: relative;
+}
+
+.show-button {
+    position: absolute;
+    right: 8px;
+    outline: none;
+    cursor: pointer;
+}
+
 .form-text .show-button{
-   position: absolute; 
    left: 0;
    top: 8px;
    padding: 10px 10px;
@@ -149,6 +159,11 @@ color: #D7E3FF;
         font-weight: 500;
         line-height: 20px;
 }
+
+
+
+
+
 
 
 
