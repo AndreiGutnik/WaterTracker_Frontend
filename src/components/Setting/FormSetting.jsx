@@ -1,11 +1,11 @@
-import { Component } from "react";
+
+import { Component} from "react";
 import './FormSetting.css';
 import Icons from "../../images/sprite.svg";
 
 
 class FormSetting extends Component {
-  
-    
+   
     state = {
         photo: '',
         gender: 'girl',
@@ -17,8 +17,8 @@ class FormSetting extends Component {
         isChecked: 'true',
         onClick: 'false',
         showPassword: 'false',
+         messege: "",
     }
-
 
 
     handleChange = ({ target }) => {
@@ -45,6 +45,7 @@ class FormSetting extends Component {
             password: '',
             newPassword: '',
             repeatPassword: '',
+            messege: "Submission Successful!",
         })
 
         // this.props.closeModal()
@@ -61,9 +62,20 @@ class FormSetting extends Component {
     }
 
 
+//     handleClose = (() => {
+//       const close = (e) => {
+//         if(e.keyCode === 27){
+//           this.props.onCloseModal()
+//         }
+//       }
+//       window.addEventListener('keydown', close)
+//     return () => window.removeEventListener('keydown', close)
+//   },[])
+
+
     render() {
         return (
-            <form onSubmit={this.handleSubmit}>
+            <form onSubmit={this.handleSubmit} onCloseModal={this.handleClose}>
                 <div className="form">
                     <div className="form-check">
                         <label className="form-check-label-gender" htmlFor="exampleCheck1">Your gender identity</label>
@@ -163,7 +175,8 @@ class FormSetting extends Component {
         
                     </div>
                 </div>
-                <button  disabled={!this.state.isChecked} type="submit" className="btn btn-primary">Save</button>
+                <button disabled={!this.state.isChecked} type="submit" className="btn btn-primary">Save</button>
+                {this.state.messege ? <h2>{ this.state.messege}</h2> : null}
             </form>
         )
     }

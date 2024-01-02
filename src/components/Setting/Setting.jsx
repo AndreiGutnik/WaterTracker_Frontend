@@ -3,9 +3,7 @@ import './Setting.css';
 
 const Setting = ({ children, closeModal }) => {
     return (
-        <div
-            className='modal-fade-show'>
-            
+        <div className='modal-fade-show'>
                     <div className="modal-header">
                 <h2 className="modal-title">Setting</h2>
                 <span className = "bth-close" onClick={closeModal}>

@@ -34,6 +34,13 @@
    
 }
 
+.form-label{
+        font-family: 'RobotoBold';
+        font-size: 18px;
+        font-weight: 500;
+        line-height: 20px;
+}
+
 .form-check-input{
     width: 14px;
         height: 14px;
@@ -127,6 +134,7 @@ color: #D7E3FF;
 } 
 
 .btn-primary {
+    display: block;
     width: 256px;
     height: 36px;
     display: flex;

@@ -8,7 +8,7 @@ import { nanoid } from '@reduxjs/toolkit';
 class SettingModal extends Component {
   
   state = {
-    isShowModal:false,
+    isShowModal: false,
     }
 
     showModal = () => {
@@ -27,12 +27,14 @@ class SettingModal extends Component {
     }
     console.log('newUser :>>', newUser)
   }
+
+  
   render() {
     return(
         <div className='container'>
     <HeaderSetting showModal={this.showModal}/>
         {this.state.isShowModal && (<Setting closeModal={this.closeModal} ><UploadImage createUser={ this.createUser} /><FormSetting createUser={ this.createUser} /></Setting>)}
-    </div>
+      </div>
   )
 }
   }
