@@ -1,10 +1,10 @@
 {
   "files": {
     "main.css": "/WaterTracker_Frontend/static/css/main.301db928.css",
-    "main.js": "/WaterTracker_Frontend/static/js/main.d402961a.js",
+    "main.js": "/WaterTracker_Frontend/static/js/main.fbc6b7f5.js",
     "static/js/191.588cb7ee.chunk.js": "/WaterTracker_Frontend/static/js/191.588cb7ee.chunk.js",
-    "static/js/870.88340d78.chunk.js": "/WaterTracker_Frontend/static/js/870.88340d78.chunk.js",
-    "static/js/21.5413ba92.chunk.js": "/WaterTracker_Frontend/static/js/21.5413ba92.chunk.js",
+    "static/js/320.eca6fe24.chunk.js": "/WaterTracker_Frontend/static/js/320.eca6fe24.chunk.js",
+    "static/js/344.c9da70aa.chunk.js": "/WaterTracker_Frontend/static/js/344.c9da70aa.chunk.js",
     "static/js/705.38925515.chunk.js": "/WaterTracker_Frontend/static/js/705.38925515.chunk.js",
     "static/js/727.5dd1acad.chunk.js": "/WaterTracker_Frontend/static/js/727.5dd1acad.chunk.js",
     "static/media/bottle-desk-2x.png": "/WaterTracker_Frontend/static/media/bottle-desk-2x.1775bd96fc412d403b4f.png",
@@ -20,21 +20,21 @@
     "static/media/bottle-mob-1x.png": "/WaterTracker_Frontend/static/media/bottle-mob-1x.67bfbdf7fb46f03c7cdc.png",
     "static/media/sprite.svg": "/WaterTracker_Frontend/static/media/sprite.e2112a028717a55b180003fba5ae75d0.svg",
     "static/media/bg-mb2x.png": "/WaterTracker_Frontend/static/media/bg-mb2x.74414a29c79348c4e7ac.png",
-    "static/media/background.svg": "/WaterTracker_Frontend/static/media/background.68611ca8e47c8bcd12b2643c955a4142.svg",
+    "static/media/backgroundDesctop.svg": "/WaterTracker_Frontend/static/media/backgroundDesctop.68611ca8e47c8bcd12b2643c955a4142.svg",
     "static/media/settings.svg": "/WaterTracker_Frontend/static/media/settings.1ef47b6378ba99b1bec33eba937a8039.svg",
     "static/media/calendar.svg": "/WaterTracker_Frontend/static/media/calendar.566bea3a06cbe5f7ac704cdc07c7c3bf.svg",
     "index.html": "/WaterTracker_Frontend/index.html",
     "static/media/statistics.svg": "/WaterTracker_Frontend/static/media/statistics.8cfec11a5c739ea320477bba603d1a57.svg",
     "main.301db928.css.map": "/WaterTracker_Frontend/static/css/main.301db928.css.map",
-    "main.d402961a.js.map": "/WaterTracker_Frontend/static/js/main.d402961a.js.map",
+    "main.fbc6b7f5.js.map": "/WaterTracker_Frontend/static/js/main.fbc6b7f5.js.map",
     "191.588cb7ee.chunk.js.map": "/WaterTracker_Frontend/static/js/191.588cb7ee.chunk.js.map",
-    "870.88340d78.chunk.js.map": "/WaterTracker_Frontend/static/js/870.88340d78.chunk.js.map",
-    "21.5413ba92.chunk.js.map": "/WaterTracker_Frontend/static/js/21.5413ba92.chunk.js.map",
+    "320.eca6fe24.chunk.js.map": "/WaterTracker_Frontend/static/js/320.eca6fe24.chunk.js.map",
+    "344.c9da70aa.chunk.js.map": "/WaterTracker_Frontend/static/js/344.c9da70aa.chunk.js.map",
     "705.38925515.chunk.js.map": "/WaterTracker_Frontend/static/js/705.38925515.chunk.js.map",
     "727.5dd1acad.chunk.js.map": "/WaterTracker_Frontend/static/js/727.5dd1acad.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.301db928.css",
-    "static/js/main.d402961a.js"
+    "static/js/main.fbc6b7f5.js"
   ]
 }
