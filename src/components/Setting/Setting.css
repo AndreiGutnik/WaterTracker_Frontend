@@ -23,10 +23,11 @@
             text-align: left;
 }
 
-/* .modal-header .btn-close {
-    padding: calc(var(--bs-modal-header-padding-y) * .5) calc(var(--bs-modal-header-padding-x) * .5);
-
-} */
 .bth-close {
     fill: blue;
+} 
+
+.backdrop{
+    position: fixed;
+    animation: showBackdrop .3c ease-out;
 }
