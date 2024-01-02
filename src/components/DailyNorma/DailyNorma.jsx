@@ -8,12 +8,14 @@ import {
 import { ModalContext } from './ModalProvider/ModalProvider';
 import { useContext } from 'react';
 import DailyNormaModal from 'components/DailyNorma/DailyNormaModal/DailyNormaModal';
-// import { useAuth } from './utils/useAuth';
+import { useAuth } from './utils/useAuth';
 
 const DailyNorma = () => {
   const toggleModal = useContext(ModalContext);
 
   const { dailyNorma } = useAuth();
+
+  const dailyNormaCalc = (dailyNorma / 1000).toFixed(1);
 
   const openDailyNormaModal = () => {
     toggleModal(<DailyNormaModal />);
@@ -23,8 +25,7 @@ const DailyNorma = () => {
     <DailyNormaContainer>
       <DailyNormaHeader>My daily norma</DailyNormaHeader>
       <DailyNormaContainerWaterStat>
-              <DailyNormaWaterNorma>{`${dailyNorma}L`}</DailyNormaWaterNorma>
-              {/* <DailyNormaWaterNorma></DailyNormaWaterNorma> */}
+        <DailyNormaWaterNorma>{`${dailyNormaCalc} L`}</DailyNormaWaterNorma>
         <DailyNormaButton onClick={openDailyNormaModal}>Edit</DailyNormaButton>
       </DailyNormaContainerWaterStat>
     </DailyNormaContainer>

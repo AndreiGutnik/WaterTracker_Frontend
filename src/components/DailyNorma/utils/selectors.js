@@ -1,2 +1,3 @@
+export const dailyNormaSelector = state => state.auth.user.waterRate;
 
-export const dailyNormaSelector = state => state.auth.user.dailyNorma;
+export const userData = state => state.auth.user;

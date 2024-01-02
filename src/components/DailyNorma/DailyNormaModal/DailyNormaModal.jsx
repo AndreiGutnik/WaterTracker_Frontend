@@ -23,14 +23,15 @@ import {
 import { useContext } from 'react';
 import { ModalContext } from '../ModalProvider/ModalProvider';
 import { useDispatch } from 'react-redux';
-// import { updateDailyNorma } from '';
-// import { useAuth } from '';
+import { useAuthData } from '../utils/useAuth';
+import { updateDailyNorma } from 'redux/auth/operations';
 
 const DailyNormaModal = () => {
   const toggleModal = useContext(ModalContext);
+
   const dispatch = useDispatch();
 
-  // const { user } = useAuth();
+  const { user } = useAuthData();
 
   const [calculatedWaterAmount, setCalculatedWaterAmount] = useState(0);
 
@@ -54,6 +55,7 @@ const DailyNormaModal = () => {
 
   const handleSubmit = async () => {
     dispatch(updateDailyNorma(formik.values.drankWaterAmount));
+
     formik.resetForm();
     toggleModal();
   };
@@ -86,8 +88,8 @@ const DailyNormaModal = () => {
             <CloseButton onClick={onClickModalClose}>
               <Icon
                 name="close"
-                width={12}
-                height={12}
+                width={24}
+                height={24}
                 fill="#ffffff00"
                 stroke="#407bff"
                 className="icon"
@@ -175,6 +177,7 @@ const DailyNormaModal = () => {
               onChange={e => handleInputChange(e, 'drankWaterAmount')}
               onBlur={formik.handleBlur}
               name="drankWaterAmount"
+              type="text"
               error={
                 formik.touched.drankWaterAmount &&
                 formik.errors.drankWaterAmount

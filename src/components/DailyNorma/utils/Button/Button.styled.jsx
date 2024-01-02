@@ -17,6 +17,8 @@ const Btn = styled.button(({ width, buttonType }) => ({
 }));
 
 export const ButtonContainer = styled(Btn)`
+  cursor: pointer;
+  border: none;
   padding: 10px 30px;
 
   display: flex;
