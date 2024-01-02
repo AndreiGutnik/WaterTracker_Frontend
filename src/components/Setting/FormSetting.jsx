@@ -75,7 +75,7 @@ class FormSetting extends Component {
 
     render() {
         return (
-            <form onSubmit={this.handleSubmit} onCloseModal={this.handleClose}>
+            <form onSubmit={this.handleSubmit}>
                 <div className="form">
                     <div className="form-check">
                         <label className="form-check-label-gender" htmlFor="exampleCheck1">Your gender identity</label>
@@ -176,7 +176,7 @@ class FormSetting extends Component {
                     </div>
                 </div>
                 <button disabled={!this.state.isChecked} type="submit" className="btn btn-primary">Save</button>
-                {this.state.messege ? <h2>{ this.state.messege}</h2> : null}
+                {this.state.messege ? <h2>{this.state.messege}</h2> : null}
             </form>
         )
     }

@@ -19,7 +19,8 @@ class SettingModal extends Component {
     closeModal = () =>{
         this.setState({isShowModal:false})
   }
-  
+
+
   createUser=(data) => {
     const newUser = {
       ...data,
@@ -32,12 +33,13 @@ class SettingModal extends Component {
   render() {
     return(
         <div className='container'>
-    <HeaderSetting showModal={this.showModal}/>
-        {this.state.isShowModal && (<Setting closeModal={this.closeModal} ><UploadImage createUser={ this.createUser} /><FormSetting createUser={ this.createUser} /></Setting>)}
+    <HeaderSetting  showModal={this.showModal} />
+        {this.state.isShowModal && (<Setting closeModal={this.closeModal} handleClose={this.handleClose} ><UploadImage createUser={ this.createUser} /><FormSetting createUser={ this.createUser} /></Setting>)}
       </div>
   )
 }
-  }
+}
+
   
 
 export default SettingModal
