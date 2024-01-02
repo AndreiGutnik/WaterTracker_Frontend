@@ -9,6 +9,8 @@ import bottleTab1x from '../../images/home/bottle-tab-1x.png';
 import bottleTab2x from '../../images/home/bottle-tab-2x.png';
 
 export const BottleImg = styled.div`
+  position: absolute;
+  top: 366px;
   background-image: url(${bottleMob1x});
   background-size: contain;
   background-repeat: no-repeat;
@@ -22,7 +24,8 @@ export const BottleImg = styled.div`
   }
 
   @media screen and (min-width: 768px) and (max-width: 1439px) {
-    position: relative;
+    /* position: absolute; */
+    top: 0;
     width: 736px;
     height: 548px;
     background-position: 120px;
@@ -35,6 +38,7 @@ export const BottleImg = styled.div`
   }
 
   @media screen and (min-width: 1440px) {
+    position: static;
     background-position: -120px center;
     width: 916px;
     min-height: 680px;
@@ -48,6 +52,7 @@ export const BottleImg = styled.div`
 `;
 
 export const SignUpContainer = styled.div`
+  position: relative;
   display: flex;
   flex-direction: column-reverse;
   gap: 66px;
@@ -85,8 +90,14 @@ export const StyledForm = styled(Form)`
   flex-direction: column;
   border-radius: 5px;
   width: 280px;
+  z-index: 10;
+
+  & h2 {
+    text-align: left;
+  }
 
   @media screen and (min-width: 768px) {
+    margin-right: auto;
     width: 336px;
   }
 
