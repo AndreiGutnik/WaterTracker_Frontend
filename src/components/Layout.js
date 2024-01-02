@@ -8,7 +8,7 @@ import { Header } from './Header/Header';
 export const Layout = () => {
   return (
     <Container>
-    <Header/>
+      <Header />
       <Suspense fallback={null}>
         <Outlet />
       </Suspense>

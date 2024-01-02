@@ -14,6 +14,7 @@ import {
 
 export const WaterTrackerBenefits = () => {
   const navigate = useNavigate();
+
   function TryClick() {
     navigate('/signup');
   }
@@ -23,7 +24,6 @@ export const WaterTrackerBenefits = () => {
       <WelcomeInfoTitle>Record daily water intake and track</WelcomeInfoTitle>
       <WelcomeListTitle>Tracker Benefits</WelcomeListTitle>
       <WelcomeListContent>
-
         <WelcomeListItems>
           <HabitDriveImg />
           Habit drive
@@ -36,7 +36,6 @@ export const WaterTrackerBenefits = () => {
           <PersonalRateSettingImg />
           Personal rate setting
         </WelcomeListItems>
-        
       </WelcomeListContent>
       <WelcomeButton type="button" onClick={TryClick}>
         Try tracker
