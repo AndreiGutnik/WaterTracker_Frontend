@@ -38,11 +38,12 @@ class SettingModal extends Component {
   
   render() {
     return(
-      <div className='container'>
-        <CloseOnEscape onEscape={this.onEscape}>
+      <div className='container modal'>
+        {/* <CloseOnEscape onEscape={this.onEscape}> */}
+       
     <HeaderSetting  showModal={this.showModal} />
-        {this.state.isShowModal && (<Setting closeModal={this.closeModal} handleClose={this.handleClose} ><UploadImage createUser={ this.createUser} /><FormSetting createUser={ this.createUser} /></Setting>)}
-      </CloseOnEscape>
+        {this.state.isShowModal && (<Setting closeModal={this.closeModal} handleClose={this.handleClose} ><UploadImage createUser={ this.createUser} /><FormSetting createUser={ this.createUser} /><CloseOnEscape closeModal={this.closeModal}/></Setting>)}
+      {/* </CloseOnEscape> */}
       </div>
   )
 }
