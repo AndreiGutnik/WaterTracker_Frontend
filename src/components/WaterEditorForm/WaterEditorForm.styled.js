@@ -160,6 +160,15 @@ export const SaveBtn = styled.button`
     line-height: 1.25;
   }
 
+  &:hover {
+    box-shadow: 0px 4px 14px 0px rgba(64, 123, 255, 0.54);
+    cursor: pointer;
+  }
+
+  &:active {
+    box-shadow: 0 0;
+  }
+
   @media screen and (min-width: 768px) {
     width: 160px;
     height: 44px;

@@ -97,7 +97,7 @@ export const InfoWrap = styled.div`
     }
     & use {
       x: 5px;
-      y: 3px;
+      y: 2px;
       fill: ${baseTheme.colors.blue};
     }
   }
@@ -139,6 +139,7 @@ export const EditBtn = styled.button`
 
   &:hover {
     border-bottom: 1px solid ${baseTheme.colors.violet};
+    cursor: pointer;
   }
 `;
 
@@ -155,6 +156,7 @@ export const DeleteBtn = styled.button`
 
   &:hover {
     border-bottom: 1px solid ${baseTheme.colors.red};
+    cursor: pointer;
   }
 `;
 
@@ -178,6 +180,7 @@ export const AddBtnStyle = styled.button`
   }
 
   &:hover {
+    cursor: pointer;
     color: ${baseTheme.colors.orange};
     & use {
       fill: ${baseTheme.colors.orange};
