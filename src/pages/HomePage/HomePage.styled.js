@@ -1,6 +1,17 @@
 import { baseTheme } from 'components/theme';
 import styled from 'styled-components';
 
+export const HomePageContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  @media screen and (min-width: 1440px) {
+    flex-direction: row;
+  }
+`;
+
+export const DailyNormaSection = styled.div``;
+
 export const TrackerContainer = styled.div`
   padding: 24px 8px;
   display: flex;

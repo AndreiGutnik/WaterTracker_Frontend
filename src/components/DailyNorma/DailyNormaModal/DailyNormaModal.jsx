@@ -23,15 +23,15 @@ import {
 import { useContext } from 'react';
 import { ModalContext } from '../ModalProvider/ModalProvider';
 import { useDispatch } from 'react-redux';
-import { useAuthData } from '../utils/useAuth';
 import { updateDailyNorma } from 'redux/auth/operations';
+import { useAuth } from 'hooks/useAuth';
 
 const DailyNormaModal = () => {
   const toggleModal = useContext(ModalContext);
 
   const dispatch = useDispatch();
 
-  const { user } = useAuthData();
+  const { user } = useAuth();
 
   const [calculatedWaterAmount, setCalculatedWaterAmount] = useState(0);
 

@@ -1,23 +1,53 @@
 import styled from 'styled-components';
 import { color } from './utils/colors';
 
-export const DailyNormaContainer = styled.div`
+import bottleDesk1x from '../../images/home/bottle-desk-1x.png';
+import bottleDesk2x from '../../images/home/bottle-desk-2x.png';
+import bottleTab1x from '../../images/home/bottle-tab-1x.png';
+import bottleTab2x from '../../images/home/bottle-tab-2x.png';
+import bottleMob1x from '../../images/home/bottle-mob-1x.png';
+import bottleMob2x from '../../images/home/bottle-mob-2x.png';
+
+import backgroundDesktop from '../../images/welcome/backgroundDesktop.svg';
+import backgroundTablet from '../../images/welcome/backgroundTablet.svg';
+import backgroundMobile from '../../images/welcome/backgroundMobile.svg';
+
+export const Container = styled.div`
+  width: 280px;
+  outline: 1px solid red;
+
+  @media screen and (min-width: 768px) {
+    width: 704px;
+  }
+
+  @media screen and (min-width: 1440px) {
+    width: 738px;
+  }
+`;
+
+export const MyDailyNormaContainer = styled.div`
   width: 164px;
-  // height: 76px;
-  /* position: absolute; */
+  height: 74px;
+  margin-bottom: 8px;
   padding: 8px 20px 8px 20px;
   border-radius: 10px;
-  // border: 1px solid ${color.secondary.azure};
+  border: 1px solid ${color.secondary.white};
   display: flex;
   flex-direction: column;
   gap: 12px;
   box-shadow: 0px 4px 8px 4px rgba(158, 187, 255, 0.12);
+
+  @media screen and (min-width: 768px) {
+    position: absolute;
+    height: 76px;
+  }
 `;
 
 export const DailyNormaHeader = styled.p`
+  width: 124px;
   font-size: 18px;
   font-weight: 500;
-  line-height: 24px;
+  line-height: calc(24 / 18);
   letter-spacing: 0em;
   text-align: left;
 `;
@@ -27,21 +57,79 @@ export const DailyNormaContainerWaterStat = styled.div`
 `;
 
 export const DailyNormaWaterNorma = styled.p`
-  font-size: 24px;
+  font-size: 22px;
   font-weight: 700;
-  line-height: 24px;
+  line-height: 1;
   letter-spacing: 0em;
-  text-align: left;
   color: ${color.primary.blue};
+
+  @media screen and (min-width: 768px) {
+    font-size: 24px;
+  }
 `;
 
 export const DailyNormaButton = styled.button`
   cursor: pointer;
   font-size: 16px;
-  line-height: 20px;
+  line-height: calc(20 / 16);
   letter-spacing: 0em;
   text-align: left;
   border: none;
   background-color: transparent;
   color: ${color.secondary.azure};
+`;
+
+export const DailyNormaBackground = styled.div`
+  width: 280px;
+  height: 208px;
+  background-image: url(${bottleMob1x});
+  background-position: center center;
+  background-size: contain;
+  background-repeat: no-repeat;
+
+  @media screen and (max-width: 767px) and (-webkit-min-device-pixel-ratio: 2),
+    (max-width: 767px) and (min-resolution: 192dpi) {
+    background-image: url(${bottleMob2x});
+  }
+
+  @media screen and (min-width: 768px) and (max-width: 1439px) {
+    width: 518px;
+    height: 386px;
+    background-image: url(${bottleTab1x});
+    margin: 0 auto;
+  }
+
+  @media screen and (min-width: 768px) and (-webkit-min-device-pixel-ratio: 2),
+    (min-width: 768px) and (min-resolution: 192dpi) {
+    background-image: url(${bottleTab2x});
+  }
+
+  @media screen and (min-width: 1440px) {
+    position: static;
+    margin: 0 auto;
+    width: 738px;
+    min-height: 548px;
+    background-image: url(${bottleDesk1x});
+  }
+
+  @media screen and (min-width: 1440px) and (-webkit-min-device-pixel-ratio: 2),
+    (min-width: 1440px) and (min-resolution: 192dpi) {
+    background-image: url(${bottleDesk2x});
+  }
+`;
+
+export const DailyNormaContainer = styled.section`
+  position: relative;
+  background-position: top center;
+  background-image: url(${backgroundMobile});
+  background-repeat: no-repeat;
+  width: 100%;
+
+  @media screen and (min-width: 768px) {
+    background-image: url(${backgroundTablet});
+  }
+
+  /* @media screen and (min-width: 1440px) {
+    background-image: url(${backgroundDesktop});
+  } */
 `;

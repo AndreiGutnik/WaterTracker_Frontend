@@ -45,7 +45,7 @@ const authSlice = createSlice({
         state.isLoggedIn = true;
       })
       .addCase(updateDailyNorma.fulfilled, (state, action) => {
-        state.waterRate = action.payload;
+        state.user.waterRate = action.payload;
       });
   },
 });
