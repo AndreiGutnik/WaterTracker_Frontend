@@ -1,5 +1,5 @@
 import React from 'react';
-import SignInForm from 'components/SignInForm/SignIForm';
+import SignInForm from 'components/SignInForm/SignInForm';
 import { SignInSection } from './SignInPage.styled';
 
 const SignInPage = () => {

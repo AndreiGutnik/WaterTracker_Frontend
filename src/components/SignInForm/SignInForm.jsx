@@ -5,7 +5,6 @@ import * as Yup from 'yup';
 import { logIn } from 'redux/auth/operations';
 import { useNavigate } from 'react-router-dom';
 import {
-  BottleImg,
   SignUpContainer,
   SightUp,
   ErMsg,
@@ -15,6 +14,7 @@ import {
   StyledForm,
   Styledlabel,
 } from '../RegistrationForm/RegistrationForm.styled.js';
+import { BottleImg } from '../SignInForm/SignInForm.styled.js';
 import sprite from '../../images/sprite.svg';
 
 const initialValues = {
@@ -44,7 +44,6 @@ const SignInForm = () => {
 
   return (
     <SignUpContainer>
-      <BottleImg />
       <Formik
         initialValues={initialValues}
         validationSchema={validationSchema}
@@ -92,6 +91,7 @@ const SignInForm = () => {
           </StyledForm>
         )}
       </Formik>
+      <BottleImg />
     </SignUpContainer>
   );
 };
