@@ -51,7 +51,6 @@ const RegistrationForm = () => {
 
   return (
     <SignUpContainer>
-      <BottleImg />
       <Formik
         initialValues={initialValues}
         validationSchema={validationSchema}
@@ -127,6 +126,7 @@ const RegistrationForm = () => {
           </StyledForm>
         )}
       </Formik>
+      <BottleImg />
     </SignUpContainer>
   );
 };

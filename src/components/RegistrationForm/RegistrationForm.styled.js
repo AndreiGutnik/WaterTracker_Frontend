@@ -9,14 +9,13 @@ import bottleTab1x from '../../images/home/bottle-tab-1x.png';
 import bottleTab2x from '../../images/home/bottle-tab-2x.png';
 
 export const BottleImg = styled.div`
-  position: absolute;
-  top: 366px;
   background-image: url(${bottleMob1x});
   background-size: contain;
   background-repeat: no-repeat;
   width: 280px;
   height: 210px;
   background-position: center;
+  margin-top: -26px;
 
   @media screen and (max-width: 767px) and (-webkit-min-device-pixel-ratio: 2),
     (max-width: 767px) and (min-resolution: 192dpi) {
@@ -24,12 +23,12 @@ export const BottleImg = styled.div`
   }
 
   @media screen and (min-width: 768px) and (max-width: 1439px) {
-    /* position: absolute; */
-    top: 0;
+    margin-top: 0;
     width: 736px;
     height: 548px;
-    background-position: 120px;
+    background-position: 80px;
     background-image: url(${bottleTab1x});
+    z-index: -1;
   }
 
   @media screen and (min-width: 768px) and (-webkit-min-device-pixel-ratio: 2),
@@ -38,8 +37,8 @@ export const BottleImg = styled.div`
   }
 
   @media screen and (min-width: 1440px) {
-    position: static;
-    background-position: -120px center;
+    margin-top: 0;
+    background-position: -65px center;
     width: 916px;
     min-height: 680px;
     background-image: url(${bottleDesk1x});
@@ -52,29 +51,14 @@ export const BottleImg = styled.div`
 `;
 
 export const SignUpContainer = styled.div`
-  position: relative;
-  display: flex;
-  flex-direction: column-reverse;
-  gap: 66px;
-
   @media screen and (min-width: 768px) {
-    flex-direction: row-reverse;
-    align-items: flex-start;
-    gap: 0;
+    position: relative;
   }
 
-  @media screen and (min-width: 1440px) {
-    justify-content: flex-start;
-    align-items: center;
-    flex-direction: row;
-  }
-`;
-
-export const ForFormContainer = styled.div`
   @media screen and (min-width: 1440px) {
     display: flex;
-    flex-direction: column;
-    justify-self: center;
+    justify-content: flex-start;
+    flex-direction: row-reverse;
   }
 `;
 
@@ -90,23 +74,25 @@ export const StyledForm = styled(Form)`
   flex-direction: column;
   border-radius: 5px;
   width: 280px;
-  z-index: 10;
 
   & h2 {
     text-align: left;
   }
 
   @media screen and (min-width: 768px) {
+    position: absolute;
+    top: 0;
+    left: 0;
     margin-right: auto;
     width: 336px;
+    z-index: 100;
   }
 
   @media screen and (min-width: 1440px) {
-    justify-content: start;
+    position: static;
     width: 384px;
-    grid-column: 7/9;
-    grid-row: 1;
-    align-self: center;
+    margin-top: 113px;
+    margin-right: 198px;
   }
 `;
 
