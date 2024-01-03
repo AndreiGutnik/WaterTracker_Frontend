@@ -4,11 +4,13 @@ import HeaderSetting from './HeaderSetting';
 import UploadImage from './UploadImage';
 import FormSetting from './FormSetting';
 import { nanoid } from '@reduxjs/toolkit';
+import CloseOnEscape from './CloseOnEscape';
+
 
 class SettingModal extends Component {
-  
   state = {
     isShowModal: false,
+    onEscape: false,
     }
 
     showModal = () => {
@@ -20,6 +22,9 @@ class SettingModal extends Component {
         this.setState({isShowModal:false})
   }
 
+  onEscape = () =>{
+        this.setState({onEscape:false})
+  }
 
   createUser=(data) => {
     const newUser = {
@@ -29,12 +34,15 @@ class SettingModal extends Component {
     console.log('newUser :>>', newUser)
   }
 
+
   
   render() {
     return(
-        <div className='container'>
+      <div className='container'>
+        <CloseOnEscape onEscape={this.onEscape}>
     <HeaderSetting  showModal={this.showModal} />
         {this.state.isShowModal && (<Setting closeModal={this.closeModal} handleClose={this.handleClose} ><UploadImage createUser={ this.createUser} /><FormSetting createUser={ this.createUser} /></Setting>)}
+      </CloseOnEscape>
       </div>
   )
 }
