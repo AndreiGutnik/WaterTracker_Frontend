@@ -1,6 +1,7 @@
 import { Calendar } from 'components/Calendar/Month/Month';
 import { TodayWaterList } from 'components/TodayWaterList/TodayWaterList';
 import {
+  BubblesContainer,
   DailyNormaSection,
   HomePageContainer,
   TrackerContainer,
@@ -11,17 +12,19 @@ import { Container } from 'components/Container';
 const HomePage = () => {
   return (
     <>
-      <Container>
-        <HomePageContainer>
-          <DailyNormaSection>
-            <DailyNorma />
-          </DailyNormaSection>
-          <TrackerContainer>
-            <TodayWaterList />
-            <Calendar />
-          </TrackerContainer>
-        </HomePageContainer>
-      </Container>
+      <BubblesContainer>
+        <Container>
+          <HomePageContainer>
+            <DailyNormaSection>
+              <DailyNorma />
+            </DailyNormaSection>
+            <TrackerContainer>
+              <TodayWaterList />
+              <Calendar />
+            </TrackerContainer>
+          </HomePageContainer>
+        </Container>
+      </BubblesContainer>
     </>
   );
 };

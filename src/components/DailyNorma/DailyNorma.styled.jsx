@@ -8,10 +8,6 @@ import bottleTab2x from '../../images/home/bottle-tab-2x.png';
 import bottleMob1x from '../../images/home/bottle-mob-1x.png';
 import bottleMob2x from '../../images/home/bottle-mob-2x.png';
 
-import backgroundDesktop from '../../images/welcome/backgroundDesktop.svg';
-import backgroundTablet from '../../images/welcome/backgroundTablet.svg';
-import backgroundMobile from '../../images/welcome/backgroundMobile.svg';
-
 export const DailyNormaContainer = styled.div`
   width: 280px;
   margin-bottom: 40px;
@@ -105,8 +101,6 @@ export const DailyNormaBackground = styled.div`
   }
 
   @media screen and (min-width: 1440px) {
-    /* position: static;
-    margin: 0 auto; */
     width: 625px;
     min-height: 548px;
     background-image: url(${bottleDesk1x});
@@ -118,18 +112,34 @@ export const DailyNormaBackground = styled.div`
   }
 `;
 
-export const DNBGContainer = styled.section`
-  position: relative;
-  background-position: top center;
-  background-image: url(${backgroundMobile});
-  background-repeat: no-repeat;
-  width: 100%;
+export const DailySlider = styled.div`
+  display: flex;
+  height: 134px;
+  outline: 1px solid green;
+  margin-top: 16px;
+  font-size: 24px;
+  font-weight: 700;
+  justify-content: space-around;
+  align-items: center;
+  animation: blink 1s infinite;
 
-  @media screen and (min-width: 768px) {
-    background-image: url(${backgroundTablet});
+  @keyframes blink {
+    0% {
+      color: red;
+    }
+    50% {
+      color: white;
+    }
+    100% {
+      color: red;
+    }
   }
 
-  /* @media screen and (min-width: 1440px) {
-    background-image: url(${backgroundDesktop});
-  } */
+  @media screen and (min-width: 768px) {
+    width: 704px;
+    height: 90px;
+  }
+  @media screen and (min-width: 1440px) {
+    width: 592px;
+  }
 `;
