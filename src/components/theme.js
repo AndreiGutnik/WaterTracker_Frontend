@@ -9,4 +9,8 @@ export const baseTheme = {
     violet: '#9EBBFF',
     violet_light: '#D7E3FF',
   },
+  animation: {
+    duration: '0.25s',
+    cubicBezier: 'cubic-bezier(0.4, 0, 0.2, 1)',
+  },
 };
