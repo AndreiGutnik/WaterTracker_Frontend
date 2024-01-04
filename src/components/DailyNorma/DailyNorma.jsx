@@ -1,5 +1,4 @@
 import {
-  Container,
   DailyNormaBackground,
   DailyNormaButton,
   MyDailyNormaContainer,
@@ -25,20 +24,18 @@ const DailyNorma = () => {
   };
 
   return (
-    <Container>
-      <DailyNormaContainer>
-        <MyDailyNormaContainer>
-          <DailyNormaHeader>My daily norma</DailyNormaHeader>
-          <DailyNormaContainerWaterStat>
-            <DailyNormaWaterNorma>{`${dailyNormaCalc} L`}</DailyNormaWaterNorma>
-            <DailyNormaButton onClick={openDailyNormaModal}>
-              Edit
-            </DailyNormaButton>
-          </DailyNormaContainerWaterStat>
-        </MyDailyNormaContainer>
-        <DailyNormaBackground></DailyNormaBackground>
-      </DailyNormaContainer>
-    </Container>
+    <DailyNormaContainer>
+      <MyDailyNormaContainer>
+        <DailyNormaHeader>My daily norma</DailyNormaHeader>
+        <DailyNormaContainerWaterStat>
+          <DailyNormaWaterNorma>{`${dailyNormaCalc} L`}</DailyNormaWaterNorma>
+          <DailyNormaButton onClick={openDailyNormaModal}>
+            Edit
+          </DailyNormaButton>
+        </DailyNormaContainerWaterStat>
+      </MyDailyNormaContainer>
+      <DailyNormaBackground></DailyNormaBackground>
+    </DailyNormaContainer>
   );
 };
 
