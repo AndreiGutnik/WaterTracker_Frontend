@@ -1,16 +1,21 @@
 import styled from 'styled-components';
-import { baseTheme } from '../../components/theme.js'
-import {Link} from 'react-router-dom';
+import { baseTheme } from '../../components/theme.js';
+import { Link } from 'react-router-dom';
 
 export const Wrapper = styled.div`
   display: flex;
   justify-content: space-between;
- 
-  @media screen and (min-width: 768px) and (max-width: 1439px) {
+  margin-top: 8px;
+  margin-bottom: 24px;
+
+  @media screen and (min-width: 768px) {
+    margin-top: 16px;
     margin-bottom: 40px;
   }
-  @media screen and (max-width: 767px) {
-    margin-bottom: 24px;
+
+  @media screen and (min-width: 1440px) {
+    margin-top: 12px;
+    margin-bottom: 20px;
   }
 `;
 
