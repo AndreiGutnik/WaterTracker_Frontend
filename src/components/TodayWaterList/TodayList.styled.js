@@ -1,5 +1,7 @@
 import { baseTheme } from 'components/theme';
 import styled from 'styled-components';
+const { duration } = baseTheme.animation;
+const { cubicBezier } = baseTheme.animation;
 
 export const TodayStyledDiv = styled.div`
   max-width: 264px;
@@ -51,18 +53,18 @@ export const UlStyle = styled.ul`
 
   &::-webkit-scrollbar-track {
     margin-block: 5px;
-    background: #d7e3ff;
+    background: ${baseTheme.colors.violet_light};
     border-radius: 50px;
-    border: 1px solid #ecf2ff;
+    border: 1px solid ${baseTheme.colors.grey};
   }
 
   &::-webkit-scrollbar-thumb {
-    background: #9ebbff;
+    background: ${baseTheme.colors.violet};
     border-radius: 50px;
   }
 
   &::-webkit-scrollbar-thumb:hover {
-    background: #407bff;
+    background: ${baseTheme.colors.blue};
   }
 `;
 
@@ -132,7 +134,8 @@ export const EditBtn = styled.button`
   padding: 0;
   border: none;
   background-color: transparent;
-
+  border-bottom: 1px solid transparent;
+  transition: border-bottom-color ${duration} ${cubicBezier};
   & use {
     fill: ${baseTheme.colors.violet};
   }
@@ -149,6 +152,8 @@ export const DeleteBtn = styled.button`
   padding: 0;
   border: none;
   background-color: transparent;
+  border-bottom: 1px solid transparent;
+  transition: border-bottom-color ${duration} ${cubicBezier};
 
   & use {
     fill: ${baseTheme.colors.red};
@@ -170,12 +175,14 @@ export const AddBtnStyle = styled.button`
   font-size: 16px;
   font-weight: 500;
   line-height: 1.25;
+  transition: color ${duration} ${cubicBezier};
 
   & svg {
     width: 16px;
     height: 16px;
     & use {
       fill: ${baseTheme.colors.blue};
+      transition: fill ${duration} ${cubicBezier};
     }
   }
 

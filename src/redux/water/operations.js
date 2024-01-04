@@ -1,5 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
+import { toast } from 'react-toastify';
 
 axios.defaults.baseURL = 'https://watertracker-ldwc.onrender.com/';
 
@@ -23,8 +24,12 @@ export const addWater = createAsyncThunk(
         date,
         amountWater,
       });
+
+      toast.success('Added successfully');
+
       return response.data;
     } catch (error) {
+      toast.error(error.message || 'Addition failed', error);
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -38,8 +43,10 @@ export const editWater = createAsyncThunk(
         date,
         amountWater,
       });
+      toast.success('Editing is successful');
       return response.data;
     } catch (error) {
+      toast.error(error.message || 'Editing failed', error);
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -53,8 +60,10 @@ export const deleteWater = createAsyncThunk(
       if (response.status !== 200) {
         throw new Error('Whoops!');
       }
+      toast.success('Deleted');
       return waterId;
     } catch (error) {
+      toast.error(error.message || 'Failed to delete', error);
       return thunkAPI.rejectWithValue(error.message);
     }
   }

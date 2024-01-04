@@ -1,9 +1,35 @@
 import { baseTheme } from 'components/theme';
 import styled from 'styled-components';
 
+const { duration } = baseTheme.animation;
+const { cubicBezier } = baseTheme.animation;
+
 export const RatioPanelContainer = styled.div`
-  width: 100%;
+  max-width: 280px;
   margin-bottom: 40px;
+
+  @media screen and (min-width: 768px) {
+    max-width: 704px;
+    display: flex;
+    align-items: center;
+  }
+  @media only screen and (min-width: 1440px) {
+    max-width: 592px;
+    height: 90px;
+  }
+`;
+
+export const TodayP = styled.h3`
+  margin-bottom: 8px;
+  align-self: baseline;
+  color: ${baseTheme.colors.blue};
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.33;
+
+  @media screen and (min-width: 768px) {
+    margin-bottom: 16px;
+  }
 `;
 
 export const RatioContainer = styled.div`
@@ -13,12 +39,15 @@ export const RatioContainer = styled.div`
   flex-direction: column;
   align-items: center;
 
-  & p {
-    margin-bottom: 8px;
-    align-self: baseline;
-    font-size: 18px;
-    line-height: 1.33;
-    color: ${baseTheme.colors.blue};
+  @media screen and (min-width: 768px) {
+    width: 356px;
+    height: 90px;
+    margin-right: 12px;
+    margin-bottom: 0;
+  }
+  @media only screen and (min-width: 1440px) {
+    width: 391px;
+    margin-right: 23px;
   }
 `;
 
@@ -63,6 +92,13 @@ export const RatioInput = styled.input`
   &::-webkit-slider-thumb:hover {
     background: ${baseTheme.colors.white};
   }
+
+  @media screen and (min-width: 768px) {
+    width: 325px;
+  }
+  @media only screen and (min-width: 1440px) {
+    width: 360px;
+  }
 `;
 
 export const RatioMarks = styled.div`
@@ -73,6 +109,14 @@ export const RatioMarks = styled.div`
   & span {
     font-size: 8px;
     color: #d7e3ff;
+  }
+
+  @media screen and (min-width: 768px) {
+    width: 325px;
+    margin-bottom: 8px;
+  }
+  @media only screen and (min-width: 1440px) {
+    margin-bottom: 4px;
   }
 `;
 
@@ -108,7 +152,10 @@ export const AddWaterBtn = styled.button`
   background: ${baseTheme.colors.blue};
   box-shadow: 0px 4px 8px 0px rgba(64, 123, 255, 0.34);
 
+  transition: box-shadow ${duration} ${cubicBezier};
+
   & span {
+    font-size: 16px;
     color: ${baseTheme.colors.white};
     line-height: 1.25;
   }
@@ -131,9 +178,13 @@ export const AddWaterBtn = styled.button`
   }
 
   @media screen and (min-width: 768px) {
-    width: 160px;
+    width: 336px;
     height: 44px;
+    & span {
+      font-size: 18px;
+    }
   }
   @media only screen and (min-width: 1440px) {
+    width: 178px;
   }
 `;

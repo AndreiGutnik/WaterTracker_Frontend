@@ -7,6 +7,7 @@ import {
   RatioMarks,
   RatioPanelContainer,
   RatioPercents,
+  TodayP,
 } from './WaterRatioPanel.styled';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectorWaterMonth } from 'redux/month/selectors';
@@ -14,14 +15,20 @@ import { selectorWaterMonth } from 'redux/month/selectors';
 export const WaterRatioPanel = () => {
   const dispatch = useDispatch();
 
+  const date = new Date();
+  const curDay = date.getDate();
+  const month = date.toLocaleString('en-US', { month: 'long' });
+
+  const formattedDate = `${curDay}, ${month}`;
+
   const monthArr = useSelector(selectorWaterMonth);
 
-  const day = monthArr[monthArr.length - 1];
+  const day = monthArr.find(d => d.dayOfMonth === formattedDate);
 
   return (
     <RatioPanelContainer>
       <RatioContainer>
-        <p>Today</p>
+        <TodayP>Today</TodayP>
         {day && (
           <RatioInput
             style={{ backgroundSize: `${day.percent}% 100%` }}

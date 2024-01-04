@@ -91,6 +91,9 @@ export const WaterEditorForm = () => {
       setTempVolume(null);
       return;
     }
+    if (e.target.value > 2000) {
+      e.target.value = 2000;
+    }
     const val = parseInt(e.target.value, 10);
     setTempVolume(val);
   };
@@ -145,6 +148,8 @@ export const WaterEditorForm = () => {
             <TimeVolumeInput
               name="amountWater"
               type="number"
+              min="0"
+              max="2000"
               value={tempVolume}
               onFocus={handelFocus}
               onBlur={handelBlur}
