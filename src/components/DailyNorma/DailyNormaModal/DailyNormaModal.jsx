@@ -51,8 +51,6 @@ const DailyNormaModal = () => {
     if (isNaN(numericValue)) {
       numericValue = 0;
     }
-
-    // formik.setFieldValue(fieldName, numericValue);
   };
 
   const handleSubmit = async () => {
