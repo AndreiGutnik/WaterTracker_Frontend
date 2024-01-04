@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import backgroundDesktop from '../../images/welcome/backgroundDesktop.svg';
 import backgroundTablet from '../../images/welcome/backgroundTablet.svg';
-import backgroundMobile from '../../images/welcome/backgroundMobile.svg';
+import backgroundMobileHome from '../../images/welcome/backgroundMobileHome.svg';
 
 export const HomePageContainer = styled.div`
   display: flex;
@@ -41,8 +41,8 @@ export const TrackerContainer = styled.div`
 
 export const BubblesContainer = styled.div`
   position: relative;
-  background-position: center 52px;
-  background-image: url(${backgroundMobile});
+  background-position: center 28px;
+  background-image: url(${backgroundMobileHome});
   background-repeat: no-repeat;
   width: 100%;
 
