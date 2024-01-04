@@ -36,7 +36,6 @@ const DailyNorma = () => {
         </DailyNormaContainerWaterStat>
       </MyDailyNormaContainer>
       <DailyNormaBackground></DailyNormaBackground>
-      <DailySlider>Тута має бути Today-повзунок + батон</DailySlider>
     </DailyNormaContainer>
   );
 };
