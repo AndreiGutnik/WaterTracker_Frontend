@@ -6,7 +6,6 @@ import {
   DailyNormaHeader,
   DailyNormaWaterNorma,
   DailyNormaContainer,
-  DailySlider,
 } from './DailyNorma.styled';
 import { ModalContext } from './ModalProvider/ModalProvider';
 import { useContext } from 'react';
