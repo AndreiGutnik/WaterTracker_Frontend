@@ -46,15 +46,17 @@ const DailyNormaModal = () => {
   const handleInputChange = (e, fieldName) => {
     formik.handleChange(e);
     const inputText = e.target.value;
+
     let numericValue = parseFloat(inputText);
     if (isNaN(numericValue)) {
       numericValue = 0;
     }
-    formik.setFieldValue(fieldName, numericValue);
+
+    // formik.setFieldValue(fieldName, numericValue);
   };
 
   const handleSubmit = async () => {
-    dispatch(updateDailyNorma(formik.values.drankWaterAmount));
+    dispatch(updateDailyNorma(formik.values.drankWaterAmount * 1000));
 
     formik.resetForm();
     toggleModal();
@@ -147,6 +149,7 @@ const DailyNormaModal = () => {
               onChange={e => handleInputChange(e, 'weight')}
               onBlur={formik.handleBlur}
               name="weight"
+              type="number"
               error={formik.touched.weight && formik.errors.weight}
             />
 
@@ -158,6 +161,7 @@ const DailyNormaModal = () => {
               onChange={e => handleInputChange(e, 'activityTime')}
               onBlur={formik.handleBlur}
               name="activityTime"
+              type="number"
               error={formik.touched.activityTime && formik.errors.activityTime}
             />
 
@@ -177,7 +181,7 @@ const DailyNormaModal = () => {
               onChange={e => handleInputChange(e, 'drankWaterAmount')}
               onBlur={formik.handleBlur}
               name="drankWaterAmount"
-              type="text"
+              type="number"
               error={
                 formik.touched.drankWaterAmount &&
                 formik.errors.drankWaterAmount
