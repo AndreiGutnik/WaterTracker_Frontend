@@ -1,12 +1,19 @@
 
-import { Component} from "react";
+// import { Component} from "react";
 import './FormSetting.css';
 import Icons from "../../images/sprite.svg";
+import { useAuth } from "../../hooks/useAuth";
+import { useState } from 'react';
 
 
-class FormSetting extends Component {
+
+ 
+const FormSetting = () => {
+    const { user } = useAuth()
+    const{state1, setState} = useState(null)
+console.log(user.name)
    
-    state = {
+    const state = {
         photo: '',
         gender: 'girl',
         name: '',
@@ -21,51 +28,51 @@ class FormSetting extends Component {
     }
 
 
-    handleChange = ({ target }) => {
-        this.setState({
+    const handleChange = ({ target }) => {
+        setState({
             [target.name]: target.value,
         })
     }
-    handleSubmit = (e) => {
+    const handleSubmit = (e) => {
         e.preventDefault()
-        this.props.createUser({
-            photo: this.state.photo,
-            gender: this.state.gender,
-            name: this.state.name,
-            email: this.state.email,
-            password: this.state.password,
-            newPassword: this.state.outdatePassword,
-            repeatPassword: this.state.repeatPassword,
-        })
+        // props.createUser({
+        //     photo: state.photo,
+        //     gender: state.gender,
+        //     name: state.name,
+        //     email: state.email,
+        //     password: state.password,
+        //     newPassword: state.outdatePassword,
+        //     repeatPassword: state.repeatPassword,
+        // })
 
-        this.setState({
-            photo: '',
-            name: '',
-            email: '',
-            password: '',
-            newPassword: '',
-            repeatPassword: '',
-            messege: "Submission Successful!",
-        })
+        // setState({
+        //     photo: '',
+        //     name: '',
+        //     email: '',
+        //     password: '',
+        //     newPassword: '',
+        //     repeatPassword: '',
+        //     messege: "Submission Successful!",
+        // })
 
-        // this.props.closeModal()
+        // props.closeModal()
     }
     
-    handleCheck = ({ target: { checked } }) => {
-        this.setState({
+    const handleCheck = ({ target: { checked } }) => {
+        setState({
             isChecked: checked,
         })
     }
 
-    handleGender = ({ target }) => {
-        this.setState({ gender: target.value })
+    const handleGender = ({ target }) => {
+        setState({ gender: target.value })
     }
 
 
     //     handleClose = (() => {
     //       const close = (e) => {
     //         if(e.keyCode === 27){
-    //           this.props.onCloseModal()
+    //           props.onCloseModal()
     //         }
     //       }
     //       window.addEventListener('keydown', close)
@@ -73,16 +80,16 @@ class FormSetting extends Component {
     //   },[])
 
 
-    render() {
+   
         return (
-            <form onSubmit={this.handleSubmit}>
+            <form onSubmit={handleSubmit}>
                 <div className="form">
                     <div className="form-check">
                         <label className="form-check-label-gender" htmlFor="exampleCheck1">Your gender identity</label>
                         <div className="gender-radio">
                             <div className="gender-radio">
                                 <label className="gender-radio-gen" htmlFor="gender-1">
-                                    <input type="radio" id="gender-1" className="form-check-input gender-radio-gen" name="gender" onChange={this.handleGender} value="girl" checked={this.state.gender === 'girl'} />
+                                    <input type="radio" id="female" className="form-check-input gender-radio-gen" name="gender" onChange={handleGender} value='female' checked={user.gender} />
                                     <span className="rad"></span>
                                     <span className="form-check-gender">Girl</span>
                                 </label>
@@ -90,7 +97,7 @@ class FormSetting extends Component {
                     
                             <div className="gender-radio">
                                 <label className="gender-radio-gen" htmlFor="gender-2">
-                                    <input type="radio" id="gender-2" className="form-check-input gender-radio-gen" name="gender" onChange={this.handleGender} value="man" checked={this.state.gender === 'man'} />
+                                    <input type="radio" id="male" className="form-check-input gender-radio-gen" name="gender" onChange={handleGender} value='male' checked={user.gender} />
                                     <span className="rad"></span>
                                     <span className="form-check-gender">Man</span>
                                 </label>
@@ -101,8 +108,8 @@ class FormSetting extends Component {
                     <div className="inputy">
                         <label htmlFor="exampleInputName" className="form-label">Your name</label>
                         <input name="name" type="text" className="form-control" id="exampleInputName" aria-describedby="nameHelp"
-                            onChange={this.handleChange}
-                            value={this.state.name}
+                            onChange={handleChange}
+                            value={user.name}
                             placeholder="Name"
                             required
                         />
@@ -112,8 +119,8 @@ class FormSetting extends Component {
                         <label htmlFor="exampleInputEmail1" className="form-label">Email address</label>
                         <input name="email"
                             type="email" className="form-control" id="InputEmail1" aria-describedby="emailHelp"
-                            onChange={this.handleChange}
-                            value={this.state.email}
+                            onChange={handleChange}
+                            value={user.email}
                             placeholder="Email"
                             required
                         />
@@ -124,17 +131,17 @@ class FormSetting extends Component {
                         <div id="emailHelp" className="form-text">Outdated password:</div>
                         <div className="passwordClass">
                             <i className="show-button"
-                                onClick={() => this.setState({ showPassword: !this.state.showPassword })}>
-                                {this.state.showPassword ?
+                                onClick={() => setState({ showPassword: !state.showPassword })}>
+                                {state.showPassword ?
                                     <svg width="16" height="16" fill="blue" aria-label="upload picture" component="span">
                                         <use href={Icons + '#eye-show'}></use></svg> :
                                     <svg width="16" height="16" fill="blue" aria-label="upload picture" component="span">
                                         <use href={Icons + '#eye-hide'}></use></svg>}
                             </i>
-                            <input name="password" type={this.state.showPassword ? "text" : "password"}
+                            <input name="password" type={state.showPassword ? "text" : "password"}
                                 className="form-control pass" id="exampleInputPassword1"
-                                onChange={this.handleChange}
-                                value={this.state.password}
+                                onChange={handleChange}
+                                value={state.password}
                                 placeholder="Password"
                                 required
                             />
@@ -144,17 +151,17 @@ class FormSetting extends Component {
                         <div id="emailHelp" className="form-text">New Password:</div>
                         <div className="passwordClass">
                             <i className="show-button"
-                                onClick={() => this.setState({ showPassword: !this.state.showPassword })}>
-                                {this.state.showPassword ?
+                                onClick={() => setState({ showPassword: !state.showPassword })}>
+                                {state.showPassword ?
                                     <svg width="16" height="16" fill="blue" aria-label="upload picture" component="span">
                                         <use href={Icons + '#eye-show'}></use></svg> :
                                     <svg width="16" height="16" fill="blue" aria-label="upload picture" component="span">
                                         <use href={Icons + '#eye-hide'}></use></svg>}
                             </i>
-                            <input name="newPassword" type={this.state.showPassword ? "text" : "password"}
+                            <input name="newPassword" type={state.showPassword ? "text" : "password"}
                                 className="form-control pass" id="exampleInputPassword2"
-                                onChange={this.handleChange}
-                                value={this.state.newPassword}
+                                onChange={handleChange}
+                                value={state.newPassword}
                                 placeholder="Password"
                                 required
                             />
@@ -164,17 +171,17 @@ class FormSetting extends Component {
                         <div id="emailHelp" className="form-text">Repeat new password:</div>
                         <div className="passwordClass">
                             <i className="show-button"
-                                onClick={() => this.setState({ showPassword: !this.state.showPassword })}>
-                                {this.state.showPassword ?
+                                onClick={() => setState({ showPassword: !state.showPassword })}>
+                                {state.showPassword ?
                                     <svg width="16" height="16" fill="blue" aria-label="upload picture" component="span">
                                         <use href={Icons + '#eye-show'}></use></svg> :
                                     <svg width="16" height="16" fill="blue" aria-label="upload picture" component="span">
                                         <use href={Icons + '#eye-hide'}></use></svg>}
                             </i>
-                            <input name="repeatPassword" type={this.state.showPassword ? "text" : "password"}
+                            <input name="repeatPassword" type={state.showPassword ? "text" : "password"}
                                 className="form-control" id="exampleInputPassword3"
-                                onChange={this.handleChange}
-                                value={this.state.repeatPassword}
+                                onChange={handleChange}
+                                value={state.repeatPassword}
                                 placeholder="Password"
                                 required
                             />
@@ -183,14 +190,13 @@ class FormSetting extends Component {
                     </div>
                 </div>
                 <div className="button-primary">
-                <button disabled={!this.state.isChecked} type="submit" className="btn btn-primary">Save</button>
+                <button disabled={!state.isChecked} type="submit" className="btn btn-primary">Save</button>
                </div>
-                    {this.state.messege ? <h2>{this.state.messege}</h2> : null}
+                    {state.messege ? <h2>{state.messege}</h2> : null}
             </form>
             
         )
     }
-}
     
 
 export default FormSetting

@@ -1,5 +1,6 @@
 import Icons from "../../images/sprite.svg";
 import './Setting.css';
+// import { useState } from "react";
 
 const Setting = ({ children, closeModal }) => {
    
@@ -28,6 +29,7 @@ const Setting = ({ children, closeModal }) => {
                     </div>
                     <div className="modal-body">{children}</div>
                 </div>
+                // </div>
     )
     }
 
