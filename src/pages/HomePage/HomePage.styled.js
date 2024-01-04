@@ -1,6 +1,21 @@
 import { baseTheme } from 'components/theme';
 import styled from 'styled-components';
 
+import backgroundDesktop from '../../images/welcome/backgroundDesktop.svg';
+import backgroundTablet from '../../images/welcome/backgroundTablet.svg';
+import backgroundMobile from '../../images/welcome/backgroundMobile.svg';
+
+export const HomePageContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  @media screen and (min-width: 1440px) {
+    flex-direction: row;
+  }
+`;
+
+export const DailyNormaSection = styled.div``;
+
 export const TrackerContainer = styled.div`
   padding: 24px 8px;
   display: flex;
@@ -21,5 +36,22 @@ export const TrackerContainer = styled.div`
   @media only screen and (min-width: 1440px) {
     width: 592px;
     height: 680px;
+  }
+`;
+
+export const BubblesContainer = styled.div`
+  position: relative;
+  background-position: center 52px;
+  background-image: url(${backgroundMobile});
+  background-repeat: no-repeat;
+  width: 100%;
+
+  @media screen and (min-width: 768px) {
+    background-image: url(${backgroundTablet});
+    background-position: center 0px;
+  }
+
+  @media screen and (min-width: 1440px) {
+    background-image: url(${backgroundDesktop});
   }
 `;
