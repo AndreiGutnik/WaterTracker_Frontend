@@ -9,8 +9,25 @@ import {
 import DailyNorma from 'components/DailyNorma/DailyNorma';
 import { Container } from 'components/Container';
 import { WaterRatioPanel } from 'components/WaterRatioPanel/WaterRatioPanel';
+import { useEffect, useState } from 'react';
+import { useAuth } from 'hooks/useAuth';
 
 const HomePage = () => {
+  const initialState = {
+    dailyNorma: 0,
+  };
+  const [, setDailyNormaState] = useState(initialState);
+  const { user } = useAuth();
+
+  const dailyNormaCalc = (user.waterRate / 1000).toFixed(1);
+
+  useEffect(() => {
+    setDailyNormaState(prevState => ({
+      ...prevState,
+      dailyNorma: dailyNormaCalc,
+    }));
+  }, [dailyNormaCalc]);
+
   return (
     <>
       <BubblesContainer>

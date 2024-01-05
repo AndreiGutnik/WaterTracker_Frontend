@@ -16,7 +16,7 @@ import {
   MonthTitle,
 } from './Month.styled';
 
-export const Calendar = () => {
+export const Calendar = dailyNormaState => {
   const [currentDate, setCurrentDate] = useState(new Date());
   const dispatch = useDispatch();
   const waterForMonth = useSelector(selectorWaterMonth);
@@ -28,7 +28,7 @@ export const Calendar = () => {
     } - ${currentDate.getFullYear()}`;
 
     dispatch(fetchMonthThunk(month));
-  }, [dispatch, currentDate]);
+  }, [dispatch, currentDate, dailyNormaState]);
 
   const handleNextMonth = () => {
     const nextMonthDate = new Date(
