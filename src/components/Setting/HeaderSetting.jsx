@@ -1,9 +1,11 @@
+import { ContainerFuild, Button } from "./HeaderSetting.styled"
+
 const HeaderSetting = ({ showModal }) => {
     
     return (
-            <div className="container-fuild">
-        <button className="btn btn-outline-success" onClick={showModal}>Setting</button>
-            </div> 
+            <ContainerFuild>
+        <Button onClick={showModal}>Setting</Button>
+            </ContainerFuild> 
     )
 }
 export default HeaderSetting

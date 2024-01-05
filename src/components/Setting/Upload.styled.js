@@ -3,9 +3,9 @@ import styled from "styled-components";
 export const WrapperPhoto = styled.div`
   width: 256px;
 
-        @media screen and (min-width: 768px) {
+        /* @media screen and (min-width: 768px) {
         width: 656px;
-}
+} */
 `
 
 export const NamePhoto = styled.h3`
@@ -18,18 +18,19 @@ font-family: 'RobotoBold';
 `
 
 export const InputPhoto = styled.input`
-display: "none";
+/* display: "none"; */
 `
 
 export const LabelUpload = styled.label`
     display: flex;
         align-items: center;
         gap: 8px;
+        font-size: 14px;
+        color: blue;
 `
 
-export const AppPhoto = styled.app`
-font-size: 14px;
-        color: blue;
+export const AppPhoto = styled.div`
+//
 `
 
 

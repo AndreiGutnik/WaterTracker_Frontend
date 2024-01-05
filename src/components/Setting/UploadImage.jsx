@@ -2,7 +2,8 @@ import  Icons from "../../images/sprite.svg";
 import { useAuth } from "hooks/useAuth";
 import { useDispatch } from "react-redux";
 import { updateAvatar } from "redux/auth/operations";
-import { WrapperPhoto, NamePhoto, AppPhoto, InputPhoto, LabelUpload, Avatar } from "./Upload.styled";
+import { WrapperPhoto, NamePhoto, InputPhoto, LabelUpload, AppPhoto, Avatar } from "./Upload.styled";
+// import { Avatar } from "./Upload.styled";
 
 
 const UploadImage = () => {
@@ -35,11 +36,14 @@ console.log(user.avatarURL)
          <WrapperPhoto>
             <NamePhoto>Your photo</NamePhoto>
             <AppPhoto>
-                    <InputPhoto name="photo" type="file" onChange={handleChange} id="upload" accept="image/*" style={{ display: "none" }} />
+                <InputPhoto name="photo" type="file"
+                    onChange={handleChange}
+                    id="upload" accept="image/*" style={{ display: "none" }} />
                     <LabelUpload>
                         <Avatar id="avatar" src={user.avatarURL} />
                         <svg width="16" height="16" fill="blue" aria-label="upload picture" component="span">
-                            <use href={Icons + '#upload'}></use></svg>Upload a photo
+                        <use href={Icons + '#upload'}></use>
+                    </svg>Upload a photo
                 </LabelUpload>
                 </AppPhoto>
             </WrapperPhoto>

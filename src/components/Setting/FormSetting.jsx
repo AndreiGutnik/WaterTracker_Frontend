@@ -58,12 +58,14 @@ console.log(user.name)
 
         // props.closeModal()
     }
+
+
     
-    const handleCheck = ({ target: { checked } }) => {
-        setState({
-            isChecked: checked,
-        })
-    }
+    // const handleCheck = ({ target: { checked } }) => {
+    //     setState({
+    //         isChecked: checked,
+    //     })
+    // }
 
     const handleGender = ({ target }) => {
         setState({ gender: target.value })
@@ -80,21 +82,27 @@ console.log(user.name)
                     <FormCheck>
                         <LabelGenderName>Your gender identity</LabelGenderName>
                         <GenderRadio>
-                            {/* <div className="gender-radio"> */}
+                            <div className="gender-radio">
                                 <label className="gender-radio-gen" htmlFor="gender-1">
-                                    <input type="radio" id="female" className="form-check-input gender-radio-gen" name="gender" onChange={handleGender} value='female' checked={user.gender} />
+                                <input type="radio" id="female" className="form-check-input gender-radio-gen" name="gender"
+                                    onChange={handleGender}
+                                    value='female'
+                                    checked={user.gender} />
                                     <span className="rad"></span>
                                     <span className="form-check-gender">Girl</span>
                                 </label>
-                            {/* </div> */}
+                            </div>
                     
-                            {/* <div className="gender-radio"> */}
+                            <div className="gender-radio">
                                 <label className="gender-radio-gen" htmlFor="gender-2">
-                                    <input type="radio" id="male" className="form-check-input gender-radio-gen" name="gender" onChange={handleGender} value='male' checked={user.gender} />
+                                <input type="radio" id="male" className="form-check-input gender-radio-gen" name="gender"
+                                    onChange={handleGender}
+                                    value='male'
+                                    checked={user.gender} />
                                     <span className="rad"></span>
                                     <span className="form-check-gender">Man</span>
                                 </label>
-                            {/* </div> */}
+                            </div>
                         </GenderRadio>
                     </FormCheck>
 
