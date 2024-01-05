@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 import { color } from './utils/colors';
 
-import bottleDesk1x from '../../images/home/bottle-desk1x.png';
-import bottleDesk2x from '../../images/home/bottle-desk2x.png';
+import bottleDesk1x from '../../images/home/bottle-desk-1x.png';
+import bottleDesk2x from '../../images/home/bottle-desk-2x.png';
 import bottleTab1x from '../../images/home/bottle-tab-1x.png';
 import bottleTab2x from '../../images/home/bottle-tab-2x.png';
 import bottleMob1x from '../../images/home/bottle-mob-1x.png';
@@ -17,7 +17,7 @@ export const DailyNormaContainer = styled.div`
   }
 
   @media screen and (min-width: 1440px) {
-    width: 625px;
+    width: 624px;
   }
 `;
 
@@ -101,7 +101,8 @@ export const DailyNormaBackground = styled.div`
   }
 
   @media screen and (min-width: 1440px) {
-    width: 625px;
+    margin-left: -73px;
+    width: 738px;
     min-height: 548px;
     background-image: url(${bottleDesk1x});
   }

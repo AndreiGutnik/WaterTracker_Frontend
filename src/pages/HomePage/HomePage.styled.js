@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import backgroundDesktop from '../../images/welcome/backgroundDesktop.svg';
 import backgroundTablet from '../../images/welcome/backgroundTablet.svg';
-import backgroundMobileHome from '../../images/welcome/backgroundMobileHome.svg';
+import backgroundMobile from '../../images/welcome/backgroundMobileHome.svg';
 
 export const HomePageContainer = styled.div`
   display: flex;
@@ -42,7 +42,7 @@ export const TrackerContainer = styled.div`
 export const BubblesContainer = styled.div`
   position: relative;
   background-position: center 28px;
-  background-image: url(${backgroundMobileHome});
+  background-image: url(${backgroundMobile});
   background-repeat: no-repeat;
   width: 100%;
 
@@ -53,5 +53,6 @@ export const BubblesContainer = styled.div`
 
   @media screen and (min-width: 1440px) {
     background-image: url(${backgroundDesktop});
+    background-position: center 38px;
   }
 `;
