@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { baseTheme } from '../../components/theme.js';
+import { baseTheme } from "components/theme"; 
 
 export const WrapperModalSetting = styled.div`
     display: flex;

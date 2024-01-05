@@ -4,7 +4,7 @@ import './FormSetting.css';
 import Icons from "../../images/sprite.svg";
 import { useAuth } from "../../hooks/useAuth";
 import { useState } from 'react';
-import { Form } from './FormSetting.styled';
+import { Form, FormCheck, LabelGenderName, GenderRadio} from './FormSetting.styled';
 
 
 
@@ -76,27 +76,27 @@ console.log(user.name)
    
         return (
             <Form onSubmit={handleSubmit}>
-                <div className="form">
-                    <div className="form-check">
-                        <label className="form-check-label-gender" htmlFor="exampleCheck1">Your gender identity</label>
-                        <div className="gender-radio">
-                            <div className="gender-radio">
+                {/* <div className="form"> */}
+                    <FormCheck>
+                        <LabelGenderName>Your gender identity</LabelGenderName>
+                        <GenderRadio>
+                            {/* <div className="gender-radio"> */}
                                 <label className="gender-radio-gen" htmlFor="gender-1">
                                     <input type="radio" id="female" className="form-check-input gender-radio-gen" name="gender" onChange={handleGender} value='female' checked={user.gender} />
                                     <span className="rad"></span>
                                     <span className="form-check-gender">Girl</span>
                                 </label>
-                            </div>
+                            {/* </div> */}
                     
-                            <div className="gender-radio">
+                            {/* <div className="gender-radio"> */}
                                 <label className="gender-radio-gen" htmlFor="gender-2">
                                     <input type="radio" id="male" className="form-check-input gender-radio-gen" name="gender" onChange={handleGender} value='male' checked={user.gender} />
                                     <span className="rad"></span>
                                     <span className="form-check-gender">Man</span>
                                 </label>
-                            </div>
-                        </div>
-                    </div>
+                            {/* </div> */}
+                        </GenderRadio>
+                    </FormCheck>
 
                     <div className="inputy">
                         <label htmlFor="exampleInputName" className="form-label">Your name</label>
@@ -181,7 +181,7 @@ console.log(user.name)
                         </div>
         
                     </div>
-                </div>
+                {/* </div> */}
                 <div className="button-primary">
                 <button disabled={!state.isChecked} type="submit" className="btn btn-primary">Save</button>
                </div>

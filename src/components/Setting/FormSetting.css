@@ -6,13 +6,13 @@
             margin-bottom: 24px;
 } */
 
-.form-check{
+/* .form-check{
     width: 256px;
             display: flex;
             flex-direction: column;
             align-items: flex-start;
             gap: 15px;
-}
+} */
 
 .form-check-label-gender{
     font-family: 'RobotoBold';
