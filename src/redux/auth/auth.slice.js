@@ -1,7 +1,13 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
-import { register, logIn, logOut, refreshUser } from './operations';
+import {
+  register,
+  logIn,
+  logOut,
+  refreshUser,
+  updateDailyNorma,
+} from './operations';
 
 const initialState = {
   user: null,
@@ -9,6 +15,7 @@ const initialState = {
   isLoggedIn: false,
   isRegistered: false,
   isRefreshing: false,
+  waterRate: null,
 };
 const authSlice = createSlice({
   name: 'auth',
@@ -36,6 +43,9 @@ const authSlice = createSlice({
       .addCase(refreshUser.fulfilled, (state, action) => {
         state.user = action.payload;
         state.isLoggedIn = true;
+      })
+      .addCase(updateDailyNorma.fulfilled, (state, action) => {
+        state.user.waterRate = action.payload;
       });
   },
 });
