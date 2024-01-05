@@ -13,16 +13,12 @@ import { WaterRatioPanel } from 'components/WaterRatioPanel/WaterRatioPanel';
 const HomePage = () => {
   return (
     <>
-      <WaterRatioPanel />
-      <TrackerContainer>
-        <TodayWaterList />
-        <Calendar />
-      </TrackerContainer>
       <BubblesContainer>
         <Container>
           <HomePageContainer>
             <DailyNormaSection>
               <DailyNorma />
+              <WaterRatioPanel />
             </DailyNormaSection>
             <TrackerContainer>
               <TodayWaterList />
