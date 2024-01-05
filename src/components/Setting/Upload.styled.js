@@ -27,7 +27,7 @@ export const LabelUpload = styled.label`
         gap: 8px;
 `
 
-export const AppPhoto = styled.label`
+export const AppPhoto = styled.app`
 font-size: 14px;
         color: blue;
 `

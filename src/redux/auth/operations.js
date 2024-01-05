@@ -99,19 +99,19 @@ export const updateAvatar = createAsyncThunk(
   }
 );
 
-export const FormSetting = createAsyncThunk(
-  'auth/name','auth/email','auth/password',
-  async (_, thunkAPI) => {
-    const persistedToken = thunkAPI.getState().auth.token;
-    if (persistedToken === null) {
-      return thunkAPI.rejectWithValue();
-    }
-    setAuthHeader(persistedToken);
-    try {
-      const { data } = await axios.get('/api/user/name', '/api/user/email', '/api/user/password');
-      return data;
-    } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
-    }
-  }
-);
+// export const FormSetting = createAsyncThunk(
+//   'auth/name','auth/email',
+//   async (_, thunkAPI) => {
+//     const persistedToken = thunkAPI.getState().auth.token;
+//     if (persistedToken === null) {
+//       return thunkAPI.rejectWithValue();
+//     }
+//     setAuthHeader(persistedToken);
+//     try {
+//       const { data } = await axios.patch('/api/user/name', '/api/user/email');
+//       return data;
+//     } catch (error) {
+//       return thunkAPI.rejectWithValue(error.message);
+//     }
+//   }
+// );

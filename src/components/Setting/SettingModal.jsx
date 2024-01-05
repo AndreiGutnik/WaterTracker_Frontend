@@ -9,7 +9,6 @@ import { nanoid } from '@reduxjs/toolkit';
 class SettingModal extends Component {
   state = {
     isShowModal: false,
-    onEscape: false,
     }
 
     showModal = () => {
@@ -21,9 +20,6 @@ class SettingModal extends Component {
         this.setState({isShowModal:false})
   }
 
-  onEscape = () =>{
-        this.setState({onEscape:false})
-  }
 
   createUser=(data) => {
     const newUser = {
