@@ -10,7 +10,6 @@ export const Wrapper = styled.div`
 
   @media screen and (min-width: 768px) {
     margin-top: 16px;
-    margin-bottom: 40px;
   }
 
   @media screen and (min-width: 1440px) {
