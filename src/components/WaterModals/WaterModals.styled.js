@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 import { baseTheme } from 'components/theme';
+const { duration } = baseTheme.animation;
+const { cubicBezier } = baseTheme.animation;
 
 export const ModalContainer = styled.aside`
   position: fixed;
@@ -55,6 +57,7 @@ export const CloseBtn = styled.button`
 
   & use {
     fill: ${baseTheme.colors.blue};
+    transition: fill ${duration} ${cubicBezier};
   }
 
   &:hover use {
@@ -192,10 +195,25 @@ export const DivDeleteBtn = styled.div`
     border-radius: 10px;
     background: ${baseTheme.colors.violet_light};
 
+    transition: box-shadow ${duration} ${cubicBezier};
+
     &:first-child {
       color: ${baseTheme.colors.white};
       background: ${baseTheme.colors.red};
       box-shadow: 0px 4px 8px 0px rgba(64, 123, 255, 0.34);
+    }
+
+    &:first-child:hover {
+      box-shadow: 0px 4px 14px 0px rgba(64, 123, 255, 0.54);
+      cursor: pointer;
+    }
+
+    &:last-child:hover {
+      box-shadow: 0px 4px 8px 0px rgba(64, 123, 255, 0.34);
+    }
+
+    &:active {
+      box-shadow: 0 0;
     }
   }
 

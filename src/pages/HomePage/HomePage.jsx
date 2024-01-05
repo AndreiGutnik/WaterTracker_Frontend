@@ -8,6 +8,7 @@ import {
 } from './HomePage.styled';
 import DailyNorma from 'components/DailyNorma/DailyNorma';
 import { Container } from 'components/Container';
+import { WaterRatioPanel } from 'components/WaterRatioPanel/WaterRatioPanel';
 
 const HomePage = () => {
   return (
@@ -17,6 +18,7 @@ const HomePage = () => {
           <HomePageContainer>
             <DailyNormaSection>
               <DailyNorma />
+              <WaterRatioPanel />
             </DailyNormaSection>
             <TrackerContainer>
               <TodayWaterList />
