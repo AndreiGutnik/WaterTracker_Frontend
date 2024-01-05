@@ -19,7 +19,6 @@ const waterSlice = createSlice({
     openAddWater: (state, action) => {
       state.modal = modalConstants.ADD_WATER;
       state.waterInModal = resetWter;
-      console.log(resetWter);
     },
     openEditWater: (state, action) => {
       state.modal = modalConstants.EDIT_WATER;

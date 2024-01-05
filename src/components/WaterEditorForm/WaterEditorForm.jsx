@@ -23,6 +23,8 @@ import { selectModalType, selectModalWater } from 'redux/modals/selectors';
 import { selectTodayWater } from 'redux/water/selectors';
 
 export const WaterEditorForm = () => {
+  const ONE_TIME_LIMIT = 2000;
+
   const dispatch = useDispatch();
 
   const { _id, date, amountWater } = useSelector(selectModalWater);
@@ -52,7 +54,7 @@ export const WaterEditorForm = () => {
   };
 
   const increment = () => {
-    if (volume >= 2000) {
+    if (volume >= ONE_TIME_LIMIT) {
       return;
     }
     setVolume(volume + 50);
@@ -91,8 +93,8 @@ export const WaterEditorForm = () => {
       setTempVolume(null);
       return;
     }
-    if (e.target.value > 2000) {
-      e.target.value = 2000;
+    if (e.target.value > ONE_TIME_LIMIT) {
+      e.target.value = ONE_TIME_LIMIT;
     }
     const val = parseInt(e.target.value, 10);
     setTempVolume(val);
@@ -105,7 +107,7 @@ export const WaterEditorForm = () => {
     }
 
     const val = parseInt(e.target.value, 10);
-    if (val >= 0 && val <= 2000) {
+    if (val >= 0 && val <= ONE_TIME_LIMIT) {
       setVolume(val);
     }
   };
