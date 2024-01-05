@@ -8,12 +8,21 @@ import bg_dt2x from '../../../../src/images/welcome/bg-dt2x.png';
 
 export const WelcomeTrackerStile = styled.section`
   min-height: calc(100vh - 119px);
+  background-image: url(${bg_mb1x});
   background-size: cover;
   background-size: 100%;
   background-position: center bottom;
   background-repeat: no-repeat;
-  background-image: url(${bg_mb1x});
-
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  min-height: 100%;
+  inset: 0;
+  background-size: 100%;
+  
   @media screen and (max-width: 767px) and (-webkit-min-device-pixel-ratio: 2),
     (max-width: 767px) and (min-resolution: 192dpi) {
     background-image: url(${bg_mb2x});
