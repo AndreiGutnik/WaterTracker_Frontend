@@ -26,15 +26,15 @@ export const WaterTrackerBenefits = () => {
       <WelcomeListContent>
         <WelcomeListItems>
           <HabitDriveImg />
-          Habit drive
+          <p>Habit drive</p>
         </WelcomeListItems>
         <WelcomeListItems>
           <ViewStatisticsImg />
-          View statistics
+          <p>View statistics</p>
         </WelcomeListItems>
         <WelcomeListItems>
           <PersonalRateSettingImg />
-          Personal rate setting
+          <p>Personal rate setting</p>
         </WelcomeListItems>
       </WelcomeListContent>
       <WelcomeButton type="button" onClick={TryClick}>

@@ -6,50 +6,54 @@ import { baseTheme } from '../../theme';
 
 export const ContainerBenefits = styled.div`
   margin-bottom: 40px;
-  @media only screen and (min-width: 1440px) {
-    margin-right: 81px;
-    margin-bottom: 0;
-    font-size: 26px;
-  }
+
   @media only screen and (min-width: 767px) and (max-width: 1439px) {
     margin-bottom: 60px;
   }
-`;
-export const WelcomeTitle = styled.h1`
-  margin-top: 16px;
-  margin-bottom: 16px;
-  line-height: calc(42 / 36);
-  font-size: 36px;
-  font-weight: 700;
-  color: ${baseTheme.colors.black};
-  text-align: left;
-  @media only screen and (max-width: 767px) {
-    line-height: calc(32 / 28);
-    font-size: 28px;
+
+  @media only screen and (min-width: 1440px) {
+    margin-bottom: 185px;
   }
 `;
-export const WelcomeInfoTitle = styled.p`
-  margin-bottom: 24px;
-  line-height: calc(30 / 24);
+
+export const WelcomeTitle = styled.h1`
+  font-size: 28px;
+  font-weight: 700;
+  color: ${baseTheme.colors.black};
+  line-height: calc(32 / 28);
+  text-align: left;
+  margin-bottom: 16px;
+
+  @media only screen and (min-width: 768px) {
+    font-size: 36px;
+    line-height: calc(42 / 36);
+  }
+`;
+
+export const WelcomeInfoTitle = styled.h2`
   font-size: 24px;
   color: ${baseTheme.colors.black};
+  line-height: calc(30 / 24);
+  text-align: left;
+  margin-bottom: 24px;
+
   @media only screen and (min-width: 768px) {
-    line-height: calc(32 / 26);
     font-size: 26px;
+    line-height: calc(32 / 26);
   }
 `;
-export const WelcomeListTitle = styled.h2`
-  margin-bottom: 12px;
-  line-height: calc(20 / 18);
-  font-weight: 700;
+
+export const WelcomeListTitle = styled.h3`
   font-size: 18px;
+  line-height: calc(20 / 18);
+  font-weight: 500;
   text-align: left;
+  margin-bottom: 12px;
 `;
 
 export const WelcomeListContent = styled.ul`
   margin-bottom: 24px;
-  line-height: calc(20 / 16);
-  font-size: 16px;
+
   @media screen and (min-width: 768px) and (max-width: 1439px) {
     display: flex;
     align-items: center;
@@ -59,7 +63,15 @@ export const WelcomeListContent = styled.ul`
 
 export const WelcomeListItems = styled.li`
   display: flex;
+  justify-content: left;
   align-items: center;
+  gap: 8px;
+
+  & p {
+    font-size: 18px;
+    line-height: calc(20 / 16);
+  }
+
   @media screen and (max-width: 767px) {
     &:not(:last-child) {
       margin-bottom: 16px;
@@ -73,21 +85,18 @@ export const WelcomeListItems = styled.li`
 `;
 
 export const HabitDriveImg = styled(CalendarIconSvg)`
-  margin-right: 8px;
   @media only screen and (max-width: 767px) {
     height: 32px;
   }
 `;
 
 export const ViewStatisticsImg = styled(StatisticsIconSvg)`
-  margin-right: 8px;
   @media only screen and (max-width: 767px) {
     height: 32px;
   }
 `;
 
 export const PersonalRateSettingImg = styled(SettingsIconSvg)`
-  margin-right: 8px;
   @media only screen and (max-width: 767px) {
     height: 32px;
   }
@@ -99,7 +108,7 @@ export const WelcomeButton = styled.button`
   align-items: center;
   gap: 15px;
   width: 280px;
-  height: 36px;
+  height: 30px;
   border: none;
   border-radius: 10px;
   outline: none;
