@@ -18,16 +18,3 @@ export const WelcomeContainer = styled.div`
     padding: 0 18px 109px 18px;
   }
 `;
-
-// export const WaterTracker = styled.div`
-//   @media screen and (max-width: 767px) {
-//     padding-bottom: 40px;
-//   }
-//   @media screen and (min-width: 768px) and (max-width: 1439px) {
-//     padding-bottom: 50px;
-//   }
-//   @media only screen and (min-width: 1440px) {
-//     display: flex;
-//     justify-content: center;
-//   }
-// `;

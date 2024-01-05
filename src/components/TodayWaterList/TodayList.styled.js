@@ -24,12 +24,11 @@ export const TodayStyle = styled.h2`
   text-align: left;
   color: ${baseTheme.colors.black};
   font-size: 24px;
-  font-weight: 500;
+  font-weight: 600;
   line-height: 1.23;
 
   @media screen and (min-width: 768px) {
     font-size: 26px;
-    font-weight: 500;
   }
 `;
 

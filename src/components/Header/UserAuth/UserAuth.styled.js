@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import { baseTheme } from '../../theme.js'
-import {Link} from 'react-router-dom';
+import { baseTheme } from '../../theme.js';
+import { Link } from 'react-router-dom';
 
 export const WrapperSignin = styled(Link)`
   display: flex;
@@ -9,7 +9,6 @@ export const WrapperSignin = styled(Link)`
   text-decoration: none;
 
   & p {
-    font-family: 'RobotoRegular';
     font-size: 18px;
     color: ${baseTheme.colors.blue};
     font-weight: 400;

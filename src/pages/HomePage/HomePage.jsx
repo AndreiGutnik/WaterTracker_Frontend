@@ -9,8 +9,12 @@ import {
 import DailyNorma from 'components/DailyNorma/DailyNorma';
 import { Container } from 'components/Container';
 import { WaterRatioPanel } from 'components/WaterRatioPanel/WaterRatioPanel';
+import Loader from 'components/Loader/Loader';
+import { useSelector } from 'react-redux';
+import { selectIsLoading } from 'redux/water/selectors';
 
 const HomePage = () => {
+  const isLoading = useSelector(selectIsLoading);
   return (
     <>
       <BubblesContainer>
@@ -25,6 +29,7 @@ const HomePage = () => {
               <Calendar />
             </TrackerContainer>
           </HomePageContainer>
+          {isLoading && <Loader />}
         </Container>
       </BubblesContainer>
     </>
