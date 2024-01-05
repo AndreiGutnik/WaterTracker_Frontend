@@ -24,7 +24,7 @@ export const MonthNav = styled.div`
 export const MonthTitle = styled.h2`
   color: ${baseTheme.colors.black};
   font-size: 24px;
-  font-weight: 500;
+  font-weight: 600;
   line-height: calc(30 / 24);
 
   @media screen and (min-width: 768px) {

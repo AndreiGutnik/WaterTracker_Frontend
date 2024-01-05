@@ -28,7 +28,6 @@ export const WrapperLogo = styled(Link)`
   text-decoration: none;
 
   & p {
-    font-family: 'RobotoBold';
     font-size: 12px;
     text-transform: uppercase;
     text-align: left;
@@ -45,7 +44,6 @@ export const WrapperSignin = styled(Link)`
   text-decoration: none;
 
   & p {
-    font-family: 'RobotoRegular';
     font-size: 18px;
     color: ${baseTheme.colors.blue};
     font-weight: 400;

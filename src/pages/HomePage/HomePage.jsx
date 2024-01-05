@@ -28,24 +28,31 @@ const HomePage = () => {
     }));
   }, [dailyNormaCalc]);
 
-  return (
-    <>
-      <BubblesContainer>
-        <Container>
-          <HomePageContainer>
-            <DailyNormaSection>
-              <DailyNorma />
-              <WaterRatioPanel />
-            </DailyNormaSection>
-            <TrackerContainer>
-              <TodayWaterList />
-              <Calendar dailyNormaState={dailyNormaState} />
-            </TrackerContainer>
-          </HomePageContainer>
-        </Container>
-      </BubblesContainer>
-    </>
-  );
-};
+  import Loader from 'components/Loader/Loader';
+  import { useSelector } from 'react-redux';
+  import { selectIsLoading } from 'redux/water/selectors';
 
+  const HomePage = () => {
+    const isLoading = useSelector(selectIsLoading);
+    return (
+      <>
+        <BubblesContainer>
+          <Container>
+            <HomePageContainer>
+              <DailyNormaSection>
+                <DailyNorma />
+                <WaterRatioPanel />
+              </DailyNormaSection>
+              <TrackerContainer>
+                <TodayWaterList />
+                <Calendar dailyNormaState={dailyNormaState} />
+              </TrackerContainer>
+            </HomePageContainer>
+            {isLoading && <Loader />}
+          </Container>
+        </BubblesContainer>
+      </>
+    );
+  };
+};
 export default HomePage;
