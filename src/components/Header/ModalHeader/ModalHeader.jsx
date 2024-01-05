@@ -14,7 +14,7 @@ const customStyles = {
 
 Modal.setAppElement('#modal-root');
 
-export const ModalHeader = ({ isOpen, onClose }) => {
+export const ModalHeader = ({ isOpen, onClose, children}) => {
   useEffect(() => {
     const close = e => {
       if (e.key === 'Escape') {
@@ -37,8 +37,7 @@ export const ModalHeader = ({ isOpen, onClose }) => {
         style={customStyles}
         contentLabel="Example Modal"
       >
-        <p>Setting</p>
-        <p>Log out</p>
+        {children}
       </Modal>
     </>
   );

@@ -3,6 +3,7 @@ import Icons from '../../../images/sprite.svg';
 import { ThumbImg, WrapperBtn } from './UserLogo.styled';
 import { useState } from 'react';
 import { ModalHeader } from '../ModalHeader/ModalHeader';
+import { UserLogoModal } from '../ModalHeader/UserLogoModal/UserLogoModal';
 
 export const UserLogo = () => {
   const { name, avatarURL } = useAuth().user;
@@ -19,7 +20,9 @@ export const UserLogo = () => {
           <use href={Icons + '#arrow-down'}></use>
         </svg>
       </WrapperBtn>
-      <ModalHeader isOpen={modalIsOpen} onClose={toggleModal} />
+      <ModalHeader isOpen={modalIsOpen} onClose={toggleModal}>
+        <UserLogoModal />
+      </ModalHeader>
     </>
   );
 };
