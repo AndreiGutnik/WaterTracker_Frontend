@@ -4,13 +4,14 @@ import './FormSetting.css';
 import Icons from "../../images/sprite.svg";
 import { useAuth } from "../../hooks/useAuth";
 import { useState } from 'react';
+import { Form } from './FormSetting.styled';
 
 
 
  
 const FormSetting = () => {
     const { user } = useAuth()
-    const{state1, setState} = useState(null)
+    const{setState} = useState(null)
 console.log(user.name)
    
     const state = {
@@ -24,7 +25,7 @@ console.log(user.name)
         isChecked: 'true',
         onClick: 'false',
         showPassword: 'false',
-        messege: "",
+
     }
 
 
@@ -69,20 +70,12 @@ console.log(user.name)
     }
 
 
-    //     handleClose = (() => {
-    //       const close = (e) => {
-    //         if(e.keyCode === 27){
-    //           props.onCloseModal()
-    //         }
-    //       }
-    //       window.addEventListener('keydown', close)
-    //     return () => window.removeEventListener('keydown', close)
-    //   },[])
+   
 
 
    
         return (
-            <form onSubmit={handleSubmit}>
+            <Form onSubmit={handleSubmit}>
                 <div className="form">
                     <div className="form-check">
                         <label className="form-check-label-gender" htmlFor="exampleCheck1">Your gender identity</label>
@@ -141,7 +134,7 @@ console.log(user.name)
                             <input name="password" type={state.showPassword ? "text" : "password"}
                                 className="form-control pass" id="exampleInputPassword1"
                                 onChange={handleChange}
-                                value={state.password}
+                                value={user.password}
                                 placeholder="Password"
                                 required
                             />
@@ -161,7 +154,7 @@ console.log(user.name)
                             <input name="newPassword" type={state.showPassword ? "text" : "password"}
                                 className="form-control pass" id="exampleInputPassword2"
                                 onChange={handleChange}
-                                value={state.newPassword}
+                                value={user.newPassword}
                                 placeholder="Password"
                                 required
                             />
@@ -181,7 +174,7 @@ console.log(user.name)
                             <input name="repeatPassword" type={state.showPassword ? "text" : "password"}
                                 className="form-control" id="exampleInputPassword3"
                                 onChange={handleChange}
-                                value={state.repeatPassword}
+                                value={user.repeatPassword}
                                 placeholder="Password"
                                 required
                             />
@@ -192,8 +185,7 @@ console.log(user.name)
                 <div className="button-primary">
                 <button disabled={!state.isChecked} type="submit" className="btn btn-primary">Save</button>
                </div>
-                    {state.messege ? <h2>{state.messege}</h2> : null}
-            </form>
+            </Form>
             
         )
     }

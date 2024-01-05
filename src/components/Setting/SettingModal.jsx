@@ -4,7 +4,6 @@ import HeaderSetting from './HeaderSetting';
 import UploadImage from './UploadImage';
 import FormSetting from './FormSetting';
 import { nanoid } from '@reduxjs/toolkit';
-import CloseOnEscape from './CloseOnEscape';
 
 
 class SettingModal extends Component {
@@ -39,11 +38,8 @@ class SettingModal extends Component {
   render() {
     return(
       <div className='container modal'>
-        {/* <CloseOnEscape onEscape={this.onEscape}> */}
-       
     <HeaderSetting  showModal={this.showModal} />
-        {this.state.isShowModal && (<Setting closeModal={this.closeModal} handleClose={this.handleClose} ><UploadImage createUser={ this.createUser} /><FormSetting createUser={ this.createUser} /><CloseOnEscape closeModal={this.closeModal}/></Setting>)}
-      {/* </CloseOnEscape> */}
+        {this.state.isShowModal && (<Setting closeModal={this.closeModal} handleClose={this.handleClose} ><UploadImage createUser={ this.createUser} /><FormSetting createUser={ this.createUser} /></Setting>)}
       </div>
   )
 }

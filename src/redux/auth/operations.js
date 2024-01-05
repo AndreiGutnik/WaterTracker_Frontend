@@ -83,18 +83,35 @@ export const refreshUser = createAsyncThunk(
 
 export const updateAvatar = createAsyncThunk(
   'auth/avatar',
-  async(formData, thunkAPI) => {
+  async (formData, thunkAPI) => {
     
     try {
       // const formData = new FormData()
       // formData.append('file', file)
       // console.log(file)
      
-    const {data} = await axios.patch('/api/user/avatars', formData);
+      const { data } = await axios.patch('/api/user/avatars', formData);
     
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
   }
-)
+);
+
+export const FormSetting = createAsyncThunk(
+  'auth/name','auth/email','auth/password',
+  async (_, thunkAPI) => {
+    const persistedToken = thunkAPI.getState().auth.token;
+    if (persistedToken === null) {
+      return thunkAPI.rejectWithValue();
+    }
+    setAuthHeader(persistedToken);
+    try {
+      const { data } = await axios.get('/api/user/name', '/api/user/email', '/api/user/password');
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
