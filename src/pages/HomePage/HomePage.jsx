@@ -16,7 +16,7 @@ const HomePage = () => {
   const initialState = {
     dailyNorma: 0,
   };
-  const [, setDailyNormaState] = useState(initialState);
+  const [dailyNormaState, setDailyNormaState] = useState(initialState);
   const { user } = useAuth();
 
   const dailyNormaCalc = (user.waterRate / 1000).toFixed(1);
@@ -39,7 +39,7 @@ const HomePage = () => {
             </DailyNormaSection>
             <TrackerContainer>
               <TodayWaterList />
-              <Calendar />
+              <Calendar dailyNormaState={dailyNormaState} />
             </TrackerContainer>
           </HomePageContainer>
         </Container>
