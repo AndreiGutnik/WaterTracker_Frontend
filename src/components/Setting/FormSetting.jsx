@@ -3,172 +3,170 @@
 import './FormSetting.css';
 import Icons from "../../images/sprite.svg";
 import { useAuth } from "../../hooks/useAuth";
+import { updateUserData } from "../../redux/auth/operations";
 import { useState } from 'react';
+import { useDispatch } from "react-redux";
 
-import { Form, FormCheck, LabelGenderName, GenderRadio, LabelRadioGen, FormCheckInput, SpanRad} from './FormSetting.styled';
+import {
+    Form,
+    FormCheck,
+    LabelName,
+    GenderRadio,
+    SpanFormChechHender,
+    Formy,
+    FormText
+} from './FormSetting.styled';
 
 
 
  
 export const FormSetting = () => {
-    const { user } = useAuth()
-    const{setState} = useState(null)
-    console.log(user.name)
+    const [errorMessage, setErrorMessage] = useState('');
+    const { user } = useAuth();
+    const [name = user.name, setName ]=useState();
+    const [gender = user.gender, setGender] = useState();
+    const [email = user.email, setEmail ]= useState();
+    const [password = user.password, setPassword] = useState();
+    const [newPassword = '', setNewPassword] = useState();
+    const [repeatPassword = '', setRepeatPassword] = useState();
+    const dispatch  = useDispatch()
+    let isSubmit = true;
     
     const state = {
         photo: '',
-        gender: 'girl',
-        name: '',
-        email: '',
-        password: '',
-        newPassword: '',
-        repeatPassword: '',
-        isChecked: 'true',
+        gender: gender,
+        name:name,
+        email: email,
+        password: password,
+        newPassword: newPassword,
+        repeatPassword: repeatPassword,
         onClick: 'false',
         showPassword: 'false',
-
     }
 
-    const handleChange = ({ target }) => {
-        setState({
-            [target.name]: target.value,
-        })
+    const handleChangePassword = (e) => {    
+        setRepeatPassword(e.target.value);
     }
+
+    const handleChangeNewPassword = (e) => { 
+        setNewPassword(e.target.value);
+    }
+
+    const handleChangeOldPassword = (e) => {
+        setPassword(e.target.value);
+    }
+
+     const handleChangeName = (e) => {
+        setName(e.target.value);
+    }
+
+    const handleChangeEmail = (e) => {
+        setEmail(e.target.value);
+    }
+
+    const handleChange = (e) => {
+        setGender(e.target.value);
+    }
+    
     const handleSubmit = (e) => {
         e.preventDefault()
-        console.log(state);
+        updateUserDataSubmit(e);
+       
     }
 
-    // const handleCheck = ({ target: { checked } }) => {
-    //     setState({
-    //         isChecked: checked,
-    //     })
-    // }
+    const updateUserDataSubmit = (e) =>{
+        console.log(state);
+        console.log(isSubmit);
+        isSubmit = false;
 
-    const handleGender = ({ target }) => {
-        setState({ gender: target.value })
+
+
+      dispatch(updateUserData(state));
+    }
+
+    const handleVerificationUserPassword = (e) => {
+        state.password = e.target.value;
     }
 
 
     return (
-                <Form onSubmit={handleSubmit}>
-                    {/* <div className="form"> */}
-                    <FormCheck>
-                        <LabelGenderName>Your gender identity</LabelGenderName>
-                        <GenderRadio>
-                            {/* <div className="gender-radio"> */}
-                            <LabelRadioGen htmlFor="gender-1">
-                                <FormCheckInput type="radio" id="female" name="gender"
-                                    onChange={handleGender}
-                                    value='female'
-                                    // checked={user.gender}
-                                    checked={user.gender} />
-                                <SpanRad></SpanRad>
-                                <span className="form-check-gender">Girl</span>
-                            </LabelRadioGen>
-                            {/* </div> */}
-                    
-                            {/* <div className="gender-radio"> */}
-                            <label className="gender-radio-gen" htmlFor="gender-2">
-                                <input type="radio" id="male" className="form-check-input" name="gender"
-                                    onChange={handleGender}
-                                    value='male'
-                                    checked={user.gender} />
-                                <span className="rad"></span>
-                                <span className="form-check-gender">Man</span>
-                            </label>
-                            {/* </div> */}
-                        </GenderRadio>
-                    </FormCheck>
+        <Form onSubmit={handleSubmit}>
+            <FormCheck>
+                <LabelName>Your gender identity</LabelName>
+                <GenderRadio>
+                    <input type="radio" name="gender" id='female' value="female" onChange={handleChange} checked={gender === 'female'} />
+                        <label htmlFor="age-range-1">Girl</label><br />
+                    <input type="radio" name="gender" id='male' value="male" onChange={handleChange} checked={gender === 'male'} />
+                        <label htmlFor="age-range-2">Man</label><br />                         
+                </GenderRadio>
+            </FormCheck>
+                <Formy>
+                    <LabelName>Your name</LabelName>
+                    <input name="name" type="text" className="form-control" id="exampleInputName" aria-describedby="nameHelp"
+                        onChange={handleChangeName} value={name} placeholder="Name" required/>
+                </Formy>
+                <Formy>
+                    <LabelName>Email address</LabelName>
+                    <input name="email"
+                        type="email" className="form-control" id="InputEmail1" aria-describedby="emailHelp"
+                        onChange={handleChangeEmail} value={email} placeholder="Email" required/>
+                </Formy>         
+                <Formy>
+                    <LabelName>Password</LabelName>
+                    <FormText>Outdated password:</FormText>
+                    <div className="passwordClass">
+                        <input name="password" type={state.showPassword ? "text" : "password"}
+                            className="form-control pass" id="exampleInputPassword1"
+                            onChange={handleChangeOldPassword}
+                            value={password}
+                            placeholder="Password"
+                            required/>
+                    </div>
+                </Formy>       
+            <Formy>
+                <FormText>New Password:</FormText>
+                <div className="passwordClass">
+                    {/* <i className="show-button" onClick={() => setPassword({ showPassword: !state.showPassword })}>
+                        {state.showPassword ?
+                            <svg width="16" height="16" fill="blue" aria-label="upload picture" component="span">
+                                <use href={Icons + '#eye-show'}></use></svg> :
+                            <svg width="16" height="16" fill="blue" aria-label="upload picture" component="span">
+                                <use href={Icons + '#eye-hide'}></use></svg>}
+                    </i> */}
+                    <input name="newPassword" type={state.showPassword ? "text" : "password"}
+                        className="form-control pass" id="exampleInputPassword2"
+                        onChange={handleChangeNewPassword}
+                        value={newPassword}
+                        placeholder="Password"
+                        required
+                    />       
+                </div>
+            </Formy>
+            <Formy>
+                <FormText>Repeat new password:</FormText>
+                <div className="passwordClass">
+                    {/* <i className="show-button"
+                        onClick={() => setPassword({ showPassword: !state.showPassword })}>
+                        {state.showPassword ?
+                            <svg width="16" height="16" fill="blue" aria-label="upload picture" component="span">
+                                <use href={Icons + '#eye-show'}></use></svg> :
+                            <svg width="16" height="16" fill="blue" aria-label="upload picture" component="span">
+                                <use href={Icons + '#eye-hide'}></use></svg>}
+                    </i> */}
+                    <input name="repeatPassword" type={state.showPassword ? "text" : "password"}
+                        className="form-control" id="exampleInputPassword3"
+                        onChange={handleChangePassword}
+                        value={repeatPassword}
+                        placeholder="Password"
+                        required
+                    />
+                </div>
+            </Formy>
+                <div className="button-primary">
+                    <button disabled={!isSubmit} type="submit" className="btn btn-primary">Save</button>
+                </div>
+            </Form>
 
-                    <div className="inputy">
-                        <label htmlFor="exampleInputName" className="form-label">Your name</label>
-                        <input name="name" type="text" className="form-control" id="exampleInputName" aria-describedby="nameHelp"
-                            onChange={handleChange}
-                            value={user.name}
-                            placeholder="Name"
-                            required
-                        />
-                    </div>
-                    
-                    <div className="inputy">
-                        <label htmlFor="exampleInputEmail1" className="form-label">Email address</label>
-                        <input name="email"
-                            type="email" className="form-control" id="InputEmail1" aria-describedby="emailHelp"
-                            onChange={handleChange}
-                            value={user.email}
-                            placeholder="Email"
-                            required
-                        />
-                    </div>
-            
-                    <div className="inputy">
-                        <label htmlFor="exampleInputPassword1" className="form-label">Password</label>
-                        <div id="emailHelp" className="form-text">Outdated password:</div>
-                        <div className="passwordClass">
-                            <i className="show-button"
-                                onClick={() => setState({ showPassword: !state.showPassword })}>
-                                {state.showPassword ?
-                                    <svg width="16" height="16" fill="blue" aria-label="upload picture" component="span">
-                                        <use href={Icons + '#eye-show'}></use></svg> :
-                                    <svg width="16" height="16" fill="blue" aria-label="upload picture" component="span">
-                                        <use href={Icons + '#eye-hide'}></use></svg>}
-                            </i>
-                            <input name="password" type={state.showPassword ? "text" : "password"}
-                                className="form-control pass" id="exampleInputPassword1"
-                                onChange={handleChange}
-                                value={user.password}
-                                placeholder="Password"
-                                required
-                            />
-                        
-                        </div>
-                    
-                        <div id="emailHelp" className="form-text">New Password:</div>
-                        <div className="passwordClass">
-                            <i className="show-button"
-                                onClick={() => setState({ showPassword: !state.showPassword })}>
-                                {state.showPassword ?
-                                    <svg width="16" height="16" fill="blue" aria-label="upload picture" component="span">
-                                        <use href={Icons + '#eye-show'}></use></svg> :
-                                    <svg width="16" height="16" fill="blue" aria-label="upload picture" component="span">
-                                        <use href={Icons + '#eye-hide'}></use></svg>}
-                            </i>
-                            <input name="newPassword" type={state.showPassword ? "text" : "password"}
-                                className="form-control pass" id="exampleInputPassword2"
-                                onChange={handleChange}
-                                value={user.newPassword}
-                                placeholder="Password"
-                                required
-                            />
-                        
-                        </div>
-
-                        <div id="emailHelp" className="form-text">Repeat new password:</div>
-                        <div className="passwordClass">
-                            <i className="show-button"
-                                onClick={() => setState({ showPassword: !state.showPassword })}>
-                                {state.showPassword ?
-                                    <svg width="16" height="16" fill="blue" aria-label="upload picture" component="span">
-                                        <use href={Icons + '#eye-show'}></use></svg> :
-                                    <svg width="16" height="16" fill="blue" aria-label="upload picture" component="span">
-                                        <use href={Icons + '#eye-hide'}></use></svg>}
-                            </i>
-                            <input name="repeatPassword" type={state.showPassword ? "text" : "password"}
-                                className="form-control" id="exampleInputPassword3"
-                                onChange={handleChange}
-                                value={user.repeatPassword}
-                                placeholder="Password"
-                                required
-                            />
-                        </div>
-        
-                    </div>
-                    {/* </div> */}
-                    <div className="button-primary">
-                        <button disabled={!state.isChecked} type="submit" className="btn btn-primary">Save</button>
-                    </div>
-                </Form>
     )
 }
 

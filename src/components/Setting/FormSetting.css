@@ -1,4 +1,4 @@
-.form {
+/* .form {
     display: flex;
             flex-direction: column;
             align-items: flex-start;
@@ -12,7 +12,7 @@
             flex-direction: column;
             align-items: flex-start;
             gap: 15px;
-} 
+}  
 
 .form-check-label-gender{
     font-family: 'RobotoBold';
@@ -25,33 +25,33 @@
 .gender-radio{
     display: flex;
         align-items: flex-start;
-} 
+}   */
 
 .gender-radio-gen{
     display: flex;
     align-items: flex-start;
     margin-right: 24px;
    
-} 
+}  
 
-.form-label{
+/* .form-label{
         font-family: 'RobotoBold';
         font-size: 18px;
         font-weight: 500;
         line-height: 20px;
-}
+} */
 
 .form-check-input{
     width: 14px;
         height: 14px;
-} */
+} 
 
-.form-check-gender{
+/* .form-check-gender{
         font-family: 'RobotoBold';
         font-size: 16px;
         font-weight: 400;
         line-height: 20px;
-}
+} */
 
 .form-control::placeholder {
 color: #D7E3FF;
@@ -89,6 +89,9 @@ color: #D7E3FF;
 .form-check-input:checked + .rad::before{
     opacity: 1;
 }
+
+
+
 
 .form-control {
     width: 264px;

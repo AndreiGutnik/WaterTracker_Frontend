@@ -17,7 +17,7 @@ width: 256px;
             gap: 15px;
 `
 
-export const LabelGenderName = styled.label`
+export const LabelName = styled.label`
 font-family: 'RobotoBold';
             font-size: 18px;
             font-weight: 500;
@@ -29,39 +29,67 @@ display: flex;
         align-items: flex-start;
 `
         
- export const LabelRadioGen = styled.div`
-display: flex;
-    align-items: flex-start;
-    margin-right: 24px;
-`       
+//  export const LabelRadioGen = styled.div`
+// display: flex;
+//     align-items: flex-start;
+//     margin-right: 24px;
+// `       
 
-     export const FormCheckInput = styled.div`
-width: 14px;
-        height: 14px;
-        display: none;
-`        
-export const  SpanRad = styled.div`
-display: inline-block;
-    margin-right: 8px;
-        width: 14px;
-        height: 14px;
-        border-radius: 50%;
-        border: 2px solid blue;
-        position: relative; */
+//      export const FormCheckInput = styled.div`
+// width: 14px;
+//         height: 14px;
+//         display: none;
 
-        &::before{
-        content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    margin-right: -50%;
-    transform: translate(-50%, -50%);
-    display: block;
-    width: 7px;
-    height: 7px;
-    background-color: blue;
-    opacity: 0;
-    border-radius: 50%;
-        } 
-`       
+//         &:checked + ${SpanRad} &::before {
+//     opacity: 1;
+//   }
+// `        
+// export const  SpanRad = styled.div`
+// display: inline-block;
+//     margin-right: 8px;
+//         width: 14px;
+//         height: 14px;
+//         border-radius: 50%;
+//         border: 2px solid blue;
+//         position: relative;
+
+//         &::before{
+//         content: '';
+//     position: absolute;
+//     top: 50%;
+//     left: 50%;
+//     margin-right: -50%;
+//     transform: translate(-50%, -50%);
+//     display: block;
+//     width: 7px;
+//     height: 7px;
+//     background-color: blue;
+//     opacity: 0;
+//     border-radius: 50%;
+//     fill: blue
+// } 
+// `      
+export const SpanFormChechHender = styled.span`
+font-family: 'RobotoBold';
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 20px;
+        
+`
+
+export const Formy = styled.div`
+//      
+`
+
+export const FormText = styled.div`
+font-family: 'RobotoBold';
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 20px;
+        margin-top: 12px;
+        margin-bottom: 8px;
+`
+
+
+     
     

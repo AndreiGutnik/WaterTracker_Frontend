@@ -5,113 +5,130 @@ import { toast } from 'react-toastify';
 axios.defaults.baseURL = 'https://watertracker-ldwc.onrender.com';
 
 export const setAuthHeader = token => {
-  axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+    axios.defaults.headers.common.Authorization = `Bearer ${token}`;
 };
 
 export const clearAuthHeader = () => {
-  axios.defaults.headers.common.Authorization = ``;
+    axios.defaults.headers.common.Authorization = ``;
 };
 
 export const register = createAsyncThunk(
-  'auth/register',
-  async (credentials, thunkAPI) => {
-    try {
-      const { data } = await axios.post(`/api/auth/register`, credentials);
+    'auth/register',
+    async(credentials, thunkAPI) => {
+        try {
+            const { data } = await axios.post(`/api/auth/register`, credentials);
 
-      toast.success('Registration successful');
+            toast.success('Registration successful');
 
-      return data;
-    } catch (error) {
-      toast.error(error.message || 'Registration failed', error);
+            return data;
+        } catch (error) {
+            toast.error(error.message || 'Registration failed', error);
 
-      return thunkAPI.rejectWithValue(error.message);
+            return thunkAPI.rejectWithValue(error.message);
+        }
     }
-  }
 );
 
 export const logIn = createAsyncThunk(
-  'auth/login',
-  async (credentials, thunkAPI) => {
-    try {
-      const { data } = await axios.post(`/api/auth/login`, credentials);
+    'auth/login',
+    async(credentials, thunkAPI) => {
+        try {
+            const { data } = await axios.post(`/api/auth/login`, credentials);
 
-      setAuthHeader(data.token);
+            setAuthHeader(data.token);
 
-      toast.success('Login successful');
+            toast.success('Login successful');
 
-      return data;
-    } catch (error) {
-      toast.error(error.message || 'Authorization failed');
+            return data;
+        } catch (error) {
+            toast.error(error.message || 'Authorization failed');
 
-      return thunkAPI.rejectWithValue(error.message);
+            return thunkAPI.rejectWithValue(error.message);
+        }
     }
-  }
 );
 
 export const logOut = createAsyncThunk(
-  '/api/auth/logout',
-  async (_, thunkAPI) => {
-    try {
-      await axios.post(`/api/auth/logout`);
-      clearAuthHeader();
+    '/api/auth/logout',
+    async(_, thunkAPI) => {
+        try {
+            await axios.post(`/api/auth/logout`);
+            clearAuthHeader();
 
-      toast.success('You are logged out');
-    } catch (error) {
-      toast.error(error.message || 'Something went wrong');
+            toast.success('You are logged out');
+        } catch (error) {
+            toast.error(error.message || 'Something went wrong');
 
-      return thunkAPI.rejectWithValue(error.message);
+            return thunkAPI.rejectWithValue(error.message);
+        }
     }
-  }
 );
 
 export const refreshUser = createAsyncThunk(
-  'auth/refresh',
-  async (_, thunkAPI) => {
-    const persistedToken = thunkAPI.getState().auth.token;
-    if (persistedToken === null) {
-      return thunkAPI.rejectWithValue();
+    'auth/refresh',
+    async(_, thunkAPI) => {
+        const persistedToken = thunkAPI.getState().auth.token;
+        if (persistedToken === null) {
+            return thunkAPI.rejectWithValue();
+        }
+        setAuthHeader(persistedToken);
+        try {
+            const { data } = await axios.get('/api/user/current');
+            return data;
+        } catch (error) {
+            return thunkAPI.rejectWithValue(error.message);
+        }
     }
-    setAuthHeader(persistedToken);
-    try {
-      const { data } = await axios.get('/api/user/current');
-      return data;
-    } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
-    }
-  }
 );
 
 export const updateAvatar = createAsyncThunk(
-  'auth/avatar',
-  async (formData, thunkAPI) => {
-    
-    try {
-      // const formData = new FormData()
-      // formData.append('file', file)
-      // console.log(file)
-     
-      const { data } = await axios.patch('/api/user/avatars', formData);
-    
-      return data;
-    } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+    'auth/avatar',
+    async(formData, thunkAPI) => {
+
+        try {
+            const { data } = await axios.patch('/api/user/avatars', formData);
+
+            return data;
+        } catch (error) {
+            return thunkAPI.rejectWithValue(error.message);
+        }
     }
-  }
 );
 
-// export const FormSetting = createAsyncThunk(
-//   'auth/name','auth/email',
-//   async (_, thunkAPI) => {
-//     const persistedToken = thunkAPI.getState().auth.token;
-//     if (persistedToken === null) {
-//       return thunkAPI.rejectWithValue();
-//     }
-//     setAuthHeader(persistedToken);
-//     try {
-//       const { data } = await axios.patch('/api/user/name', '/api/user/email');
-//       return data;
-//     } catch (error) {
-//       return thunkAPI.rejectWithValue(error.message);
-//     }
-//   }
-// );
+export const FormSetting = createAsyncThunk(
+    'auth/gender',
+    async(_, thunkAPI) => {
+        const persistedToken = thunkAPI.getState().auth.token;
+        if (persistedToken === null) {
+            return thunkAPI.rejectWithValue();
+        }
+        setAuthHeader(persistedToken);
+        try {
+            const { data } = await axios.patch('/api/user/gender');
+            return data;
+        } catch (error) {
+            return thunkAPI.rejectWithValue(error.message);
+        }
+    }
+);
+
+//Method to Update User
+export const updateUserData = createAsyncThunk(
+    'api/user',
+    async(body, thunkAPI) => {
+        const persistedToken = thunkAPI.getState().auth.token;
+        if (persistedToken === null) {
+            return thunkAPI.rejectWithValue();
+        }
+        setAuthHeader(persistedToken);
+        try {
+            const { data } = await axios.patch('/api/user', body);
+            console.log(data);
+            console.log(setAuthHeader(persistedToken));
+            console.log('status code', data.status)
+            return data;
+        } catch (error) {
+            return thunkAPI.rejectWithValue(error.message);
+        }
+    }
+);

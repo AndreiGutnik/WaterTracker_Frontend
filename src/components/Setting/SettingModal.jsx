@@ -12,9 +12,7 @@ import { ContainerModal } from './SettingModal.styled';
 Modal.setAppElement('#modal-root');
 const SettingModal = ({ onClose }) => {
   const [isShowModal, setIsShowModal] = useState(false)
-
   const showModal = () => setIsShowModal(true)
-  
   const closeModal = () => setIsShowModal(false)
 
   useEffect(() => {
@@ -39,17 +37,15 @@ const newUser = {
  console.log('newUser :>>', newUser)
  }
     
-  return (
-    <ContainerModal>
-  <HeaderSetting  showModal={showModal} />
-         {isShowModal && (
-        <Setting closeModal={closeModal}
-        onRequestClose={onClose}>
-          <UploadImage createUser={createUser} />
-          <FormSetting createUser={createUser} />
-        </Setting>)}
-      </ContainerModal>
-  )
+  // return (
+  //   <ContainerModal>
+  //     <HeaderSetting  showModal={showModal} /> {isShowModal && (
+  //       <Setting closeModal={closeModal} onRequestClose={onClose}>
+  //         <UploadImage createUser={createUser} />
+  //         <FormSetting createUser={createUser} />
+  //       </Setting>)}
+  //   </ContainerModal>
+  // )
 }
 
 // class SettingModal extends Component {
