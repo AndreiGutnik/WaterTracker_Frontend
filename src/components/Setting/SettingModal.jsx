@@ -1,18 +1,35 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Setting from './Setting';
 import HeaderSetting from './HeaderSetting';
 import UploadImage from './UploadImage';
 import FormSetting from './FormSetting';
 import { nanoid } from '@reduxjs/toolkit';
+import Modal from 'react-modal';
 import { ContainerModal } from './SettingModal.styled';
 
 
-const SettingModal = () => {
+
+Modal.setAppElement('#modal-root');
+const SettingModal = ({ onClose }) => {
   const [isShowModal, setIsShowModal] = useState(false)
 
   const showModal = () => setIsShowModal(true)
   
   const closeModal = () => setIsShowModal(false)
+
+  useEffect(() => {
+    const close = e => {
+      if (e.key === 'Escape') {
+        onClose();
+      }
+    };
+    document.addEventListener('keydown', close);
+    document.addEventListener('mousedown', close);
+    return () => {
+      document.removeEventListener('keydown', close);
+      document.removeEventListener('mousedown', close);
+    };
+  }, [onClose]);
 
 function createUser(data) {
 const newUser = {
@@ -27,7 +44,7 @@ const newUser = {
   <HeaderSetting  showModal={showModal} />
          {isShowModal && (
         <Setting closeModal={closeModal}
-        >
+        onRequestClose={onClose}>
           <UploadImage createUser={createUser} />
           <FormSetting createUser={createUser} />
         </Setting>)}

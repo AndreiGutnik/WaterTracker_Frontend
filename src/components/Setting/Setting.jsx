@@ -2,8 +2,9 @@ import Icons from "../../images/sprite.svg";
 import { ModalShow, HeaderSettingModal, HeaderSettingName, ButtonClose, WrapperModalSetting } from "./Setting.styled";
 
 const Setting = ({ children, closeModal }) => {
-   
-        return (
+  
+    return (
+            
             <ModalShow>
                     <HeaderSettingModal>
                         <HeaderSettingName>Setting</HeaderSettingName>

@@ -28,3 +28,15 @@ export const GenderRadio = styled.div`
 display: flex;
         align-items: flex-start;
 `
+        
+ export const LabelRadioGen = styled.div`
+display: flex;
+    align-items: flex-start;
+    margin-right: 24px;
+`       
+
+     export const FormCheckInput = styled.div`
+width: 14px;
+        height: 14px;
+        display: none;
+`        

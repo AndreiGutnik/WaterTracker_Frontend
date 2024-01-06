@@ -4,17 +4,18 @@ import './FormSetting.css';
 import Icons from "../../images/sprite.svg";
 import { useAuth } from "../../hooks/useAuth";
 import { useState } from 'react';
-import { Form, FormCheck, LabelGenderName, GenderRadio} from './FormSetting.styled';
+
+import { Form, FormCheck, LabelGenderName, GenderRadio, LabelRadioGen, FormCheckInput} from './FormSetting.styled';
 
 
 
  
 const FormSetting = () => {
     const { user } = useAuth()
-    const{setState} = useState(null)
-console.log(user.name)
-   
-    const state = {
+    // const{setState} = useState(null)
+    console.log(user.name)
+    
+    const [state,setState] = useState({
         photo: '',
         gender: 'girl',
         name: '',
@@ -26,8 +27,7 @@ console.log(user.name)
         onClick: 'false',
         showPassword: 'false',
 
-    }
-
+    })
 
     const handleChange = ({ target }) => {
         setState({
@@ -36,31 +36,9 @@ console.log(user.name)
     }
     const handleSubmit = (e) => {
         e.preventDefault()
-        // props.createUser({
-        //     photo: state.photo,
-        //     gender: state.gender,
-        //     name: state.name,
-        //     email: state.email,
-        //     password: state.password,
-        //     newPassword: state.outdatePassword,
-        //     repeatPassword: state.repeatPassword,
-        // })
-
-        // setState({
-        //     photo: '',
-        //     name: '',
-        //     email: '',
-        //     password: '',
-        //     newPassword: '',
-        //     repeatPassword: '',
-        //     messege: "Submission Successful!",
-        // })
-
-        // props.closeModal()
+        console.log(state);
     }
 
-
-    
     // const handleCheck = ({ target: { checked } }) => {
     //     setState({
     //         isChecked: checked,
@@ -72,28 +50,24 @@ console.log(user.name)
     }
 
 
-   
-
-
-   
         return (
             <Form onSubmit={handleSubmit}>
                 {/* <div className="form"> */}
                     <FormCheck>
                         <LabelGenderName>Your gender identity</LabelGenderName>
                         <GenderRadio>
-                            <div className="gender-radio">
-                                <label className="gender-radio-gen" htmlFor="gender-1">
-                                <input type="radio" id="female" className="form-check-input gender-radio-gen" name="gender"
+                            {/* <div className="gender-radio"> */}
+                                <LabelRadioGen  htmlFor="gender-1">
+                                <FormCheckInput type="radio" id="female" name="gender"
                                     onChange={handleGender}
                                     value='female'
                                     checked={user.gender} />
                                     <span className="rad"></span>
                                     <span className="form-check-gender">Girl</span>
-                                </label>
-                            </div>
+                                </LabelRadioGen>
+                            {/* </div> */}
                     
-                            <div className="gender-radio">
+                            {/* <div className="gender-radio"> */}
                                 <label className="gender-radio-gen" htmlFor="gender-2">
                                 <input type="radio" id="male" className="form-check-input gender-radio-gen" name="gender"
                                     onChange={handleGender}
@@ -102,7 +76,7 @@ console.log(user.name)
                                     <span className="rad"></span>
                                     <span className="form-check-gender">Man</span>
                                 </label>
-                            </div>
+                            {/* </div> */}
                         </GenderRadio>
                     </FormCheck>
 
