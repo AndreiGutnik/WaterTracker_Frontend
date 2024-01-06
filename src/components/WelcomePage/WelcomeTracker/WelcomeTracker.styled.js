@@ -13,7 +13,6 @@ export const WelcomeTrackerStile = styled.section`
   background-size: 100%;
   background-position: center bottom;
   background-repeat: no-repeat;
-  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
