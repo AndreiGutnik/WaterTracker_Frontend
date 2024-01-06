@@ -10,7 +10,6 @@ export const Wrapper = styled.div`
 
   @media screen and (min-width: 768px) {
     margin-top: 16px;
-    margin-bottom: 40px;
   }
 
   @media screen and (min-width: 1440px) {
@@ -29,7 +28,6 @@ export const WrapperLogo = styled(Link)`
   text-decoration: none;
 
   & p {
-    font-family: 'RobotoBold';
     font-size: 12px;
     text-transform: uppercase;
     text-align: left;
@@ -46,7 +44,6 @@ export const WrapperSignin = styled(Link)`
   text-decoration: none;
 
   & p {
-    font-family: 'RobotoRegular';
     font-size: 18px;
     color: ${baseTheme.colors.blue};
     font-weight: 400;

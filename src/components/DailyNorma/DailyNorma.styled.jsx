@@ -101,6 +101,7 @@ export const DailyNormaBackground = styled.div`
   }
 
   @media screen and (min-width: 1440px) {
+    margin-top: 2px;
     margin-left: -73px;
     width: 738px;
     min-height: 548px;
