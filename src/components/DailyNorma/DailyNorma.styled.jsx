@@ -10,13 +10,14 @@ import bottleMob2x from '../../images/home/bottle-mob-2x.png';
 
 export const DailyNormaContainer = styled.div`
   width: 280px;
-  margin-bottom: 40px;
+  margin-bottom: 16px;
 
   @media screen and (min-width: 768px) {
     width: 704px;
   }
 
   @media screen and (min-width: 1440px) {
+    margin-bottom: 24px;
     width: 624px;
   }
 `;
