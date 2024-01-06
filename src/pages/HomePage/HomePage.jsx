@@ -1,10 +1,5 @@
 import { Calendar } from 'components/Calendar/Month/Month';
 import { TodayWaterList } from 'components/TodayWaterList/TodayWaterList';
-<<<<<<< HEAD
-import { TrackerContainer } from './HomePage.styled';
-import HeaderSetting from 'components/Setting/HeaderSetting';
-import SettingModal from 'components/Setting/SettingModal';
-=======
 import {
   BubblesContainer,
   DailyNormaSection,
@@ -19,7 +14,6 @@ import { useAuth } from 'hooks/useAuth';
 import Loader from 'components/Loader/Loader';
 import { useSelector } from 'react-redux';
 import { selectIsLoading } from 'redux/water/selectors';
->>>>>>> main
 
 const HomePage = () => {
   const isLoading = useSelector(selectIsLoading);
@@ -39,13 +33,6 @@ const HomePage = () => {
   }, [dailyNormaCalc]);
 
   return (
-<<<<<<< HEAD
-    <TrackerContainer>
-      <SettingModal/>
-      <TodayWaterList />
-      <Calendar />
-    </TrackerContainer>
-=======
     <>
       <BubblesContainer>
         <Container>
@@ -63,7 +50,6 @@ const HomePage = () => {
         </Container>
       </BubblesContainer>
     </>
->>>>>>> main
   );
 };
 

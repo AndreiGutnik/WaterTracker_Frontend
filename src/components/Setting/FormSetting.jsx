@@ -23,25 +23,25 @@ import {
 export const FormSetting = () => {
     const [errorMessage, setErrorMessage] = useState('');
     const { user } = useAuth();
-    const [name = user.name, setName ]=useState();
-    const [gender = user.gender, setGender] = useState();
-    const [email = user.email, setEmail ]= useState();
-    const [password = user.password, setPassword] = useState();
-    const [newPassword = '', setNewPassword] = useState();
+    const [name = user.name, setName ]= useState();
+    const [gender, setGender] = useState();
+    const [email, setEmail ]= useState();
+    const [password, setPassword] = useState(null);
+    const [newPassword = '', setNewPassword] = useState(null);
     const [repeatPassword = '', setRepeatPassword] = useState();
     const dispatch  = useDispatch()
     let isSubmit = true;
     
     const state = {
-        photo: '',
+        // photo: '',
         gender: gender,
         name:name,
         email: email,
         password: password,
         newPassword: newPassword,
-        repeatPassword: repeatPassword,
-        onClick: 'false',
-        showPassword: 'false',
+        
+        // onClick: 'false',
+        // showPassword: 'false',
     }
 
     const handleChangePassword = (e) => {    
@@ -70,19 +70,25 @@ export const FormSetting = () => {
     
     const handleSubmit = (e) => {
         e.preventDefault()
-        updateUserDataSubmit(e);
-       
-    }
-
-    const updateUserDataSubmit = (e) =>{
-        console.log(state);
-        console.log(isSubmit);
+        const{newPassword,repeatPassword}= e.target.value
+        // updateUserDataSubmit(e);
         isSubmit = false;
-
-
-
-      dispatch(updateUserData(state));
+        if (newPassword !== repeatPassword) {
+        return
+        }
+        setNewPassword(newPassword)
+        dispatch(updateUserData(state));
     }
+
+    // const updateUserDataSubmit = (e) =>{
+    //     console.log(state);
+    //     console.log(isSubmit);
+    //     isSubmit = false;
+
+
+
+    //   dispatch(updateUserData(state));
+    // }
 
     const handleVerificationUserPassword = (e) => {
         state.password = e.target.value;
@@ -120,7 +126,7 @@ export const FormSetting = () => {
                             onChange={handleChangeOldPassword}
                             value={password}
                             placeholder="Password"
-                            required/>
+                            />
                     </div>
                 </Formy>       
             <Formy>
@@ -135,10 +141,10 @@ export const FormSetting = () => {
                     </i> */}
                     <input name="newPassword" type={state.showPassword ? "text" : "password"}
                         className="form-control pass" id="exampleInputPassword2"
-                        onChange={handleChangeNewPassword}
+                        // onChange={handleChangeNewPassword}
                         value={newPassword}
                         placeholder="Password"
-                        required
+                        
                     />       
                 </div>
             </Formy>
@@ -155,10 +161,10 @@ export const FormSetting = () => {
                     </i> */}
                     <input name="repeatPassword" type={state.showPassword ? "text" : "password"}
                         className="form-control" id="exampleInputPassword3"
-                        onChange={handleChangePassword}
+                        // onChange={handleChangePassword}
                         value={repeatPassword}
                         placeholder="Password"
-                        required
+                       
                     />
                 </div>
             </Formy>

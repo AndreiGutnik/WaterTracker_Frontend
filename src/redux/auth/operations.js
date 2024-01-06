@@ -81,7 +81,6 @@ export const refreshUser = createAsyncThunk(
     }
 );
 
-<<<<<<< HEAD
 export const updateAvatar = createAsyncThunk(
     'auth/avatar',
     async(formData, thunkAPI) => {
@@ -89,23 +88,6 @@ export const updateAvatar = createAsyncThunk(
         try {
             const { data } = await axios.patch('/api/user/avatars', formData);
 
-            return data;
-        } catch (error) {
-            return thunkAPI.rejectWithValue(error.message);
-        }
-    }
-);
-
-export const FormSetting = createAsyncThunk(
-    'auth/gender',
-    async(_, thunkAPI) => {
-        const persistedToken = thunkAPI.getState().auth.token;
-        if (persistedToken === null) {
-            return thunkAPI.rejectWithValue();
-        }
-        setAuthHeader(persistedToken);
-        try {
-            const { data } = await axios.patch('/api/user/gender');
             return data;
         } catch (error) {
             return thunkAPI.rejectWithValue(error.message);
@@ -124,16 +106,13 @@ export const updateUserData = createAsyncThunk(
         setAuthHeader(persistedToken);
         try {
             const { data } = await axios.patch('/api/user', body);
-            console.log(data);
-            console.log(setAuthHeader(persistedToken));
-            console.log('status code', data.status)
             return data;
         } catch (error) {
             return thunkAPI.rejectWithValue(error.message);
         }
     }
 );
-=======
+
 export const updateDailyNorma = createAsyncThunk(
   `user/updatedailynorma`,
   async (newDailyNorma, thunkAPI) => {
@@ -147,4 +126,3 @@ export const updateDailyNorma = createAsyncThunk(
     }
   }
 );
->>>>>>> main

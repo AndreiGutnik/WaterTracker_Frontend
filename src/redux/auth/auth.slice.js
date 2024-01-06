@@ -1,17 +1,15 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
-<<<<<<< HEAD
-import { register, logIn, logOut, refreshUser, updateAvatar } from './operations';
-=======
 import {
   register,
   logIn,
   logOut,
   refreshUser,
+  updateAvatar,
   updateDailyNorma,
+  updateUserData,
 } from './operations';
->>>>>>> main
 
 const initialState = {
   user: null,
@@ -47,6 +45,10 @@ const authSlice = createSlice({
       .addCase(updateAvatar.fulfilled, (state, action) => {
         state.user.avatarURL = action.payload.avatarURL ;
       })
+      .addCase(updateUserData.fulfilled, (state, action) => {
+        state.user = action.payload ;
+      })
+      
       .addCase(refreshUser.fulfilled, (state, action) => {
         state.user = action.payload;
         state.isLoggedIn = true;
