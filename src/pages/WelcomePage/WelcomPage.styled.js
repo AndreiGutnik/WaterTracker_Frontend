@@ -14,6 +14,7 @@ export const WelcomeContainer = styled.div`
   @media screen and (min-width: 1440px) {
     display: flex;
     justify-content: center;
+    gap: 81px;
     width: 1440px;
     padding: 0 18px 109px 18px;
   }
