@@ -81,6 +81,7 @@ export const refreshUser = createAsyncThunk(
     }
 );
 
+<<<<<<< HEAD
 export const updateAvatar = createAsyncThunk(
     'auth/avatar',
     async(formData, thunkAPI) => {
@@ -132,3 +133,18 @@ export const updateUserData = createAsyncThunk(
         }
     }
 );
+=======
+export const updateDailyNorma = createAsyncThunk(
+  `user/updatedailynorma`,
+  async (newDailyNorma, thunkAPI) => {
+    try {
+      const { data } = await axios.patch(`/api/user/waterrate`, {
+        waterRate: newDailyNorma,
+      });
+      return data.waterRate;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+>>>>>>> main

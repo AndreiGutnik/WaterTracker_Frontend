@@ -1,7 +1,10 @@
 import { useState, useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchMonthThunk } from 'redux/month/operations';
-import { selectorWaterMonth } from 'redux/month/selectors';
+import {
+  selectorIsLoadingMonth,
+  selectorWaterMonth,
+} from 'redux/month/selectors';
 
 import Icons from '../../../images/sprite.svg';
 import DayComponent from './Day';
@@ -15,12 +18,14 @@ import {
   Month,
   MonthTitle,
 } from './Month.styled';
+import Loader from 'components/Loader/Loader';
 
-export const Calendar = () => {
+export const Calendar = dailyNormaState => {
   const [currentDate, setCurrentDate] = useState(new Date());
   const dispatch = useDispatch();
   const waterForMonth = useSelector(selectorWaterMonth);
   const ref = useRef(null);
+  const isLoading = useSelector(selectorIsLoadingMonth);
 
   useEffect(() => {
     const month = `${
@@ -28,7 +33,7 @@ export const Calendar = () => {
     } - ${currentDate.getFullYear()}`;
 
     dispatch(fetchMonthThunk(month));
-  }, [dispatch, currentDate]);
+  }, [dispatch, currentDate, dailyNormaState]);
 
   const handleNextMonth = () => {
     const nextMonthDate = new Date(
@@ -110,6 +115,7 @@ export const Calendar = () => {
         </MonthControl>
       </MonthNav>
       <DaysContainer>{renderDays()}</DaysContainer>
+      {isLoading && <Loader />}
     </CalendarContainer>
   );
 };

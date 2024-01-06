@@ -6,6 +6,7 @@ import { persistor, store } from 'redux/store';
 import { BrowserRouter } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 import { PersistGate } from 'redux-persist/integration/react';
+import ModalProvider from 'components/DailyNorma/ModalProvider';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
@@ -13,7 +14,9 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       <PersistGate loading={null} persistor={persistor}>
         <BrowserRouter basename="WaterTracker_Frontend">
           <HelmetProvider>
-            <App />
+            <ModalProvider>
+              <App />
+            </ModalProvider>
           </HelmetProvider>
         </BrowserRouter>
       </PersistGate>

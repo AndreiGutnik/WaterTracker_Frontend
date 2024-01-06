@@ -2,6 +2,9 @@ import styled from 'styled-components';
 import { Field, Form } from 'formik';
 import { baseTheme } from 'components/theme';
 
+const { duration } = baseTheme.animation;
+const { cubicBezier } = baseTheme.animation;
+
 export const InputText = styled.p`
   margin-bottom: 12px;
   line-height: 1.25;
@@ -36,6 +39,7 @@ export const PlusMinusBtn = styled.button`
 
   & use {
     fill: #407bff;
+    transition: fill ${duration} ${cubicBezier};
   }
 
   &:hover use {
@@ -155,9 +159,20 @@ export const SaveBtn = styled.button`
   background: ${baseTheme.colors.blue};
   box-shadow: 0px 4px 8px 0px rgba(64, 123, 255, 0.34);
 
+  transition: box-shadow ${duration} ${cubicBezier};
+
   & span {
     color: ${baseTheme.colors.white};
     line-height: 1.25;
+  }
+
+  &:hover {
+    box-shadow: 0px 4px 14px 0px rgba(64, 123, 255, 0.54);
+    cursor: pointer;
+  }
+
+  &:active {
+    box-shadow: 0 0;
   }
 
   @media screen and (min-width: 768px) {
