@@ -108,8 +108,8 @@ export const WelcomeButton = styled.button`
   justify-content: center;
   align-items: center;
   gap: 15px;
+  padding: 8px 30px;
   width: 280px;
-  height: 30px;
   border: none;
   border-radius: 10px;
   outline: none;

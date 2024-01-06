@@ -1,4 +1,4 @@
-import { WelcomeContainer } from './WelcomPage.styled';
+import { WelcomeContainer } from './WelcomePage.styled';
 import { WelcomeTracker } from '../../components/WelcomePage/WelcomeTracker/WelcomeTracker';
 import { WaterTrackerBenefits } from '../../components/WelcomePage/WaterTrackerBenefits/WaterTrackerBenefits';
 import { DrinkInfo } from '../../components/WelcomePage/DrinkInfo/DrinkInfo';
