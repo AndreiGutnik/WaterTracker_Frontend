@@ -32,6 +32,7 @@ export const WelcomeTitle = styled.h1`
 
 export const WelcomeInfoTitle = styled.h2`
   font-size: 24px;
+  font-weight: 400;
   color: ${baseTheme.colors.black};
   line-height: calc(30 / 24);
   text-align: left;
@@ -45,8 +46,8 @@ export const WelcomeInfoTitle = styled.h2`
 
 export const WelcomeListTitle = styled.h3`
   font-size: 18px;
-  line-height: calc(20 / 18);
   font-weight: 500;
+  line-height: calc(20 / 18);
   text-align: left;
   margin-bottom: 12px;
 `;
@@ -107,15 +108,15 @@ export const WelcomeButton = styled.button`
   justify-content: center;
   align-items: center;
   gap: 15px;
+  padding: 8px 30px;
   width: 280px;
-  height: 30px;
   border: none;
   border-radius: 10px;
   outline: none;
   color: ${baseTheme.colors.white};
   background-color: ${baseTheme.colors.blue};
   box-shadow: 0px 4px 8px 0px rgba(64, 123, 255, 0.34);
-  transition: all ${baseTheme.cubicBezier};
+  transition: box-shadow ${baseTheme.animation.duration} ${baseTheme.animation.cubicBezier};
   cursor: pointer;
   &:hover {
     box-shadow: 0px 4px 14px 0px rgba(64, 123, 255, 0.54);
