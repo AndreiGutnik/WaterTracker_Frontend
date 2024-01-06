@@ -6,6 +6,7 @@ export const ContainerDrinkInfo = styled.div`
   padding: 24px 16px;
   border-radius: 10px;
   width: 100%;
+  height: 100%;
   box-shadow: 0px 4px 14px 0px rgba(64, 123, 255, 0.3);
   background-color: ${baseTheme.colors.grey};
 
@@ -16,7 +17,6 @@ export const ContainerDrinkInfo = styled.div`
 
   @media screen and (min-width: 1440px) {
     margin-top: 34px;
-    margin-bottom: 185px;
   }
 `;
 
