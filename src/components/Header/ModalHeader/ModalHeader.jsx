@@ -9,12 +9,15 @@ const customStyles = {
     bottom: 'auto',
     marginRight: '-50%',
     transform: 'translate(-50%, -50%)',
+    padding: 0,
+    borderRadius:10,
   },
+  overlay:{backgroundColor: 'rgba(0, 0, 0, 0.8)'},
 };
 
 Modal.setAppElement('#modal-root');
 
-export const ModalHeader = ({ isOpen, onClose, children}) => {
+export const ModalHeader = ({ isOpen, onClose, styleItem, children}) => {
   useEffect(() => {
     const close = e => {
       if (e.key === 'Escape') {
@@ -34,7 +37,7 @@ export const ModalHeader = ({ isOpen, onClose, children}) => {
       <Modal
         isOpen={isOpen}
         onRequestClose={onClose}
-        style={customStyles}
+        style={{...customStyles, ...styleItem }}
         contentLabel="Example Modal"
       >
         {children}

@@ -20,3 +20,5 @@ export const ThumbImg = styled.img`
   width: 28px;
   border-radius: 50%;
 `;
+
+

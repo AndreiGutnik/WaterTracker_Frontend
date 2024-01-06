@@ -3,19 +3,16 @@ import {
   DivDeleteBtn,
   ModalDelete,
   ModalHead,
-   ModalHeader,
-   SmaleDeleteHeader,
+  ModalHeader,
+  SmaleDeleteHeader,
 } from './UserLogoutModal.styled';
 import sprite from '../../../../images/sprite.svg';
 
 export const UserLogoutModal = () => {
-   
   return (
-    
-        
     <ModalDelete>
       <ModalHead>
-        <ModalHeader>Delete entry</ModalHeader>
+        <ModalHeader>Log out</ModalHeader>
         <CloseBtn onClick={() => {}}>
           <svg>
             <use href={sprite + '#close'}></use>
@@ -23,11 +20,9 @@ export const UserLogoutModal = () => {
         </CloseBtn>
       </ModalHead>
 
-      <SmaleDeleteHeader>
-        Are you sure you want to delete the entry?
-      </SmaleDeleteHeader>
+      <SmaleDeleteHeader>Do you really want to leave?</SmaleDeleteHeader>
       <DivDeleteBtn>
-        <button onClick={() => {}}>Delete</button>
+        <button onClick={() => {}}>Log out</button>
         <button onClick={() => {}}>Cancel</button>
       </DivDeleteBtn>
     </ModalDelete>

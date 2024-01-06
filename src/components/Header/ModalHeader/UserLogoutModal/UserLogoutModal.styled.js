@@ -44,7 +44,7 @@ export const ModalHeader = styled.h3`
 
 export const ModalDelete = styled.div`
   width: 280px;
-  height: 280px;
+  height: 260px;
   padding: 32px 24px;
 
   display: flex;
@@ -115,5 +115,9 @@ export const DivDeleteBtn = styled.div`
     & button {
       width: 160px;
     }
+    @media only screen and (min-width: 1440px) {
+        flex-direction: row;
+  }
+
   }
 `;

@@ -1,17 +1,28 @@
-import { useState } from "react";
-import { ModalHeader } from "../ModalHeader";
-import { UserLogoutModal } from "../UserLogoutModal/UserLogoutModal";
+import { useState } from 'react';
+import { ModalHeader } from '../ModalHeader';
+import { UserLogoutModal } from '../UserLogoutModal/UserLogoutModal';
+import { ModalUser } from './UserLogoModal.styled';
 
-export const UserLogoModal = () => {
-    const [modalIsOpen, setModalIsOpen] = useState(false);
-  
-    const toggleModal = () => setModalIsOpen(!modalIsOpen);
+export const UserLogoModal = ({ isOpenLogoutModal, onCloseLogoutModal }) => {
+  // const [modalLogOutIsOpen, setModalLogOutIsOpen] = useState(false);
+  // const toggleModalLogOut = () => setModalLogOutIsOpen(!modalLogOutIsOpen);
+
+  //   const toggle = () => {
+  //     // closeModalLogout();
+  //     closeModalUserLogo();
+  //   };
+
   return (
     <>
+    <ModalUser>
       <p>Setting</p>
-      <button type="button" onClick={toggleModal}>Log out</button>
-      <ModalHeader isOpen={modalIsOpen} onClose={toggleModal}><UserLogoutModal/></ModalHeader>
-
+      <button type="button" onClick={onCloseLogoutModal}>
+        Log out
+      </button>
+      </ModalUser>
+      <ModalHeader isOpen={isOpenLogoutModal} onClose={onCloseLogoutModal} >
+        <UserLogoutModal />
+      </ModalHeader>
     </>
   );
 };
