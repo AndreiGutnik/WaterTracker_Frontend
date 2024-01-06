@@ -25,6 +25,7 @@ import { ModalContext } from '../ModalProvider/ModalProvider';
 import { useDispatch } from 'react-redux';
 import { updateDailyNorma } from 'redux/auth/operations';
 import { useAuth } from 'hooks/useAuth';
+import { toast } from 'react-toastify';
 
 const DailyNormaModal = () => {
   const toggleModal = useContext(ModalContext);
@@ -43,19 +44,33 @@ const DailyNormaModal = () => {
     setCalculatedWaterAmount(calculatedAmount.toFixed(2));
   }, []);
 
-  const handleInputChange = (e, fieldName) => {
+  const handleInputChange = e => {
     formik.handleChange(e);
-    const inputText = e.target.value;
+  };
 
-    let numericValue = parseFloat(inputText);
-    if (isNaN(numericValue)) {
-      numericValue = 0;
+  const handleFocus = (e, fieldName) => {
+    if (fieldName !== 'drankWaterAmount') {
+      e.target.value = '';
+    }
+  };
+
+  const handleBlur = fieldName => {
+    if (fieldName !== 'drankWaterAmount') {
+      formik.setFieldValue('drankWaterAmount', calculatedWaterAmount);
     }
   };
 
   const handleSubmit = async () => {
-    dispatch(updateDailyNorma(formik.values.drankWaterAmount * 1000));
+    let amountWater = formik.values.drankWaterAmount * 1000;
 
+    if (amountWater >= 0 && amountWater <= 15000) {
+      dispatch(updateDailyNorma(amountWater));
+      toast.success('Daily norma successfully updated');
+    } else {
+      toast.warning(
+        'The amount of water must be a positive number and no more than 15 liters'
+      );
+    }
     formik.resetForm();
     toggleModal();
   };
@@ -145,7 +160,8 @@ const DailyNormaModal = () => {
               inputType="dailyNorma"
               value={formik.values.weight}
               onChange={e => handleInputChange(e, 'weight')}
-              onBlur={formik.handleBlur}
+              onFocus={e => handleFocus(e, 'weight')}
+              onBlur={e => handleBlur(e, 'weight')}
               name="weight"
               type="number"
               error={formik.touched.weight && formik.errors.weight}
@@ -157,7 +173,8 @@ const DailyNormaModal = () => {
               inputType="dailyNorma"
               value={formik.values.activityTime}
               onChange={e => handleInputChange(e, 'activityTime')}
-              onBlur={formik.handleBlur}
+              onFocus={e => handleFocus(e, 'activityTime')}
+              onBlur={e => handleBlur(e, 'activityTime')}
               name="activityTime"
               type="number"
               error={formik.touched.activityTime && formik.errors.activityTime}
@@ -177,7 +194,8 @@ const DailyNormaModal = () => {
               inputType="dailyNorma"
               value={formik.values.drankWaterAmount}
               onChange={e => handleInputChange(e, 'drankWaterAmount')}
-              onBlur={formik.handleBlur}
+              onFocus={e => handleFocus(e, 'drankWaterAmount')}
+              onBlur={() => handleBlur('drankWaterAmount')}
               name="drankWaterAmount"
               type="number"
               error={
