@@ -24,6 +24,7 @@ import { selectTodayWater } from 'redux/water/selectors';
 
 export const WaterEditorForm = () => {
   const ONE_TIME_LIMIT = 2000;
+  const STEP_ADD = 50;
 
   const dispatch = useDispatch();
 
@@ -57,16 +58,16 @@ export const WaterEditorForm = () => {
     if (volume >= ONE_TIME_LIMIT) {
       return;
     }
-    setVolume(volume + 50);
-    setTempVolume(tempVolume + 50);
+    setVolume(volume + STEP_ADD);
+    setTempVolume(tempVolume + STEP_ADD);
   };
 
   const decrement = () => {
-    if (volume <= 50) {
+    if (volume <= STEP_ADD) {
       return;
     }
-    setVolume(volume - 50);
-    setTempVolume(tempVolume - 50);
+    setVolume(volume - STEP_ADD);
+    setTempVolume(tempVolume - STEP_ADD);
   };
 
   const handleSubmit = ({ time }) => {
@@ -150,8 +151,6 @@ export const WaterEditorForm = () => {
             <TimeVolumeInput
               name="amountWater"
               type="number"
-              min="0"
-              max="2000"
               value={tempVolume}
               onFocus={handelFocus}
               onBlur={handelBlur}
