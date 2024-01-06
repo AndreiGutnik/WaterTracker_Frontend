@@ -40,3 +40,28 @@ width: 14px;
         height: 14px;
         display: none;
 `        
+export const  SpanRad = styled.div`
+display: inline-block;
+    margin-right: 8px;
+        width: 14px;
+        height: 14px;
+        border-radius: 50%;
+        border: 2px solid blue;
+        position: relative; */
+
+        &::before{
+content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+    display: block;
+    width: 7px;
+    height: 7px;
+    background-color: blue;
+    opacity: 0;
+    border-radius: 50%;
+        } 
+`       
+    

@@ -5,17 +5,17 @@ import Icons from "../../images/sprite.svg";
 import { useAuth } from "../../hooks/useAuth";
 import { useState } from 'react';
 
-import { Form, FormCheck, LabelGenderName, GenderRadio, LabelRadioGen, FormCheckInput} from './FormSetting.styled';
+import { Form, FormCheck, LabelGenderName, GenderRadio, LabelRadioGen, FormCheckInput, SpanRad} from './FormSetting.styled';
 
 
 
  
-const FormSetting = () => {
+export const FormSetting = () => {
     const { user } = useAuth()
-    // const{setState} = useState(null)
+    const{setState} = useState(null)
     console.log(user.name)
     
-    const [state,setState] = useState({
+    const state = {
         photo: '',
         gender: 'girl',
         name: '',
@@ -27,7 +27,7 @@ const FormSetting = () => {
         onClick: 'false',
         showPassword: 'false',
 
-    })
+    }
 
     const handleChange = ({ target }) => {
         setState({
@@ -50,32 +50,33 @@ const FormSetting = () => {
     }
 
 
-        return (
-            <Form onSubmit={handleSubmit}>
-                {/* <div className="form"> */}
+    return (
+                <Form onSubmit={handleSubmit}>
+                    {/* <div className="form"> */}
                     <FormCheck>
                         <LabelGenderName>Your gender identity</LabelGenderName>
                         <GenderRadio>
                             {/* <div className="gender-radio"> */}
-                                <LabelRadioGen  htmlFor="gender-1">
+                            <LabelRadioGen htmlFor="gender-1">
                                 <FormCheckInput type="radio" id="female" name="gender"
                                     onChange={handleGender}
                                     value='female'
+                                    // checked={user.gender}
                                     checked={user.gender} />
-                                    <span className="rad"></span>
-                                    <span className="form-check-gender">Girl</span>
-                                </LabelRadioGen>
+                                <SpanRad></SpanRad>
+                                <span className="form-check-gender">Girl</span>
+                            </LabelRadioGen>
                             {/* </div> */}
                     
                             {/* <div className="gender-radio"> */}
-                                <label className="gender-radio-gen" htmlFor="gender-2">
-                                <input type="radio" id="male" className="form-check-input gender-radio-gen" name="gender"
+                            <label className="gender-radio-gen" htmlFor="gender-2">
+                                <input type="radio" id="male" className="form-check-input" name="gender"
                                     onChange={handleGender}
                                     value='male'
                                     checked={user.gender} />
-                                    <span className="rad"></span>
-                                    <span className="form-check-gender">Man</span>
-                                </label>
+                                <span className="rad"></span>
+                                <span className="form-check-gender">Man</span>
+                            </label>
                             {/* </div> */}
                         </GenderRadio>
                     </FormCheck>
@@ -163,14 +164,14 @@ const FormSetting = () => {
                         </div>
         
                     </div>
-                {/* </div> */}
-                <div className="button-primary">
-                <button disabled={!state.isChecked} type="submit" className="btn btn-primary">Save</button>
-               </div>
-            </Form>
-            
-        )
-    }
+                    {/* </div> */}
+                    <div className="button-primary">
+                        <button disabled={!state.isChecked} type="submit" className="btn btn-primary">Save</button>
+                    </div>
+                </Form>
+    )
+}
+
     
 
 export default FormSetting
