@@ -52,7 +52,7 @@ export const WaterRatioPanel = () => {
       </RatioContainer>
       <AddWaterBtn onClick={() => dispatch(openAddWater())}>
         <svg>
-          <use href={sprite + '#plus-circle'}></use>
+          <use href={sprite + '#icon-plus'}></use>
         </svg>
         <span>Add water</span>
       </AddWaterBtn>
