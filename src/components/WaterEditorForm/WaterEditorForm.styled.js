@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { Field, Form } from 'formik';
+import Select from 'react-select';
 import { baseTheme } from 'components/theme';
 
 const { duration } = baseTheme.animation;
@@ -70,7 +71,7 @@ export const FormContainer = styled(Form)`
   width: 100%;
 `;
 
-export const InputTimeLable = styled.label`
+export const InputTimeLabel = styled.label`
   text-align: left;
   margin-bottom: 24px;
   line-height: 1.25;
@@ -79,7 +80,7 @@ export const InputTimeLable = styled.label`
   flex-direction: column;
 `;
 
-export const InputVolumeLable = styled.label`
+export const InputVolumeLabel = styled.label`
   margin-bottom: 16px;
   font-size: 18px;
   font-weight: 500;
@@ -92,7 +93,44 @@ export const InputVolumeLable = styled.label`
   flex-direction: column;
 `;
 
-export const TimeVolumeInput = styled(Field)`
+export const TimeSelect = styled(Select)`
+  width: 120px;
+  height: 44px;
+  border-radius: 6px;
+  margin: 0;
+
+  .MyDropdown__control {
+    height: 44px;
+    border: 1px solid ${baseTheme.colors.violet_light};
+  }
+
+  .MyDropdown__control:hover {
+    border: 1px solid ${baseTheme.colors.violet_light};
+  }
+
+  .MyDropdown__indicators {
+    display: none;
+  }
+
+  .MyDropdown__value-container {
+    padding: 0px 10px;
+  }
+
+  .MyDropdown__single-value {
+    color: ${baseTheme.colors.blue};
+    line-height: 1.25;
+  }
+
+  .MyDropdown__menu {
+    color: ${baseTheme.colors.blue};
+  }
+
+  @media screen and (min-width: 768px) {
+    width: 100%;
+  }
+`;
+
+export const VolumeInput = styled(Field)`
   width: 120px;
   height: 44px;
   border-radius: 6px;
@@ -127,11 +165,9 @@ export const TimeVolumeInput = styled(Field)`
   @media screen and (min-width: 768px) {
     width: 100%;
   }
-  @media only screen and (min-width: 1440px) {
-  }
 `;
 
-export const AmountLable = styled.label`
+export const AmountLabel = styled.label`
   margin-bottom: 16px;
   color: ${baseTheme.colors.blue};
   text-align: center;
