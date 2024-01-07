@@ -116,6 +116,7 @@ export const RatioMarks = styled.div`
     margin-bottom: 8px;
   }
   @media only screen and (min-width: 1440px) {
+    width: 360px;
     margin-bottom: 4px;
   }
 `;
