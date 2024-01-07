@@ -26,6 +26,7 @@ export const WelcomeContainer = styled.div`
     (max-width: 767px) and (min-resolution: 192dpi) {
     background-image: url(${backgroundMobile}), url(${bg_mb2x});
   }
+
   @media screen and (min-width: 768px) and (max-width: 1439px) {
     width: 768px;
 
@@ -33,10 +34,12 @@ export const WelcomeContainer = styled.div`
     min-height: calc(100vh - 88px);
     background-image: url(${backgroundTablet}), url(${bg_tb1x});
   }
+
   @media screen and (min-width: 768px) and (-webkit-min-device-pixel-ratio: 2),
     (min-width: 768px) and (min-resolution: 192dpi) {
     background-image: url(${backgroundTablet}), url(${bg_tb2x});
   }
+
   @media screen and (min-width: 1440px) {
     display: flex;
     justify-content: center;
@@ -47,6 +50,7 @@ export const WelcomeContainer = styled.div`
     min-height: calc(100vh - 80px);
     background-image: url(${backgroundDesktop}), url(${bg_dt1x});
   }
+  
   @media screen and (min-width: 1440px) and (-webkit-min-device-pixel-ratio: 2),
     (min-width: 1440px) and (min-resolution: 192dpi) {
     background-image: url(${backgroundDesktop}), url(${bg_dt2x});
