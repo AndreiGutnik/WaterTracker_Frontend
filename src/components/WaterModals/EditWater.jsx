@@ -4,7 +4,7 @@ import {
   ModalEdit,
   ModalHead,
   ModalHeader,
-  SmaleHeader,
+  SmallHeader,
   TextEditTime,
   TextEditVolume,
 } from './WaterModals.styled';
@@ -46,7 +46,7 @@ export const EditWater = () => {
         <TextEditVolume>{amountWater} ml</TextEditVolume>
         <TextEditTime>{timeFromDate(date)}</TextEditTime>
       </InfoEditWrap>
-      <SmaleHeader>Correct entered data:</SmaleHeader>
+      <SmallHeader>Correct entered data:</SmallHeader>
       <WaterEditorForm />
     </ModalEdit>
   );
