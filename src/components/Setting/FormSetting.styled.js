@@ -28,53 +28,13 @@ export const GenderRadio = styled.div`
 display: flex;
         align-items: flex-start;
 `
-        
-//  export const LabelRadioGen = styled.div`
-// display: flex;
-//     align-items: flex-start;
-//     margin-right: 24px;
-// `       
 
-//      export const FormCheckInput = styled.div`
-// width: 14px;
-//         height: 14px;
-//         display: none;
+export const  InputGenderRadio = styled.input`
+//
+`
 
-//         &:checked + ${SpanRad} &::before {
-//     opacity: 1;
-//   }
-// `        
-// export const  SpanRad = styled.div`
-// display: inline-block;
-//     margin-right: 8px;
-//         width: 14px;
-//         height: 14px;
-//         border-radius: 50%;
-//         border: 2px solid blue;
-//         position: relative;
-
-//         &::before{
-//         content: '';
-//     position: absolute;
-//     top: 50%;
-//     left: 50%;
-//     margin-right: -50%;
-//     transform: translate(-50%, -50%);
-//     display: block;
-//     width: 7px;
-//     height: 7px;
-//     background-color: blue;
-//     opacity: 0;
-//     border-radius: 50%;
-//     fill: blue
-// } 
-// `      
-export const SpanFormChechHender = styled.span`
-font-family: 'RobotoBold';
-        font-size: 16px;
-        font-weight: 400;
-        line-height: 20px;
-        
+export const  LabelGender = styled.label`
+//
 `
 
 export const Formy = styled.div`
@@ -88,6 +48,58 @@ font-family: 'RobotoBold';
         line-height: 20px;
         margin-top: 12px;
         margin-bottom: 8px;
+        position: relative;
+`
+
+export const  InputFormControl = styled.input`
+width: 264px;
+    height: 44px;
+    display: flex;
+    padding: 12px 10px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    border-radius: 6px;
+    border: 1px solid #D7E3FF;
+    color: #407BEF;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 20px;
+    margin-top: 8px;
+`
+
+export const PasswordDiv = styled.div`
+ position: relative;
+`
+export const IconShowButton = styled.span`
+ position: absolute;
+    right: 8px;
+    bottom: 12px;
+    cursor: pointer;
+`
+
+export const ButtonPrimaryDiv = styled.div`
+ //
+`
+
+export const BtnPrimartButton = styled.button`
+ display: block;
+    width: 256px;
+    height: 36px;
+    display: flex;
+    padding: 8px 30px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 10px;
+        background: #407BFF;
+        box-shadow: 0px 4px 8px 0px rgba(64, 123, 255, 0.34);
+
+         color: #FFF;
+        text-align: center;
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 20px;
 `
 
 
