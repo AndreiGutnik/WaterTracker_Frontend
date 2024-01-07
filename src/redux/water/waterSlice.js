@@ -37,7 +37,7 @@ const waterSlice = createSlice({
     [addWater.fulfilled](state, action) {
       state.isLoading = false;
       state.error = null;
-      state.items.waterNotes.push(action.payload); //TO CHECK
+      state.items.waterNotes.push(action.payload);
     },
     [addWater.rejected]: handleRejected,
 

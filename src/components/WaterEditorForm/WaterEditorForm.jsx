@@ -10,10 +10,11 @@ import {
   InputText,
   InputTimeLable,
   InputVolumeLable,
-  TimeVolumeInput,
+  VolumeInput,
   AmountLable,
   SaveVolumeDiv,
   FormContainer,
+  TimeSelect,
 } from './WaterEditorForm.styled';
 import sprite from '../../images/sprite.svg';
 import { addWater, editWater } from 'redux/water/operations';
@@ -22,10 +23,57 @@ import modalConstants from 'redux/modals/modalСonstants';
 import { selectModalType, selectModalWater } from 'redux/modals/selectors';
 import { selectTodayWater } from 'redux/water/selectors';
 
+const ONE_TIME_LIMIT = 2000;
+const STEP_ADD = 50;
+
+const getTimeOptions = () => {
+  const options = [];
+
+  for (let i = 0; i < 24; i++) {
+    for (let j = 0; j < 60; j += 5) {
+      const hour = i < 10 ? `0${i}` : `${i}`;
+      const minute = j < 10 ? `0${j}` : `${j}`;
+      options.push({
+        value: `${hour}:${minute}`,
+        label: `${hour}:${minute}`,
+      });
+    }
+  }
+  return options;
+};
+
+const getNowTime = date => {
+  const now = date ? new Date(date) : new Date();
+  const minutes = now.getMinutes();
+  const roundedMinutes = Math.ceil(minutes / 5) * 5;
+  now.setMinutes(roundedMinutes);
+  now.toLocaleTimeString([], {
+    hour: '2-digit',
+    minute: '2-digit',
+  });
+  return now;
+};
+
 export const WaterEditorForm = () => {
   const dispatch = useDispatch();
 
   const { _id, date, amountWater } = useSelector(selectModalWater);
+
+  const now = getNowTime(date);
+  const nowTime =
+    `${now.getHours()}`.padStart(2, '0') +
+    ':' +
+    `${now.getMinutes()}`.padStart(2, '0');
+
+  const [selectedTime, setSelectedTime] = useState({
+    value: nowTime,
+    label: nowTime,
+  });
+
+  const handleChangeTime = selectedOption => {
+    setSelectedTime(selectedOption);
+  };
+
   let startAmount = amountWater;
 
   const isAdd = useSelector(selectModalType);
@@ -43,32 +91,68 @@ export const WaterEditorForm = () => {
 
   const [tempVolume, setTempVolume] = useState(volume);
 
-  const timeFromDate = date => {
-    const currentdate = date ? new Date(date) : new Date();
-    return new Date(currentdate).toLocaleTimeString([], {
-      hour: '2-digit',
-      minute: '2-digit',
-    });
-  };
-
   const increment = () => {
-    if (volume >= 2000) {
+    if (volume >= ONE_TIME_LIMIT) {
       return;
     }
-    setVolume(volume + 50);
-    setTempVolume(tempVolume + 50);
+    setVolume(volume + STEP_ADD);
+    setTempVolume(tempVolume + STEP_ADD);
   };
 
   const decrement = () => {
-    if (volume <= 50) {
+    if (volume <= STEP_ADD) {
       return;
     }
-    setVolume(volume - 50);
-    setTempVolume(tempVolume - 50);
+    setVolume(volume - STEP_ADD);
+    setTempVolume(tempVolume - STEP_ADD);
   };
 
-  const handleSubmit = ({ time }) => {
-    const inputTime = time.split(':');
+  const handleFocus = e => {
+    e.target.value = '';
+  };
+
+  const handleChange = e => {
+    if (!e.target.value) {
+      e.target.value = '';
+      setTempVolume(null);
+      return;
+    }
+    if (e.target.value > ONE_TIME_LIMIT) {
+      e.target.value = ONE_TIME_LIMIT;
+    }
+    const val = parseInt(e.target.value, 10);
+    setTempVolume(val);
+  };
+
+  const handleBlur = e => {
+    if (!e.target.value) {
+      e.target.value = volume;
+      return;
+    }
+
+    const val = parseInt(e.target.value, 10);
+    if (val >= 0 && val <= ONE_TIME_LIMIT) {
+      setVolume(val);
+    }
+  };
+
+  const onMenuOpen = () => {
+    setTimeout(() => {
+      const selectedEl = document.getElementsByClassName(
+        'MyDropdown__option--is-selected'
+      )[0];
+      if (selectedEl) {
+        selectedEl.scrollIntoView({
+          behavior: 'smooth',
+          block: 'nearest',
+          inline: 'start',
+        });
+      }
+    }, 15);
+  };
+
+  const handleSubmit = () => {
+    const inputTime = selectedTime.value.split(':');
     const currentdate = new Date();
     currentdate.setHours(inputTime[0], inputTime[1]);
     const setDate = currentdate.toISOString();
@@ -78,35 +162,6 @@ export const WaterEditorForm = () => {
     }
     if (modal === modalConstants.EDIT_WATER) {
       dispatch(editWater({ _id, amountWater: volume, date: setDate }));
-    }
-  };
-
-  const handelFocus = e => {
-    e.target.value = '';
-  };
-
-  const handelChange = e => {
-    if (!e.target.value) {
-      e.target.value = '';
-      setTempVolume(null);
-      return;
-    }
-    if (e.target.value > 2000) {
-      e.target.value = 2000;
-    }
-    const val = parseInt(e.target.value, 10);
-    setTempVolume(val);
-  };
-
-  const handelBlur = e => {
-    if (!e.target.value) {
-      e.target.value = volume;
-      return;
-    }
-
-    const val = parseInt(e.target.value, 10);
-    if (val >= 0 && val <= 2000) {
-      setVolume(val);
     }
   };
 
@@ -130,7 +185,7 @@ export const WaterEditorForm = () => {
       </AmountContainer>
 
       <Formik
-        initialValues={{ time: timeFromDate(date), amountWater: tempVolume }}
+        initialValues={{ amountWater: tempVolume }}
         onSubmit={(values, actions) => {
           handleSubmit(values);
           actions.resetForm();
@@ -141,19 +196,24 @@ export const WaterEditorForm = () => {
         <FormContainer>
           <InputTimeLable>
             Recording time:
-            <TimeVolumeInput name="time" type="time" step="300" />
+            <TimeSelect
+              classNamePrefix={'MyDropdown'}
+              options={getTimeOptions()}
+              onMenuOpen={onMenuOpen}
+              value={selectedTime}
+              defaultValue={selectedTime.value}
+              onChange={handleChangeTime}
+            />
           </InputTimeLable>
           <InputVolumeLable>
             Enter the value of the water used:
-            <TimeVolumeInput
+            <VolumeInput
               name="amountWater"
               type="number"
-              min="0"
-              max="2000"
               value={tempVolume}
-              onFocus={handelFocus}
-              onBlur={handelBlur}
-              onChange={handelChange}
+              onFocus={handleFocus}
+              onBlur={handleBlur}
+              onChange={handleChange}
             />
           </InputVolumeLable>
           <SaveVolumeDiv>
