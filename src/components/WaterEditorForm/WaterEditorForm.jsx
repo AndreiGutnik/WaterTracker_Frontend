@@ -137,10 +137,10 @@ export const WaterEditorForm = () => {
   };
 
   const onMenuOpen = () => {
-    setTimeout(() => {
-      const selectedEl = document.getElementsByClassName(
-        'MyDropdown__option--is-selected'
-      )[0];
+    requestAnimationFrame(() => {
+      const selectedEl = document.querySelector(
+        '.MyDropdown__option--is-selected'
+      );
       if (selectedEl) {
         selectedEl.scrollIntoView({
           behavior: 'smooth',
@@ -148,7 +148,7 @@ export const WaterEditorForm = () => {
           inline: 'start',
         });
       }
-    }, 15);
+    });
   };
 
   const handleSubmit = () => {
