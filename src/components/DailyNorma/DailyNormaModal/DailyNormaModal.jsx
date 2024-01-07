@@ -19,6 +19,7 @@ import {
   Required,
   L,
   SaveWrapper,
+  ErrorMessage,
 } from './DailyNormaModal.styled';
 import { useContext } from 'react';
 import { ModalContext } from '../ModalProvider/ModalProvider';
@@ -39,25 +40,18 @@ const DailyNormaModal = () => {
   const calculateWaterAmount = useCallback(values => {
     const weightCoefficient = values.gender === 'female' ? 0.03 : 0.04;
     const timeCoefficient = values.gender === 'female' ? 0.4 : 0.6;
-    const calculatedAmount =
-      values.weight * weightCoefficient + values.activityTime * timeCoefficient;
-    setCalculatedWaterAmount(calculatedAmount.toFixed(2));
+    if (values.weight >= 0 && values.activityTime >= 0) {
+      const calculatedAmount =
+        values.weight * weightCoefficient +
+        values.activityTime * timeCoefficient;
+      setCalculatedWaterAmount(calculatedAmount.toFixed(1));
+    } else {
+      setCalculatedWaterAmount('Error');
+    }
   }, []);
 
   const handleInputChange = e => {
     formik.handleChange(e);
-  };
-
-  const handleFocus = (e, fieldName) => {
-    if (fieldName !== 'drankWaterAmount') {
-      e.target.value = '';
-    }
-  };
-
-  const handleBlur = fieldName => {
-    if (fieldName !== 'drankWaterAmount') {
-      formik.setFieldValue('drankWaterAmount', calculatedWaterAmount);
-    }
   };
 
   const handleSubmit = async () => {
@@ -85,6 +79,23 @@ const DailyNormaModal = () => {
     validationSchema: validationSchema,
     onSubmit: handleSubmit,
   });
+
+  const handleFocus = (e, fieldName) => {
+    if (fieldName !== 'drankWaterAmount') {
+      e.target.value = '';
+    }
+  };
+
+  const handleBlur = (e, fieldName) => {
+    if (e.target.value >= 0) {
+      if (fieldName !== 'drankWaterAmount') {
+        formik.setFieldValue('drankWaterAmount', calculatedWaterAmount);
+      }
+    } else {
+      formik.setFieldValue('drankWaterAmount', 0);
+      toast.warning('Negative numbers are not allowed');
+    }
+  };
 
   useEffect(() => {
     calculateWaterAmount(formik.values);
@@ -164,6 +175,8 @@ const DailyNormaModal = () => {
               onBlur={e => handleBlur(e, 'weight')}
               name="weight"
               type="number"
+              min="0"
+              step="0.1"
               error={formik.touched.weight && formik.errors.weight}
             />
 
@@ -177,15 +190,19 @@ const DailyNormaModal = () => {
               onBlur={e => handleBlur(e, 'activityTime')}
               name="activityTime"
               type="number"
+              min="0"
+              step="0.1"
               error={formik.touched.activityTime && formik.errors.activityTime}
             />
 
             <Required>
               <>The required amount of water in liters per day:</>
               <L>
-                {isNaN(calculatedWaterAmount)
-                  ? 'Invalid'
-                  : `${calculatedWaterAmount} L`}
+                {isNaN(calculatedWaterAmount) || calculatedWaterAmount < 0 ? (
+                  <ErrorMessage>Input data error</ErrorMessage>
+                ) : (
+                  `${calculatedWaterAmount} L`
+                )}
               </L>
             </Required>
 
@@ -195,9 +212,12 @@ const DailyNormaModal = () => {
               value={formik.values.drankWaterAmount}
               onChange={e => handleInputChange(e, 'drankWaterAmount')}
               onFocus={e => handleFocus(e, 'drankWaterAmount')}
-              onBlur={() => handleBlur('drankWaterAmount')}
+              onBlur={e => handleBlur(e, 'drankWaterAmount')}
               name="drankWaterAmount"
               type="number"
+              min="0"
+              max="15"
+              step="0.1"
               error={
                 formik.touched.drankWaterAmount &&
                 formik.errors.drankWaterAmount
