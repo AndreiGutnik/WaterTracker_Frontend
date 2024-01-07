@@ -19,12 +19,14 @@ import {
   Required,
   L,
   SaveWrapper,
+  ErrorMessage,
 } from './DailyNormaModal.styled';
 import { useContext } from 'react';
 import { ModalContext } from '../ModalProvider/ModalProvider';
 import { useDispatch } from 'react-redux';
 import { updateDailyNorma } from 'redux/auth/operations';
 import { useAuth } from 'hooks/useAuth';
+import { toast } from 'react-toastify';
 
 const DailyNormaModal = () => {
   const toggleModal = useContext(ModalContext);
@@ -38,24 +40,31 @@ const DailyNormaModal = () => {
   const calculateWaterAmount = useCallback(values => {
     const weightCoefficient = values.gender === 'female' ? 0.03 : 0.04;
     const timeCoefficient = values.gender === 'female' ? 0.4 : 0.6;
-    const calculatedAmount =
-      values.weight * weightCoefficient + values.activityTime * timeCoefficient;
-    setCalculatedWaterAmount(calculatedAmount.toFixed(2));
+    if (values.weight >= 0 && values.activityTime >= 0) {
+      const calculatedAmount =
+        values.weight * weightCoefficient +
+        values.activityTime * timeCoefficient;
+      setCalculatedWaterAmount(calculatedAmount.toFixed(1));
+    } else {
+      setCalculatedWaterAmount('Error');
+    }
   }, []);
 
-  const handleInputChange = (e, fieldName) => {
+  const handleInputChange = e => {
     formik.handleChange(e);
-    const inputText = e.target.value;
-
-    let numericValue = parseFloat(inputText);
-    if (isNaN(numericValue)) {
-      numericValue = 0;
-    }
   };
 
   const handleSubmit = async () => {
-    dispatch(updateDailyNorma(formik.values.drankWaterAmount * 1000));
+    let amountWater = formik.values.drankWaterAmount * 1000;
 
+    if (amountWater >= 0 && amountWater <= 15000) {
+      dispatch(updateDailyNorma(amountWater));
+      toast.success('Daily norma successfully updated');
+    } else {
+      toast.warning(
+        'The amount of water must be a positive number and no more than 15 liters'
+      );
+    }
     formik.resetForm();
     toggleModal();
   };
@@ -70,6 +79,23 @@ const DailyNormaModal = () => {
     validationSchema: validationSchema,
     onSubmit: handleSubmit,
   });
+
+  const handleFocus = (e, fieldName) => {
+    if (fieldName !== 'drankWaterAmount') {
+      e.target.value = '';
+    }
+  };
+
+  const handleBlur = (e, fieldName) => {
+    if (e.target.value >= 0) {
+      if (fieldName !== 'drankWaterAmount') {
+        formik.setFieldValue('drankWaterAmount', calculatedWaterAmount);
+      }
+    } else {
+      formik.setFieldValue('drankWaterAmount', 0);
+      toast.warning('Negative numbers are not allowed');
+    }
+  };
 
   useEffect(() => {
     calculateWaterAmount(formik.values);
@@ -145,9 +171,12 @@ const DailyNormaModal = () => {
               inputType="dailyNorma"
               value={formik.values.weight}
               onChange={e => handleInputChange(e, 'weight')}
-              onBlur={formik.handleBlur}
+              onFocus={e => handleFocus(e, 'weight')}
+              onBlur={e => handleBlur(e, 'weight')}
               name="weight"
               type="number"
+              min="0"
+              step="0.1"
               error={formik.touched.weight && formik.errors.weight}
             />
 
@@ -157,18 +186,23 @@ const DailyNormaModal = () => {
               inputType="dailyNorma"
               value={formik.values.activityTime}
               onChange={e => handleInputChange(e, 'activityTime')}
-              onBlur={formik.handleBlur}
+              onFocus={e => handleFocus(e, 'activityTime')}
+              onBlur={e => handleBlur(e, 'activityTime')}
               name="activityTime"
               type="number"
+              min="0"
+              step="0.1"
               error={formik.touched.activityTime && formik.errors.activityTime}
             />
 
             <Required>
               <>The required amount of water in liters per day:</>
               <L>
-                {isNaN(calculatedWaterAmount)
-                  ? 'Invalid'
-                  : `${calculatedWaterAmount} L`}
+                {isNaN(calculatedWaterAmount) || calculatedWaterAmount < 0 ? (
+                  <ErrorMessage>Input data error</ErrorMessage>
+                ) : (
+                  `${calculatedWaterAmount} L`
+                )}
               </L>
             </Required>
 
@@ -177,9 +211,13 @@ const DailyNormaModal = () => {
               inputType="dailyNorma"
               value={formik.values.drankWaterAmount}
               onChange={e => handleInputChange(e, 'drankWaterAmount')}
-              onBlur={formik.handleBlur}
+              onFocus={e => handleFocus(e, 'drankWaterAmount')}
+              onBlur={e => handleBlur(e, 'drankWaterAmount')}
               name="drankWaterAmount"
               type="number"
+              min="0"
+              max="15"
+              step="0.1"
               error={
                 formik.touched.drankWaterAmount &&
                 formik.errors.drankWaterAmount
