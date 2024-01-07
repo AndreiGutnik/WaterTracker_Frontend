@@ -5,7 +5,7 @@ import {
   ModalDelete,
   ModalHead,
   ModalHeader,
-  SmaleDeleteHeader,
+  SmallDeleteHeader,
 } from './WaterModals.styled';
 import { useRef } from 'react';
 import { useModalClose } from 'hooks/useModal';
@@ -37,9 +37,9 @@ export const DeleteWaterModal = () => {
         </CloseBtn>
       </ModalHead>
 
-      <SmaleDeleteHeader>
+      <SmallDeleteHeader>
         Are you sure you want to delete the entry?
-      </SmaleDeleteHeader>
+      </SmallDeleteHeader>
       <DivDeleteBtn>
         <button onClick={() => onDelete()}>Delete</button>
         <button onClick={() => dispatch(closeModal())}>Cancel</button>

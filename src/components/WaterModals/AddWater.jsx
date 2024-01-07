@@ -3,7 +3,7 @@ import {
   Modal,
   ModalHead,
   ModalHeader,
-  SmaleHeader,
+  SmallHeader,
 } from './WaterModals.styled';
 import sprite from '../../images/sprite.svg';
 import { WaterEditorForm } from 'components/WaterEditorForm/WaterEditorForm';
@@ -27,7 +27,7 @@ export const AddWater = () => {
           </svg>
         </CloseBtn>
       </ModalHead>
-      <SmaleHeader>Choose a value:</SmaleHeader>
+      <SmallHeader>Choose a value:</SmallHeader>
       <WaterEditorForm />
     </Modal>
   );

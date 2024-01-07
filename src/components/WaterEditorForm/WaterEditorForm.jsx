@@ -8,10 +8,10 @@ import {
   PlusMinusBtn,
   SaveBtn,
   InputText,
-  InputTimeLable,
-  InputVolumeLable,
+  InputTimeLabel,
+  InputVolumeLabel,
   VolumeInput,
-  AmountLable,
+  AmountLabel,
   SaveVolumeDiv,
   FormContainer,
   TimeSelect,
@@ -142,11 +142,7 @@ export const WaterEditorForm = () => {
         '.MyDropdown__option--is-selected'
       );
       if (selectedEl) {
-        selectedEl.scrollIntoView({
-          behavior: 'smooth',
-          block: 'nearest',
-          inline: 'start',
-        });
+        selectedEl.scrollIntoView({});
       }
     });
   };
@@ -194,7 +190,7 @@ export const WaterEditorForm = () => {
         autoComplete="off"
       >
         <FormContainer>
-          <InputTimeLable>
+          <InputTimeLabel>
             Recording time:
             <TimeSelect
               classNamePrefix={'MyDropdown'}
@@ -204,8 +200,8 @@ export const WaterEditorForm = () => {
               defaultValue={selectedTime.value}
               onChange={handleChangeTime}
             />
-          </InputTimeLable>
-          <InputVolumeLable>
+          </InputTimeLabel>
+          <InputVolumeLabel>
             Enter the value of the water used:
             <VolumeInput
               name="amountWater"
@@ -215,9 +211,9 @@ export const WaterEditorForm = () => {
               onBlur={handleBlur}
               onChange={handleChange}
             />
-          </InputVolumeLable>
+          </InputVolumeLabel>
           <SaveVolumeDiv>
-            <AmountLable>{volume}ml</AmountLable>
+            <AmountLabel>{volume}ml</AmountLabel>
             <SaveBtn type="submit">
               <span>Save</span>
             </SaveBtn>

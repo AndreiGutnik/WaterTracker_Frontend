@@ -71,7 +71,7 @@ export const FormContainer = styled(Form)`
   width: 100%;
 `;
 
-export const InputTimeLable = styled.label`
+export const InputTimeLabel = styled.label`
   text-align: left;
   margin-bottom: 24px;
   line-height: 1.25;
@@ -80,7 +80,7 @@ export const InputTimeLable = styled.label`
   flex-direction: column;
 `;
 
-export const InputVolumeLable = styled.label`
+export const InputVolumeLabel = styled.label`
   margin-bottom: 16px;
   font-size: 18px;
   font-weight: 500;
@@ -122,6 +122,7 @@ export const TimeSelect = styled(Select)`
   }
 
   .MyDropdown__menu {
+    width: 88px;
     color: ${baseTheme.colors.blue};
   }
 
@@ -167,7 +168,7 @@ export const VolumeInput = styled(Field)`
   }
 `;
 
-export const AmountLable = styled.label`
+export const AmountLabel = styled.label`
   margin-bottom: 16px;
   color: ${baseTheme.colors.blue};
   text-align: center;
