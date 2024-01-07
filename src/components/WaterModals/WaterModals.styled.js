@@ -71,7 +71,7 @@ export const ModalHeader = styled.h3`
   line-height: 1.23;
 `;
 
-export const SmaleHeader = styled.h4`
+export const SmallHeader = styled.h4`
   margin-bottom: 16px;
   font-size: 18px;
   font-weight: 500;
@@ -166,7 +166,7 @@ export const ModalDelete = styled.div`
   }
 `;
 
-export const SmaleDeleteHeader = styled.h4`
+export const SmallDeleteHeader = styled.h4`
   margin-bottom: 24px;
   font-size: 18px;
   font-weight: 500;
