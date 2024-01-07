@@ -142,10 +142,7 @@ export const WaterEditorForm = () => {
         '.MyDropdown__option--is-selected'
       );
       if (selectedEl) {
-        selectedEl.scrollIntoView({
-          block: 'nearest',
-          inline: 'start',
-        });
+        selectedEl.scrollIntoView({});
       }
     });
   };
