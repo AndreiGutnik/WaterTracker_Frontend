@@ -122,6 +122,7 @@ export const TimeSelect = styled(Select)`
   }
 
   .MyDropdown__menu {
+    width: 88px;
     color: ${baseTheme.colors.blue};
   }
 

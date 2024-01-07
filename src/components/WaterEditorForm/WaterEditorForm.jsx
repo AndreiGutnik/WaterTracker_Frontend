@@ -143,7 +143,6 @@ export const WaterEditorForm = () => {
       );
       if (selectedEl) {
         selectedEl.scrollIntoView({
-          behavior: 'smooth',
           block: 'nearest',
           inline: 'start',
         });
