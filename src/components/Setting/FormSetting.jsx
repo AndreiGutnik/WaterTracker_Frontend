@@ -24,9 +24,6 @@ import {
     BtnPrimartButton,
 } from './FormSetting.styled';
 
-
-
- 
 export const FormSetting = () => {
     const { user } = useAuth();
     const [name = user.name, setName] = useState();
@@ -91,9 +88,6 @@ export const FormSetting = () => {
       dispatch(updateUserData(state));
     }
 
-
-
-
     return (
         <Form onSubmit={handleSubmit}>
             <FormCheck>
@@ -151,9 +145,7 @@ export const FormSetting = () => {
                         className="form-control pass" id="exampleInputPassword2"
                         onChange={handleChangeNewPassword}
                         value={newPassword}
-                        placeholder="Password"
-                        
-                        
+                        placeholder="Password"   
                     />  
                 </PasswordDiv>
             </Formy>
