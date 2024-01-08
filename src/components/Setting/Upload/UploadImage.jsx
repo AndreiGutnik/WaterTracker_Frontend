@@ -1,15 +1,8 @@
-import Icons from '../../images/sprite.svg';
+import Icons from '../../../images/sprite.svg';
 import { useAuth } from 'hooks/useAuth';
 import { useDispatch } from 'react-redux';
 import { updateAvatar } from 'redux/auth/operations';
-import {
-  WrapperPhoto,
-  NamePhoto,
-  InputPhoto,
-  LabelUpload,
-  AppPhoto,
-  Avatar,
-} from './Upload.styled';
+import { UploadWrapper, Title, Upload, Avatar } from './Upload.styled';
 
 const UploadImage = () => {
   const { user } = useAuth();
@@ -25,12 +18,12 @@ const UploadImage = () => {
   };
 
   return (
-    <WrapperPhoto>
-      <NamePhoto>Your photo</NamePhoto>
-      <AppPhoto>
-        <LabelUpload>
-          <Avatar id="avatar" src={user.avatarURL} />
-          <InputPhoto
+    <>
+      <Title>Your photo</Title>
+      <UploadWrapper>
+        <Avatar id="avatar" src={user.avatarURL} />
+        <Upload>
+          <input
             name="photo"
             type="file"
             onChange={handleChange}
@@ -38,19 +31,13 @@ const UploadImage = () => {
             accept="image/*"
             style={{ display: 'none' }}
           />
-          <svg
-            width="16"
-            height="16"
-            fill="blue"
-            aria-label="upload picture"
-            component="span"
-          >
+          <svg aria-label="upload picture">
             <use href={Icons + '#upload'}></use>
           </svg>
-          Upload a photo
-        </LabelUpload>
-      </AppPhoto>
-    </WrapperPhoto>
+          <p>Upload a photo</p>
+        </Upload>
+      </UploadWrapper>
+    </>
   );
 };
 
