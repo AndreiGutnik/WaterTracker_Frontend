@@ -1,6 +1,6 @@
 ## WaterTracker app
 
-![Logo](./src/images/logo/Logo.svg)
+![Logo](./src/images/logo.png)
 
 ## Description
 
