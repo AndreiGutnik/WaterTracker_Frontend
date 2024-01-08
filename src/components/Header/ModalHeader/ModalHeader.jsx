@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { Button, ModalWrapper } from './ModalHeader.styled';
+import { Button, ModalWrapper, ModalOverlay } from './ModalHeader.styled';
 import Icons from '../../../images/sprite.svg';
 
 export const ModalHeader = ({
@@ -25,7 +25,8 @@ export const ModalHeader = ({
   return (
     <>
       {isOpen && (
-        <div onClick={onClose}>
+        <>
+          <ModalOverlay onClick={onClose} />
           <ModalWrapper onClick={e => e.stopPropagation()}>
             <Button
               type="button"
@@ -52,7 +53,7 @@ export const ModalHeader = ({
               <p>Log out</p>
             </Button>
           </ModalWrapper>
-        </div>
+        </>
       )}
     </>
   );

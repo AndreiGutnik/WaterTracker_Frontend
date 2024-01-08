@@ -1,20 +1,30 @@
 import styled from 'styled-components';
 import { baseTheme } from '../../../components/theme';
 
+export const ModalOverlay = styled.aside`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  z-index: 10;
+`;
+
 export const ModalWrapper = styled.div`
   position: absolute;
   top: 100%;
   left: 100%;
   transform: translate(-100%, 0);
-  z-index: 100;
   display: inline-flex;
   padding: 16px;
   flex-direction: column;
   align-items: flex-start;
   gap: 16px;
+  z-index: 100;
 
   border-radius: 10px;
-  background: var(--Primery-Color-White, #fff);
+  background-color: ${baseTheme.colors.white};
   box-shadow: 0px 4px 8px 0px rgba(64, 123, 255, 0.2);
 `;
 
