@@ -6,7 +6,9 @@ import {
   logIn,
   logOut,
   refreshUser,
+  updateAvatar,
   updateDailyNorma,
+  updateUserData,
 } from './operations';
 
 const initialState = {
@@ -40,6 +42,13 @@ const authSlice = createSlice({
         state.token = null;
         state.isLoggedIn = false;
       })
+      .addCase(updateAvatar.fulfilled, (state, action) => {
+        state.user.avatarURL = action.payload.avatarURL ;
+      })
+      .addCase(updateUserData.fulfilled, (state, action) => {
+        state.user = action.payload ;
+      })
+      
       .addCase(refreshUser.fulfilled, (state, action) => {
         state.user = action.payload;
         state.isLoggedIn = true;

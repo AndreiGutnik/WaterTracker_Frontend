@@ -81,6 +81,38 @@ export const refreshUser = createAsyncThunk(
   }
 );
 
+export const updateAvatar = createAsyncThunk(
+  'auth/avatar',
+  async (formData, thunkAPI) => {
+    try {
+      const { data } = await axios.patch('/api/user/avatars', formData);
+
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+//Method to Update User
+export const updateUserData = createAsyncThunk(
+  'api/user',
+  async (body, thunkAPI) => {
+    const persistedToken = thunkAPI.getState().auth.token;
+    if (persistedToken === null) {
+      return thunkAPI.rejectWithValue();
+    }
+    setAuthHeader(persistedToken);
+    try {
+      const { data } = await axios.patch('/api/user', body);
+      return data;
+    } catch (error) {
+      toast.error('Request error');
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
 export const updateDailyNorma = createAsyncThunk(
   `user/updatedailynorma`,
   async (newDailyNorma, thunkAPI) => {
