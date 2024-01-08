@@ -7,6 +7,7 @@ export const WrapperSignin = styled(Link)`
   align-items: center;
   gap: 8px;
   text-decoration: none;
+  cursor: pointer;
 
   & p {
     font-size: 18px;

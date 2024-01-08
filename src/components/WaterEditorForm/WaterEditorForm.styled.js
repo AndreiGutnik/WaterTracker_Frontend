@@ -27,10 +27,11 @@ export const PlusMinusBtn = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 
   border-radius: 30px;
-  border: 1px solid #9ebbff;
-  background: #fff;
+  border: 1px solid ${baseTheme.colors.violet};
+  background: ${baseTheme.colors.white};
   box-shadow: 0px 2px 4px 0px rgba(64, 123, 255, 0.2);
 
   & svg {
@@ -39,12 +40,12 @@ export const PlusMinusBtn = styled.button`
   }
 
   & use {
-    fill: #407bff;
+    fill: ${baseTheme.colors.blue};
     transition: fill ${duration} ${cubicBezier};
   }
 
   &:hover use {
-    fill: #ff9d43;
+    fill: ${baseTheme.colors.orange};
   }
 `;
 
@@ -102,6 +103,7 @@ export const TimeSelect = styled(Select)`
   .MyDropdown__control {
     height: 44px;
     border: 1px solid ${baseTheme.colors.violet_light};
+    cursor: pointer;
   }
 
   .MyDropdown__control:hover {

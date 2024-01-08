@@ -3,12 +3,10 @@ import { useFormik } from 'formik';
 import validationSchema from '../schemas/validationSchema';
 import FormInput from '../utils/FormInput/FormInput';
 import Button from '../utils/Button/Button';
-import Icon from '../utils/Icon/Icon';
 import Modal from '../utils/Modal/Modal';
 import {
   ModalBox,
   ModalHeader,
-  CloseButton,
   GenderFormulas,
   ItemsGenders,
   Formulas,
@@ -20,6 +18,8 @@ import {
   L,
   SaveWrapper,
   ErrorMessage,
+  RadioWrapper,
+  CloseBtn,
 } from './DailyNormaModal.styled';
 import { useContext } from 'react';
 import { ModalContext } from '../ModalProvider/ModalProvider';
@@ -27,6 +27,7 @@ import { useDispatch } from 'react-redux';
 import { updateDailyNorma } from 'redux/auth/operations';
 import { useAuth } from 'hooks/useAuth';
 import { toast } from 'react-toastify';
+import sprite from '../../../images/sprite.svg';
 
 const DailyNormaModal = () => {
   const toggleModal = useContext(ModalContext);
@@ -111,16 +112,11 @@ const DailyNormaModal = () => {
         <>
           <ModalHeader>
             My daily norma
-            <CloseButton onClick={onClickModalClose}>
-              <Icon
-                name="close"
-                width={24}
-                height={24}
-                fill="#ffffff00"
-                stroke="#407bff"
-                className="icon"
-              />
-            </CloseButton>
+            <CloseBtn onClick={onClickModalClose}>
+              <svg>
+                <use href={sprite + '#close'}></use>
+              </svg>
+            </CloseBtn>
           </ModalHeader>
 
           <GenderFormulas>
@@ -145,25 +141,30 @@ const DailyNormaModal = () => {
             <FormTitle>Calculate your rate:</FormTitle>
 
             <Genders>
-              <label>
-                <input
-                  type="radio"
-                  name="gender"
-                  checked={formik.values.gender === 'female'}
-                  onChange={() => formik.setFieldValue('gender', 'female')}
-                />
-                For girl
-              </label>
-
-              <label>
-                <input
-                  type="radio"
-                  name="gender"
-                  checked={formik.values.gender === 'male'}
-                  onChange={() => formik.setFieldValue('gender', 'male')}
-                />
-                For man
-              </label>
+              <RadioWrapper>
+                <label>
+                  <input
+                    type="radio"
+                    name="gender"
+                    value="female"
+                    onChange={() => formik.setFieldValue('gender', 'female')}
+                    checked={formik.values.gender === 'female'}
+                  />
+                  <span>For women</span>
+                </label>
+              </RadioWrapper>
+              <RadioWrapper>
+                <label>
+                  <input
+                    type="radio"
+                    name="gender"
+                    value="male"
+                    checked={formik.values.gender === 'male'}
+                    onChange={() => formik.setFieldValue('gender', 'male')}
+                  />
+                  <span>For man</span>
+                </label>
+              </RadioWrapper>
             </Genders>
 
             <FormInput

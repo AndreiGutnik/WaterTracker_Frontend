@@ -26,7 +26,7 @@ export const UserLogo = () => {
         >
           <p>{name}</p>
           <ThumbImg src={avatarURL} alt="logoUser" />
-          <svg width="16" height="16" fill="#407BFF">
+          <svg>
             <use href={Icons + '#arrow-down'}></use>
           </svg>
         </WrapperBtn>

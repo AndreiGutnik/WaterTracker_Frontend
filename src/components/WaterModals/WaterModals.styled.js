@@ -49,6 +49,7 @@ export const ModalHead = styled.div`
 export const CloseBtn = styled.button`
   border: none;
   background-color: transparent;
+  cursor: pointer;
 
   & svg {
     width: 24px;

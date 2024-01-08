@@ -1,7 +1,9 @@
 import { baseTheme } from 'components/theme';
 import styled from 'styled-components';
 
-export const Form = styled.form`
+export const Form = styled.form``;
+
+export const FormContainer = styled.div`
   @media screen and (min-width: 768px) {
     display: inline-block;
   }
@@ -28,7 +30,7 @@ export const LabelName = styled.label`
   color: ${baseTheme.colors.black};
 
   @media screen and (min-width: 1440px) {
-    &:first-child{
+    &:first-child {
       margin-top: 53px;
     }
   }
@@ -142,7 +144,6 @@ export const FormText = styled.div`
 `;
 
 export const Button = styled.button`
-  /* float: right; */
   margin-top: 24px;
   width: 256px;
   height: 36px;
@@ -155,8 +156,7 @@ export const Button = styled.button`
   background: ${baseTheme.colors.blue};
   box-shadow: 0px 4px 8px 0px rgba(64, 123, 255, 0.34);
   border-radius: 10px;
-  transition: box-shadow ${baseTheme.animation.duration}
-    ${baseTheme.animation.cubicBezier};
+  transition: box-shadow 0.25s ${baseTheme.animation.cubicBezier};
   cursor: pointer;
 
   &:hover {
@@ -175,5 +175,10 @@ export const Button = styled.button`
     width: 160px;
     height: 44px;
     padding: 10px 30px;
+    margin-left: auto;
+  }
+
+  @media screen and (min-width: 1440px) {
+    float: right;
   }
 `;

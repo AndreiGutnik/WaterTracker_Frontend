@@ -8,11 +8,23 @@ export const WrapperBtn = styled.button`
   gap: 4px;
   border: 0;
   background-color: transparent;
+  cursor: pointer;
 
   & p {
     margin-right: 4px;
     font-size: 18px;
     color: ${baseTheme.colors.black};
+  }
+  & svg {
+    width: 16px;
+    height: 16px;
+    fill: ${baseTheme.colors.blue};
+    transition: fill 0.25s ${baseTheme.animation.cubicBezier};
+
+    &:hover,
+    &:focus {
+      fill: ${baseTheme.colors.orange};
+    }
   }
 `;
 
