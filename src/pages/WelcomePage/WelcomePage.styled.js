@@ -15,7 +15,6 @@ export const WelcomeContainer = styled.div`
   min-height: calc(100vh - 80px);
   padding: 0 20px 40px 20px;
   margin: 0 auto;
-  outline: 1px solid blue;
   background-image: url(${backgroundMobile}), url(${bg_mb1x});
   background-size: cover;
   background-size: 100%;
@@ -50,7 +49,7 @@ export const WelcomeContainer = styled.div`
     min-height: calc(100vh - 80px);
     background-image: url(${backgroundDesktop}), url(${bg_dt1x});
   }
-  
+
   @media screen and (min-width: 1440px) and (-webkit-min-device-pixel-ratio: 2),
     (min-width: 1440px) and (min-resolution: 192dpi) {
     background-image: url(${backgroundDesktop}), url(${bg_dt2x});

@@ -4,7 +4,6 @@ export const Container = styled.div`
   width: 320px;
   margin: 0 auto;
   padding: 0 20px;
-  outline: 1px solid red;
 
   @media screen and (min-width: 768px) {
     width: 768px;
