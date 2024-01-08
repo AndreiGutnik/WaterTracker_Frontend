@@ -3,6 +3,7 @@ import { baseTheme } from '../../components/theme.js';
 import { Link } from 'react-router-dom';
 
 export const Wrapper = styled.div`
+  position: relative;
   display: flex;
   justify-content: space-between;
   margin-top: 8px;

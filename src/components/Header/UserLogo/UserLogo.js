@@ -19,7 +19,10 @@ export const UserLogo = () => {
           <use href={Icons + '#arrow-down'}></use>
         </svg>
       </WrapperBtn>
-      <ModalHeader isOpen={modalIsOpen} onClose={toggleModal} />
+      <ModalHeader isOpen={modalIsOpen} onClose={toggleModal}>
+        <p>Settingcccccccccccccccc</p>
+        <p>Log out</p>
+      </ModalHeader>
     </>
   );
 };

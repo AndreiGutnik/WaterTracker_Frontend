@@ -1,45 +1,35 @@
-import { useEffect } from 'react';
-import Modal from 'react-modal';
+// import { useEffect } from 'react';
+// import Modal from 'react-modal';
 
-const customStyles = {
-  content: {
-    top: '50%',
-    left: '50%',
-    right: 'auto',
-    bottom: 'auto',
-    marginRight: '-50%',
-    transform: 'translate(-50%, -50%)',
-  },
-};
+import { ModalWrapper } from './ModalHeader.styled';
 
-Modal.setAppElement('#modal-root');
+// const customStyles = {
+//   content: {
+//     top: '50%',
+//     left: '50%',
+//     right: 'auto',
+//     bottom: 'auto',
+//     marginRight: '-50%',
+//     transform: 'translate(-50%, -50%)',
+//   },
+// };
 
-export const ModalHeader = ({ isOpen, onClose }) => {
-  useEffect(() => {
-    const close = e => {
-      if (e.key === 'Escape') {
-        onClose();
-      }
-    };
-    document.addEventListener('keydown', close);
-    document.addEventListener('mousedown', close);
-    return () => {
-      document.removeEventListener('keydown', close);
-      document.removeEventListener('mousedown', close);
-    };
-  }, [onClose]);
+// Modal.setAppElement('#modal-root');
 
-  return (
-    <>
-      <Modal
-        isOpen={isOpen}
-        onRequestClose={onClose}
-        style={customStyles}
-        contentLabel="Example Modal"
-      >
-        <p>Setting</p>
-        <p>Log out</p>
-      </Modal>
-    </>
-  );
+export const ModalHeader = ({ isOpen, onClose, children }) => {
+  // useEffect(() => {
+  //   const close = e => {
+  //     if (e.key === 'Escape') {
+  //       onClose();
+  //     }
+  //   };
+  //   document.addEventListener('keydown', close);
+  //   document.addEventListener('mousedown', close);
+  //   return () => {
+  //     document.removeEventListener('keydown', close);
+  //     document.removeEventListener('mousedown', close);
+  //   };
+  // }, [onClose]);
+
+  return <>{isOpen && <ModalWrapper>{children}</ModalWrapper>}</>;
 };
