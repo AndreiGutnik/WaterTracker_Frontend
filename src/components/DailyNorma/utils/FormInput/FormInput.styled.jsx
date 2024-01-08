@@ -23,6 +23,7 @@ export const Input = styled.input`
   border-radius: 6px;
   border: 1px solid ${color.secondary.gray};
   background-color: ${color.primary.white};
+  outline: none;
 
   font-size: 16px;
   line-height: 1.25;
