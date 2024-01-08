@@ -5,26 +5,33 @@ import { useState } from 'react';
 import { ModalHeader } from '../ModalHeader/ModalHeader';
 import { UserLogoModal } from '../ModalHeader/UserLogoModal/UserLogoModal';
 
-const styleItem = { content: {
-  top: '60px',
-  left: '74%',
-  right: 'auto',
-  bottom: 'auto',},
-  overlay: { backgroundColor: 'tarnsparent' } };
+const styleItem = {
+  content: {
+    position: 'absolute',
+    top: 'auto',
+    left: 'auto',
+    right: '0px',
+    bottom: 'auto',
+  },
+  overlay: { backgroundColor: 'tarnsparent' },
+};
 
 export const UserLogo = () => {
   const { name, avatarURL } = useAuth().user;
   const [modalIsOpen, setModalIsOpen] = useState(false);
-  const [modalLogOutIsOpen, setModalLogOutIsOpen] = useState(false);
+  // const [modalLogOutIsOpen, setModalLogOutIsOpen] = useState(false);
 
-  const toggleModal = () => {
-    if (!modalIsOpen && !modalLogOutIsOpen) {
-      setModalIsOpen(!modalIsOpen);
-      return;
-    }
-    // setModalIsOpen(()=>!modalIsOpen);
-    setModalLogOutIsOpen(()=>!modalLogOutIsOpen);
-  };
+  const toggleModal = () => setModalIsOpen(!modalIsOpen);
+  // const toggleModalLogout = () => setModalLogOutIsOpen(!modalLogOutIsOpen);
+  // const closeModal = () => setModalIsOpen(false);
+  // const toggleModal = () => {
+  //   if (!modalIsOpen && !modalLogOutIsOpen) {
+  //     setModalIsOpen(!modalIsOpen);
+  //     return;
+  //   }
+  //   setModalIsOpen(!modalIsOpen);
+  //   setModalLogOutIsOpen(!modalLogOutIsOpen);
+  // };
 
   // const toggleModalLogOut = () => setModalLogOutIsOpen(!modalLogOutIsOpen);
 
@@ -42,10 +49,7 @@ export const UserLogo = () => {
         onClose={toggleModal}
         styleItem={styleItem}
       >
-        <UserLogoModal
-          isOpenLogoutModal={modalLogOutIsOpen}
-          onCloseLogoutModal={toggleModal}
-        />
+        <UserLogoModal/>
       </ModalHeader>
     </>
   );

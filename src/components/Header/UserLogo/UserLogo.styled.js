@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { baseTheme } from '../../../components/theme.js';
 
 export const WrapperBtn = styled.button`
+position: relative;
   display: flex;
   justify-content: center;
   align-items: center;

@@ -12,7 +12,9 @@ const customStyles = {
     padding: 0,
     borderRadius:10,
   },
-  overlay:{backgroundColor: 'rgba(0, 0, 0, 0.8)'},
+  overlay:{backgroundColor: 'rgba(0, 0, 0, 0.8)',
+
+},
 };
 
 Modal.setAppElement('#modal-root');

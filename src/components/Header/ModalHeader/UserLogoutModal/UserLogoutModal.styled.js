@@ -116,7 +116,8 @@ export const DivDeleteBtn = styled.div`
       width: 160px;
     }
     @media only screen and (min-width: 1440px) {
-        flex-direction: row;
+        flex-direction: row-reverse;
+        justify-content: flex-end;
   }
 
   }

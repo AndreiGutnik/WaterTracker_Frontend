@@ -3,7 +3,7 @@ import { ModalHeader } from '../ModalHeader';
 import { UserLogoutModal } from '../UserLogoutModal/UserLogoutModal';
 import { ModalUser } from './UserLogoModal.styled';
 
-export const UserLogoModal = ({ isOpenLogoutModal, onCloseLogoutModal }) => {
+export const UserLogoModal = ({ isOpenLogoutModal, onCloseLogoutModal,onCloseModal }) => {
   // const [modalLogOutIsOpen, setModalLogOutIsOpen] = useState(false);
   // const toggleModalLogOut = () => setModalLogOutIsOpen(!modalLogOutIsOpen);
 
@@ -16,7 +16,7 @@ export const UserLogoModal = ({ isOpenLogoutModal, onCloseLogoutModal }) => {
     <>
     <ModalUser>
       <p>Setting</p>
-      <button type="button" onClick={onCloseLogoutModal}>
+      <button type="button" onClick={onCloseLogoutModal} onBlur={onCloseModal}>
         Log out
       </button>
       </ModalUser>

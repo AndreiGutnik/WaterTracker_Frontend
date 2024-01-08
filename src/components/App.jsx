@@ -28,7 +28,7 @@ export const App = () => {
     !isRefreshing && (
       <>
         <Routes>
-          <Route path={routes.HOME} element={<Layout />}>
+          <Route path={routes.HOME} element={<Layout />} >
             <Route path={routes.WELCOMEPAGE} index element={<WelcomePage />} />
             <Route
               path={routes.REGISTER}
