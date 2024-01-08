@@ -3,9 +3,9 @@ import { baseTheme } from '../../components/theme.js';
 import { Link } from 'react-router-dom';
 
 export const Wrapper = styled.div`
-  position: relative;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   margin-top: 8px;
   margin-bottom: 24px;
 
