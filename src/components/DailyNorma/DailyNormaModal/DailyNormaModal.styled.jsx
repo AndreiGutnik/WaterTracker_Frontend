@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 // import sprite from '../utils/sprites.svg';
 import { color } from '../utils/colors';
+import { baseTheme } from 'components/theme';
 
 export const ModalBox = styled.div`
   width: 256px;
@@ -151,5 +152,71 @@ export const ErrorMessage = styled.p`
     100% {
       opacity: 1;
     }
+  }
+`;
+
+export const RadioWrapper = styled.div`
+  input {
+    display: none;
+    & + span {
+      display: inline-block;
+      position: relative;
+      padding-left: 20px;
+      cursor: pointer;
+
+      &:before {
+        content: '';
+        display: block;
+        position: absolute;
+        top: 1px;
+        left: 0px;
+        border-radius: 50%;
+        margin-right: 5px;
+        width: 14px;
+        height: 14px;
+        border: 1px solid ${baseTheme.colors.blue};
+        background: #fff;
+      }
+
+      &:after {
+        content: '';
+        display: block;
+        width: 6px;
+        height: 6px;
+        background: ${baseTheme.colors.blue};
+        position: absolute;
+        border-radius: 50%;
+        top: 5px;
+        left: 4px;
+        opacity: 0;
+        transform: scale(0, 0);
+        transition: all 0.2s cubic-bezier(0.64, 0.57, 0.67, 1.53);
+      }
+    }
+
+    &:checked + span:after {
+      opacity: 1;
+      transform: scale(1, 1);
+    }
+  }
+`;
+
+export const CloseBtn = styled.button`
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+
+  & svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  & use {
+    fill: ${baseTheme.colors.blue};
+    transition: fill 0.25s ${baseTheme.animation.cubicBezier};
+  }
+
+  &:hover use {
+    fill: ${baseTheme.colors.orange};
   }
 `;

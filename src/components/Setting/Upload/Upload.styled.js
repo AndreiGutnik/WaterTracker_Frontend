@@ -23,10 +23,25 @@ export const Upload = styled.label`
   color: ${baseTheme.colors.blue};
   cursor: pointer;
 
+  & p {
+    transition: color 0.25s ${baseTheme.animation.cubicBezier};
+  }
+
+  &:hover,
+  &:focus {
+    & svg {
+      fill: ${baseTheme.colors.orange};
+    }
+    & p {
+      color: ${baseTheme.colors.orange};
+    }
+  }
+
   & svg {
     width: 16px;
     height: 16px;
     fill: ${baseTheme.colors.blue};
+    transition: fill 0.25s ${baseTheme.animation.cubicBezier};
   }
 `;
 

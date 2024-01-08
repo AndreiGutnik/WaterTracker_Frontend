@@ -36,8 +36,19 @@ export const Button = styled.button`
   background-color: ${baseTheme.colors.white};
   cursor: pointer;
 
+  &:hover,
+  &:focus {
+    & svg {
+      fill: ${baseTheme.colors.orange};
+    }
+    & p {
+      color: ${baseTheme.colors.orange};
+    }
+  }
+
   & svg {
     fill: ${baseTheme.colors.blue};
+    transition: fill 0.25s ${baseTheme.animation.cubicBezier};
   }
 
   & p {
@@ -45,5 +56,6 @@ export const Button = styled.button`
     color: ${baseTheme.colors.blue};
     font-size: 16px;
     line-height: calc(20 / 16);
+    transition: color 0.25s ${baseTheme.animation.cubicBezier};
   }
 `;

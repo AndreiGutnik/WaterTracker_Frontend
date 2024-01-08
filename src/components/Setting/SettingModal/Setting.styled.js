@@ -12,6 +12,7 @@ export const ModalOverlay = styled.aside`
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow-y: auto;
 `;
 
 export const WrapperModalSetting = styled.div`
@@ -28,7 +29,7 @@ export const ModalSetting = styled.div`
   transform: translate(-50%, -50%);
   width: 280px;
   height: 852px;
-  padding: 32px 24px;
+  padding: 32px 12px;
   z-index: 100;
 
   border-radius: 10px;
@@ -38,12 +39,12 @@ export const ModalSetting = styled.div`
   @media screen and (min-width: 768px) {
     width: 704px;
     height: 860px;
+    padding: 32px 24px;
   }
 
   @media screen and (min-width: 1440px) {
     width: 1008px;
     height: 592px;
-    padding: 32px 12px;
   }
 `;
 
@@ -72,8 +73,18 @@ export const HeaderSettingName = styled.h2`
 export const ButtonClose = styled.span`
   cursor: pointer;
   fill: ${baseTheme.colors.blue};
-  svg {
+
+  & svg {
     width: 24px;
     height: 24px;
+  }
+
+  & use {
+    fill: ${baseTheme.colors.blue};
+    transition: fill 0.25s ${baseTheme.animation.cubicBezier};
+  }
+
+  &:hover use {
+    fill: ${baseTheme.colors.orange};
   }
 `;
