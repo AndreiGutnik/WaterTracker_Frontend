@@ -4,14 +4,6 @@ import { baseTheme } from '../../theme';
 export const CalendarContainer = styled.div`
   display: flex;
   flex-direction: column;
-  /* height: 506px; */
-
-  @media screen and (min-width: 768px) {
-    /* height: 340px; */
-  }
-  @media screen and (min-width: 1440px) {
-    /* height: 332px; */
-  }
 `;
 
 export const MonthNav = styled.div`
@@ -42,6 +34,11 @@ export const ArrowButton = styled.button`
   background-color: transparent;
   border: none;
   fill: ${baseTheme.colors.blue};
+
+  & svg {
+    width: 14px;
+    height: 14px;
+  }
 
   &:disabled {
     fill: ${baseTheme.colors.violet};

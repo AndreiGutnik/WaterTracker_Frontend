@@ -18,7 +18,8 @@ import {
   Month,
   MonthTitle,
 } from './Month.styled';
-import Loader from 'components/Loader/Loader';
+import { ThreeDots } from 'react-loader-spinner';
+import { baseTheme } from '../../theme';
 
 export const Calendar = dailyNormaState => {
   const [currentDate, setCurrentDate] = useState(new Date());
@@ -92,9 +93,27 @@ export const Calendar = dailyNormaState => {
     <CalendarContainer className="calendar" ref={ref}>
       <MonthNav>
         <MonthTitle>Month</MonthTitle>
+        {isLoading && (
+          <ThreeDots
+            height="60"
+            width="60"
+            radius="9"
+            color={baseTheme.colors.blue}
+            ariaLabel="three-dots-loading"
+            wrapperStyle={{
+              height: '30px',
+              width: '40px',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}
+            wrapperClassName=""
+            visible={true}
+          />
+        )}
         <MonthControl>
           <ArrowButton aria-label="Previous month" onClick={handlePrevMonth}>
-            <svg width="14" height="14">
+            <svg>
               <use href={Icons + '#arrow-left'}></use>
             </svg>
           </ArrowButton>
@@ -108,14 +127,13 @@ export const Calendar = dailyNormaState => {
             onClick={handleNextMonth}
             disabled={isCurrentMonth()}
           >
-            <svg width="14" height="14">
+            <svg>
               <use href={Icons + '#arrow-right'}></use>
             </svg>
           </ArrowButton>
         </MonthControl>
       </MonthNav>
       <DaysContainer>{renderDays()}</DaysContainer>
-      {isLoading && <Loader />}
     </CalendarContainer>
   );
 };
