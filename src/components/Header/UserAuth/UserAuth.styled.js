@@ -14,12 +14,15 @@ export const WrapperSignin = styled(Link)`
     color: ${baseTheme.colors.blue};
     font-weight: 400;
     line-height: 24px;
+    transition: color 0.25s ${baseTheme.animation.cubicBezier};
+
+    &:hover,
+    &:focus {
+      color: ${baseTheme.colors.orange};
+    }
+
     @media screen and (max-width: 767px) {
       font-size: 16px;
     }
-  }
-
-  :hover {
-    color: ${baseTheme.colors.orange};
   }
 `;

@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { color } from '../colors';
+import { baseTheme } from 'components/theme';
 
 export const Label = styled.label`
   display: flex;
@@ -27,6 +28,10 @@ export const Input = styled.input`
 
   font-size: 16px;
   line-height: 1.25;
+
+  &:focus {
+    outline: 1px solid ${baseTheme.colors.violet_light};
+  }
 
   &::placeholder {
     color: ${color.secondary.azure};
