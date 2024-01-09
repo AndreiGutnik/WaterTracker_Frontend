@@ -31,6 +31,7 @@ export const ModalWrapper = styled.div`
 export const Button = styled.button`
   display: flex;
   justify-content: center;
+  align-items: center;
   gap: 8px;
   border: none;
   background-color: ${baseTheme.colors.white};
@@ -52,7 +53,7 @@ export const Button = styled.button`
   }
 
   & p {
-    width: 62px;
+    width: 54px;
     color: ${baseTheme.colors.blue};
     font-size: 16px;
     line-height: calc(20 / 16);

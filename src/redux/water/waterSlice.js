@@ -5,6 +5,7 @@ import {
   deleteWater,
   fetchTodayWater,
 } from './operations';
+import { logOut } from 'redux/auth/operations';
 
 const handlePending = state => {
   state.isLoading = true;
@@ -51,6 +52,14 @@ const waterSlice = createSlice({
       state.items.waterNotes.splice(index, 1, action.payload);
     },
     [editWater.rejected]: handleRejected,
+
+    [logOut.pending]: handlePending,
+    [logOut.fulfilled](state, action) {
+      state.isLoading = false;
+      state.error = null;
+      state.items = [];
+    },
+    [logOut.rejected]: handleRejected,
 
     [deleteWater.pending]: handlePending,
     [deleteWater.fulfilled](state, action) {

@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { baseTheme } from 'components/theme';
 
 export const Backdrop = styled.div`
   position: fixed;
@@ -33,12 +34,14 @@ export const Backdrop = styled.div`
 
 const Container = styled.div(({ type }) => ({
   borderRadius: '10px',
-  background: '#fff',
+  background: baseTheme.colors.white,
 
   padding: type === 'settings' ? '32px 12px' : '24px 12px',
 }));
 
 export const ModalContainer = styled(Container)`
+  margin-top: 40px;
+  margin-bottom: 40px;
   @media (min-width: 768px) {
     padding: 32px 24px;
   }

@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { fetchMonthThunk } from './operations';
+import { logOut } from 'redux/auth/operations';
 
 const handlePending = state => {
   state.isLoading = true;
@@ -28,6 +29,14 @@ const monthSlice = createSlice({
       state.data = payload;
     },
     [fetchMonthThunk.rejected]: handleRejected,
+
+    [logOut.pending]: handlePending,
+    [logOut.fulfilled](state, _) {
+      state.isLoading = false;
+      state.error = null;
+      state.data = [];
+    },
+    [logOut.rejected]: handleRejected,
   },
 });
 

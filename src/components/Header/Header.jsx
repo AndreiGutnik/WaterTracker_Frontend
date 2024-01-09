@@ -18,12 +18,6 @@ export const Header = props => {
           <p>Tracker of water</p>
         </WrapperLogo>
         {isLoggedIn ? <UserLogo /> : <UserAuth />}
-        {/* <WrapperSignin to="/homepage">
-        <p>Sign in</p>
-        <svg width="28" height="28">
-          <use href={Icons + '#user'}></use>
-        </svg>
-      </WrapperSignin> */}
       </Wrapper>
     </Container>
   );

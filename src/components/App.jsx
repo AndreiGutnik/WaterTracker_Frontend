@@ -28,8 +28,25 @@ export const App = () => {
     !isRefreshing && (
       <>
         <Routes>
-          <Route path={routes.HOME} element={<Layout />}>
-            <Route path={routes.WELCOMEPAGE} index element={<WelcomePage />} />
+          <Route path={routes.WELCOMEPAGE} element={<Layout />}>
+            <Route
+              path={routes.WELCOMEPAGE}
+              element={
+                <PublicRoute
+                  redirectTo={routes.HOMEPAGE}
+                  component={WelcomePage}
+                />
+              }
+            />
+            <Route
+              path={routes.WELCOMEPAGE}
+              element={
+                <PublicRoute
+                  redirectTo={routes.HOMEPAGE}
+                  component={WelcomePage}
+                />
+              }
+            />
             <Route
               path={routes.REGISTER}
               element={
@@ -62,5 +79,4 @@ export const App = () => {
   );
 };
 
-export default App
-
+export default App;
