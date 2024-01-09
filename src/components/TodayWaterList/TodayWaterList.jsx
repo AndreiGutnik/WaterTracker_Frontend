@@ -60,29 +60,35 @@ export const TodayWaterList = () => {
       <ListAddDiv>
         <UlStyle>
           {waterNotes?.length > 0 ? (
-            waterNotes.map(({ amountWater, date, _id }) => (
-              <ListItem key={_id}>
-                <InfoWrap>
-                  <svg>
-                    <use href={sprite + '#cup'}></use>
-                  </svg>
-                  <TextVolume>{amountWater} ml</TextVolume>
-                  <TextTime>{timeFromDate(date)}</TextTime>
-                </InfoWrap>
-                <WrapBtn>
-                  <EditBtn onClick={() => onEdit({ amountWater, date, _id })}>
+            waterNotes
+              .slice()
+              .sort(
+                (a, b) =>
+                  new Date(a.date).getTime() - new Date(b.date).getTime()
+              )
+              .map(({ amountWater, date, _id }) => (
+                <ListItem key={_id}>
+                  <InfoWrap>
                     <svg>
-                      <use href={sprite + '#edit'}></use>
+                      <use href={sprite + '#cup'}></use>
                     </svg>
-                  </EditBtn>
-                  <DeleteBtn onClick={() => onDelete(_id)}>
-                    <svg>
-                      <use href={sprite + '#trash'}></use>
-                    </svg>
-                  </DeleteBtn>
-                </WrapBtn>
-              </ListItem>
-            ))
+                    <TextVolume>{amountWater} ml</TextVolume>
+                    <TextTime>{timeFromDate(date)}</TextTime>
+                  </InfoWrap>
+                  <WrapBtn>
+                    <EditBtn onClick={() => onEdit({ amountWater, date, _id })}>
+                      <svg>
+                        <use href={sprite + '#edit'}></use>
+                      </svg>
+                    </EditBtn>
+                    <DeleteBtn onClick={() => onDelete(_id)}>
+                      <svg>
+                        <use href={sprite + '#trash'}></use>
+                      </svg>
+                    </DeleteBtn>
+                  </WrapBtn>
+                </ListItem>
+              ))
           ) : (
             <li>
               <p>No notes yet</p>

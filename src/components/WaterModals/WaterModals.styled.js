@@ -14,12 +14,15 @@ export const ModalContainer = styled.aside`
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow-y: auto;
 `;
 
 export const Modal = styled.div`
   width: 280px;
   height: 540px;
   padding: 24px 12px;
+  margin-top: 160px;
+  margin-bottom: 30px;
 
   display: flex;
   flex-direction: column;
@@ -33,6 +36,7 @@ export const Modal = styled.div`
     width: 704px;
     height: 504px;
     padding: 32px 24px;
+    margin: 0;
   }
   @media only screen and (min-width: 1440px) {
     width: 592px;

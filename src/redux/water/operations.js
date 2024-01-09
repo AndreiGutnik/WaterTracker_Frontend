@@ -11,6 +11,7 @@ export const fetchTodayWater = createAsyncThunk(
       const response = await axios.get('api/waternotes/today');
       return response.data;
     } catch (error) {
+      toast.error(error.message || 'failed', error);
       return thunkAPI.rejectWithValue(error.message);
     }
   }

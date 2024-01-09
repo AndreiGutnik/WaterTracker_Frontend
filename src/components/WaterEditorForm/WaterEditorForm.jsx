@@ -22,8 +22,10 @@ import { closeModal } from 'redux/modals/modalsSlice';
 import modalConstants from 'redux/modals/modalСonstants';
 import { selectModalType, selectModalWater } from 'redux/modals/selectors';
 import { selectTodayWater } from 'redux/water/selectors';
+import { toast } from 'react-toastify';
 
-const ONE_TIME_LIMIT = 2000;
+const ONE_TIME_MAX_LIMIT = 2000;
+const ONE_TIME_MIN_LIMIT = 50;
 const STEP_ADD = 50;
 
 const getTimeOptions = () => {
@@ -92,7 +94,7 @@ export const WaterEditorForm = () => {
   const [tempVolume, setTempVolume] = useState(volume);
 
   const increment = () => {
-    if (volume >= ONE_TIME_LIMIT) {
+    if (volume >= ONE_TIME_MAX_LIMIT) {
       return;
     }
     setVolume(volume + STEP_ADD);
@@ -117,8 +119,8 @@ export const WaterEditorForm = () => {
       setTempVolume(null);
       return;
     }
-    if (e.target.value > ONE_TIME_LIMIT) {
-      e.target.value = ONE_TIME_LIMIT;
+    if (e.target.value > ONE_TIME_MAX_LIMIT) {
+      e.target.value = ONE_TIME_MAX_LIMIT;
     }
     const val = parseInt(e.target.value, 10);
     setTempVolume(val);
@@ -131,7 +133,7 @@ export const WaterEditorForm = () => {
     }
 
     const val = parseInt(e.target.value, 10);
-    if (val >= 0 && val <= ONE_TIME_LIMIT) {
+    if (val >= 0 && val <= ONE_TIME_MAX_LIMIT) {
       setVolume(val);
     }
   };
@@ -148,6 +150,10 @@ export const WaterEditorForm = () => {
   };
 
   const handleSubmit = () => {
+    if (ONE_TIME_MIN_LIMIT > volume) {
+      toast.info('Min volume 50 ml');
+      return;
+    }
     const inputTime = selectedTime.value.split(':');
     const currentdate = new Date();
     currentdate.setHours(inputTime[0], inputTime[1]);
@@ -183,6 +189,10 @@ export const WaterEditorForm = () => {
       <Formik
         initialValues={{ amountWater: tempVolume }}
         onSubmit={(values, actions) => {
+          if (ONE_TIME_MIN_LIMIT > volume) {
+            toast.info('Min volume 50 ml');
+            return;
+          }
           handleSubmit(values);
           actions.resetForm();
           dispatch(closeModal());
