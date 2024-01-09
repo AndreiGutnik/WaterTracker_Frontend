@@ -11,6 +11,7 @@ export const HomePageContainer = styled.div`
 
   @media screen and (min-width: 1440px) {
     flex-direction: row;
+    height: 92vh;
   }
 `;
 
@@ -45,7 +46,7 @@ export const BubblesContainer = styled.div`
   background-position: center 28px;
   background-image: url(${backgroundMobile});
   background-repeat: no-repeat;
-  width: 100%;
+  background-size: cover;
 
   @media screen and (min-width: 768px) {
     background-image: url(${backgroundTablet});
@@ -54,6 +55,9 @@ export const BubblesContainer = styled.div`
 
   @media screen and (min-width: 1440px) {
     background-image: url(${backgroundDesktop});
+    background-size: 100%;
     background-position: center 38px;
+    background-size: contain;
+    background-repeat: repeat;
   }
 `;
