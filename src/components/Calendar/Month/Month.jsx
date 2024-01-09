@@ -118,9 +118,9 @@ export const Calendar = dailyNormaState => {
             </svg>
           </ArrowButton>
           <Month>
-            {new Intl.DateTimeFormat('en-US', { month: 'long' }).format(
+            {`${new Intl.DateTimeFormat('en-US', { month: 'long' }).format(
               currentDate
-            )}
+            )}, ${currentDate.getFullYear()}`}
           </Month>
           <ArrowButton
             aria-label="Next month"
