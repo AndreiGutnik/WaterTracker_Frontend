@@ -56,7 +56,6 @@ export const BubblesContainer = styled.div`
   @media screen and (min-width: 1440px) {
     background-image: url(${backgroundDesktop});
     background-size: 100%;
-    background-position: center 38px;
     background-size: contain;
     background-repeat: repeat;
   }
