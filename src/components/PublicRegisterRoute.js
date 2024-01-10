@@ -5,6 +5,12 @@ export default function PublicRegisterRoute({
   component: Component,
   redirectTo = '/',
 }) {
-  const { isRegistered } = useAuth();
-  return isRegistered ? <Navigate to={redirectTo} /> : <Component />;
+  const { isRegistered, isLoggedIn } = useAuth();
+  return isRegistered ? (
+    <Navigate to={redirectTo} />
+  ) : isLoggedIn ? (
+    <Navigate to="/homepage" />
+  ) : (
+    <Component />
+  );
 }

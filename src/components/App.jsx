@@ -30,16 +30,7 @@ export const App = () => {
         <Routes>
           <Route path={routes.WELCOMEPAGE} element={<Layout />}>
             <Route
-              path={routes.WELCOMEPAGE}
-              element={
-                <PublicRoute
-                  redirectTo={routes.HOMEPAGE}
-                  component={WelcomePage}
-                />
-              }
-            />
-            <Route
-              path={routes.WELCOMEPAGE}
+              index
               element={
                 <PublicRoute
                   redirectTo={routes.HOMEPAGE}
