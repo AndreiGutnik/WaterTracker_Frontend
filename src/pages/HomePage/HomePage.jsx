@@ -33,21 +33,21 @@ const HomePage = () => {
   }, [dailyNormaCalc]);
 
   return (
-      <BubblesContainer>
-        <Container>
-          <PageContainer>
-            <DailyNormaSection>
-              <DailyNorma />
-              <WaterRatioPanel />
-            </DailyNormaSection>
-            <TrackerContainer>
-              <TodayWaterList />
-              <Calendar dailyNormaState={dailyNormaState} />
-            </TrackerContainer>
-          </PageContainer>
-          {isLoading && <Loader />}
-        </Container>
-      </BubblesContainer>
+    <BubblesContainer>
+      <Container>
+        <PageContainer>
+          <DailyNormaSection>
+            <DailyNorma />
+            <WaterRatioPanel />
+          </DailyNormaSection>
+          <TrackerContainer>
+            <TodayWaterList />
+            <Calendar dailyNormaState={dailyNormaState} />
+          </TrackerContainer>
+        </PageContainer>
+      </Container>
+      {isLoading && <Loader />}
+    </BubblesContainer>
   );
 };
 

@@ -85,7 +85,7 @@ export const StyledForm = styled(Form)`
     left: 0;
     margin-right: auto;
     width: 336px;
-    z-index: 100;
+    /* z-index: 100; */
   }
 
   @media screen and (min-width: 1440px) {

@@ -1,14 +1,16 @@
 import { ThreeDots } from 'react-loader-spinner';
 import { baseTheme } from '../theme';
+import { createPortal } from 'react-dom';
+
+const loaderModal = document.querySelector('#loadermodal-root');
 
 export default function Loader() {
-  return (
+  return createPortal(
     <ThreeDots
       height="60"
       width="60"
       radius="9"
       color={baseTheme.colors.blue}
-      ariaLabel="three-dots-loading"
       wrapperStyle={{
         position: 'fixed',
         top: 0,
@@ -21,8 +23,10 @@ export default function Loader() {
         alignItems: 'center',
         justifyContent: 'center',
       }}
+      ariaLabel="three-dots-loading"
       wrapperClassName=""
       visible={true}
-    />
+    />,
+    loaderModal
   );
 }
