@@ -4,11 +4,15 @@ import backgroundDesktop from '../../images/welcome/backgroundDesktop.svg';
 import backgroundTablet from '../../images/welcome/backgroundTablet.svg';
 import backgroundMobile from '../../images/welcome/backgroundMobile.svg';
 
+export const PageContainer = styled.div`
+  height: 90vh;
+
+  @media screen and (min-width: 768px) {
+    height: 92vh;
+  }
+`;
+
 export const SignInSection = styled.section`
-  background-position: top center;
-  background-image: url(${backgroundMobile});
-  background-repeat: no-repeat;
-  background-position: top 25px right 0;
   width: 100%;
   width: 320px;
   margin: 0 auto;
@@ -17,14 +21,31 @@ export const SignInSection = styled.section`
   @media screen and (min-width: 768px) {
     width: 768px;
     padding: 0 32px;
-    background-image: url(${backgroundTablet});
-    background-position: center;
     z-index: -2;
   }
 
   @media screen and (min-width: 1440px) {
     width: 1440px;
     padding: 0 18px;
+  }
+`;
+
+export const BubblesContainer = styled.div`
+  background-position: center 28px;
+  background-image: url(${backgroundMobile});
+  background-repeat: no-repeat;
+  background-size: cover;
+  z-index: -2;
+
+  @media screen and (min-width: 768px) {
+    background-image: url(${backgroundTablet});
+    background-position: center 0px;
+  }
+
+  @media screen and (min-width: 1440px) {
     background-image: url(${backgroundDesktop});
+    background-size: 100%;
+    background-size: contain;
+    background-repeat: repeat;
   }
 `;

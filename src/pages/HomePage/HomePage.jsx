@@ -3,7 +3,7 @@ import { TodayWaterList } from 'components/TodayWaterList/TodayWaterList';
 import {
   BubblesContainer,
   DailyNormaSection,
-  HomePageContainer,
+  PageContainer,
   TrackerContainer,
 } from './HomePage.styled';
 import DailyNorma from 'components/DailyNorma/DailyNorma';
@@ -33,10 +33,9 @@ const HomePage = () => {
   }, [dailyNormaCalc]);
 
   return (
-    <>
       <BubblesContainer>
         <Container>
-          <HomePageContainer>
+          <PageContainer>
             <DailyNormaSection>
               <DailyNorma />
               <WaterRatioPanel />
@@ -45,11 +44,10 @@ const HomePage = () => {
               <TodayWaterList />
               <Calendar dailyNormaState={dailyNormaState} />
             </TrackerContainer>
-          </HomePageContainer>
+          </PageContainer>
           {isLoading && <Loader />}
         </Container>
       </BubblesContainer>
-    </>
   );
 };
 
