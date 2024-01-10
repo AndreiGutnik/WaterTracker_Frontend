@@ -5,7 +5,7 @@ import backgroundDesktop from '../../images/welcome/backgroundDesktop.svg';
 import backgroundTablet from '../../images/welcome/backgroundTablet.svg';
 import backgroundMobile from '../../images/welcome/backgroundMobileHome.svg';
 
-export const HomePageContainer = styled.div`
+export const PageContainer = styled.div`
   display: flex;
   flex-direction: column;
 

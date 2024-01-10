@@ -191,7 +191,6 @@ export const StyledBtn = styled.div`
     height: 16px;
     border-radius: 30px;
     border: transparent;
-    background: #fff;
   }
 
   & use {
