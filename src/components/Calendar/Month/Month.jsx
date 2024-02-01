@@ -1,10 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchMonthThunk } from 'redux/month/operations';
-import {
-  selectorIsLoadingMonth,
-  selectorWaterMonth,
-} from 'redux/month/selectors';
+import { selectorWaterMonth } from 'redux/month/selectors';
 
 import Icons from '../../../images/sprite.svg';
 import DayComponent from './Day';
@@ -18,15 +15,12 @@ import {
   Month,
   MonthTitle,
 } from './Month.styled';
-import { ThreeDots } from 'react-loader-spinner';
-import { baseTheme } from '../../theme';
 
 export const Calendar = dailyNormaState => {
   const [currentDate, setCurrentDate] = useState(new Date());
   const dispatch = useDispatch();
   const waterForMonth = useSelector(selectorWaterMonth);
   const ref = useRef(null);
-  const isLoading = useSelector(selectorIsLoadingMonth);
 
   useEffect(() => {
     const month = `${
@@ -93,24 +87,6 @@ export const Calendar = dailyNormaState => {
     <CalendarContainer className="calendar" ref={ref}>
       <MonthNav>
         <MonthTitle>Month</MonthTitle>
-        {isLoading && (
-          <ThreeDots
-            height="60"
-            width="60"
-            radius="9"
-            color={baseTheme.colors.blue}
-            ariaLabel="three-dots-loading"
-            wrapperStyle={{
-              height: '30px',
-              width: '40px',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-            }}
-            wrapperClassName=""
-            visible={true}
-          />
-        )}
         <MonthControl>
           <ArrowButton aria-label="Previous month" onClick={handlePrevMonth}>
             <svg>
